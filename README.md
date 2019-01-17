@@ -6,7 +6,7 @@
 2. Clone or download this repository to a folder somewhere on the device.
 3. Run `npm i -D && npm run build` to install all the needed dependencies.
 3. Install [panr](https://github.com/emmercm/panr) and set it up on the machine that is running the server.
-4. Run `npm run production` to start the server and access the form page at `http://localhost:80/`.
+4. Run `npm run production` to start the server and access the form page at `http://localhost:8000/`.
 5. If you connect external devices, connect to the server though the PAN network, and instead of `localhost`, use the server's local IP. You can find this
 by running `ipconfig` in the console.
 
