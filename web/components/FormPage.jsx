@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader';
 
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
 
 class FormPage extends Component {
     constructor(props) {
