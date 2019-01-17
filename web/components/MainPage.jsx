@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader';
 
@@ -10,7 +13,15 @@ class MainPage extends Component {
     render() { 
         return <div>
             <h1>Main Page</h1>
-            <Button component={Link} to="/form/test">Go to the test form</Button>
+            <List component="nav">
+                {
+                    this.props.formData.map(item => {
+                        return <ListItem key={item.id} button component={Link} to={'/form/' + item.id}>
+                            <ListItemText primary={item.name} />
+                        </ListItem>;
+                    })
+                }
+            </List>
         </div>;
     }
 }

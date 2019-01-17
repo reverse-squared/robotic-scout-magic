@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import { Link, Router } from '@reach/router';
 import { hot } from 'react-hot-loader';
+import Loadable from 'react-loadable';
+import Theme from './Theme';
 // MUI Components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,37 +15,31 @@ import FormPage from './FormPage';
 
 import '../css/App.css';
 
+const RouterLoading = Loadable({
+    loader: () => fetch('./all-forms.json').then(res => res.json()).then(json => {
+        return () => <Router>
+            <MainPage path="/" formData={json} />
+            <FormPage path="/form/:form" formData={json} />
+        </Router>;
+    }),
+    loading: () => <div>Loading Data...</div>,
+});
+
 class App extends Component {
     constructor() {
         super();
-
-        this.state = {
-            formData: [
-                {
-                    id: 'test',
-                    contents: [
-                        { type: 'text', label: 'name' },
-                        { type: 'text', label: 'Test' },
-                        { type: 'text', label: 'something else' },
-                    ]
-                }
-            ]
-        };
     }
     render() { 
-        return <div>
-            <AppBar position='static' color='default'>
+        return <Theme>
+            <AppBar position='static' color='primary'>
                 <Toolbar>
                     <Typography variant='h6' color='inherit'>
                         Robotics Magic
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Router>
-                <MainPage path="/" />
-                <FormPage path="/form/:form" formData={this.state.formData} />
-            </Router>
-        </div>;
+            <RouterLoading />
+        </Theme>;
     }
 }
  

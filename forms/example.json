@@ -1,0 +1,16 @@
+{
+    "$schema": "../form-schema.json",
+    "id": "example",
+    "name": "Example Form",
+    "description": "Starter Example Form",
+    "items": [
+        {
+            "type": "text",
+            "label": "A thing"
+        },
+        {
+            "type": "text",
+            "label": "Another thing"
+        }
+    ]
+}
