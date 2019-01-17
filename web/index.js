@@ -1,4 +1,6 @@
-fetch("/api").then(r=>r.text()).then((text) => {
-    //eslint-disable-next-line no-console
-    console.log(text);
-});
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import App from './components/App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
