@@ -9,12 +9,14 @@ class FormPage extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return <div>
             <Button component={Link} to="/">back to home</Button>
-            <h1>Form Page (form id {this.props.form})</h1>
+            {/* TODO: Replace with the name of the form. */}
+            <h1>{this.props.form}</h1>
             {
-                this.props.formData.find(x=>x.id===this.props.form).contents.map(item => {
+                this.props.formData.find(x=>x.id===this.props.form).items.map(item => {
                     return <TextField
                         label={item.label}
                         // value={this.state.name}
