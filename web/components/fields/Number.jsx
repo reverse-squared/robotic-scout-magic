@@ -46,4 +46,5 @@ class Number extends Component {
     }
 }
  
+export const id = 'number';
 export default hot(Number);

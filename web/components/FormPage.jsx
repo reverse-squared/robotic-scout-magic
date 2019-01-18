@@ -4,11 +4,15 @@ import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
 import Typography from '@material-ui/core/Typography';
 
-const FieldTypes = {
-    'text': require('./fields/Text').default,
-    'number': require('./fields/Number').default,
-    'counter': require('./fields/Counter').default,
-};
+function requireAll(r) { return r.keys().map(r); }
+const fieldModules = requireAll(require.context('./fields/', true, /\.jsx?$/));
+const FieldTypes = fieldModules.reduce(
+    (obj, mod) => {
+        obj[mod.id] = mod.default;
+        return obj;
+    },
+    {}
+);
 
 class FormPage extends Component {
     constructor(props) {

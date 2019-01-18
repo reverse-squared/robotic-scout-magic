@@ -28,4 +28,5 @@ class Text extends Component {
     }
 }
  
+export const id = 'text';
 export default hot(Text);

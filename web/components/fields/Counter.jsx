@@ -58,4 +58,5 @@ class Counter extends Component {
     }
 }
  
+export const id = 'counter';
 export default hot(Counter);
