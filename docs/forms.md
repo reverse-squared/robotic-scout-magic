@@ -13,7 +13,7 @@ Creating your own forms for your needs is one of the main purposes of this appli
     "name": "Example Form",
     "description": "Starter Example Form",
     "options": [
-        // Form Contents
+
     ]
 }
 ```
@@ -40,6 +40,8 @@ Below are the only supported data types.
 
 An example form with two text boxes.
 ```json
+// forms/example.json
+
 {
     "$schema": "../form-schema.json",
     "id": "example",
@@ -61,6 +63,8 @@ With numbers, counters, and booleans, you can simply change the `type` and the `
 
 An example form with radio options.
 ```json
+// forms/example.json
+
 {
     "$schema": "../form-schema.json",
     "id": "example",
