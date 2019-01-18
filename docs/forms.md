@@ -3,7 +3,7 @@
 Creating your own forms for your needs is one of the main purposes of this applicaion, since everyone's needs are different. Follow the steps below to get started.
 
 **Step 1:** Locate the `forms/` directory, and create a JSON file for your form. For this example, I will use `exmaple.json`.
-**Step 2:** All forms need a `$schema`, `id`, `name`, `description`, and an `options` array defined in them.
+**Step 2:** All forms need an `id`, `name`, `description`, and an `options` array defined in them.
 ```json
 // forms/example.json
 
@@ -13,10 +13,13 @@ Creating your own forms for your needs is one of the main purposes of this appli
     "name": "Example Form",
     "description": "Starter Example Form",
     "options": [
-
+        
     ]
 }
 ```
+
+> [!TIP]
+> If you are editing this with [Visual Studio Code](https://code.visualstudio.com/), then `$schema` is optional. It just gives more type information. It is very useful, **But if you are not using Visual Studio Code**, you don't need `$schema`.
 
 Once this is created, continue to **Editing Forms**.
 
