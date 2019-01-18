@@ -38,8 +38,8 @@ class FormPage extends Component {
                 form.items.map((item, i) => {
                     const Field = FieldTypes[item.type];
                     if(!Field) {
-                        return <div key={i}>
-                            <h4 style={{ color: 'red' }}>Uh Oh - Field Type <span style={{ fontFamily: 'monospace' }}>{item.type}</span> does not exist or is in development</h4>
+                        return <div>
+                            <h4 style={{ color: 'red' }}>Uh Oh - Field Type <span style={{ fontFamily: 'monospace' }}>{item.type}</span> does not exist or is in development.</h4>
                         </div>;
                     } else {
                         return <Field

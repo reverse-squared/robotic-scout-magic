@@ -9,7 +9,8 @@
     "build": "webpack -D --env true",
     "start": "node ./server/server_development.js",
     "production": "node ./server/server_production.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "docs": "docsify serve docs"
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
