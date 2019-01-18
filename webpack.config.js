@@ -1,11 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-const spreadIf = require('spreadif');
 
 module.exports = (prod = false) => ({
     entry: [
         path.join(__dirname, './web/index.js'),
-        ...(prod ? [] : ['webpack/hot/dev-server'])
+        ...(!prod ? ['webpack/hot/dev-server'] : [])
     ],
     module: {
         rules: [
@@ -13,9 +12,16 @@ module.exports = (prod = false) => ({
                 test: /\.ttf$/,
                 use: 'file-loader',
             },
+            // {
+            //     test: /\.jsx?$/,
+            //     include: /(node_modules)/,
+            //     use: {
+            //         loader: 'react-hot-loader/webpack'
+            //     }
+            // },
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 use: {
                     loader: 'babel-loader'
                 }
@@ -41,7 +47,7 @@ module.exports = (prod = false) => ({
         hot: true
     },
     plugins: [
-        ...(prod ? [] : [new webpack.HotModuleReplacementPlugin()]),      
+        ...(!prod ? [new webpack.HotModuleReplacementPlugin()] : []),
         new webpack.DefinePlugin({
             $production: prod
         }),

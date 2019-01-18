@@ -7,8 +7,7 @@ const express = require('express');
 const url = require('url');
 const path = require('path');
 const reload = require('require-reload');
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
+const npmRunScript = require('npm-run-script');
 
 const app = express();
 let api = reload(path.join(__dirname, 'api'));
@@ -25,15 +24,17 @@ app.use((req,res,next) => {
 });
 app.use(proxy);
 
-const config = require('../webpack.config')(false);
-const server = new WebpackDevServer(webpack(config), {
-    hot:true,
-    hotOnly:true,
+const child = npmRunScript('webpack-dev-server --port 80', { stdio: 'pipe' });
+
+child.stdin.pipe(process.stdin);
+child.stdout.on('data', (data) => {
+    // Filter out the "Project is running at localhost:80" message
+    if(data.toString().indexOf('Project is running at') !== -1) {return;}
+    process.stdout.write(data);
 });
 
-server.listen(80, 'localhost', function () {
-    console.log('Started WDS, Compiling Webpack');
-});
+child.stderr.pipe(process.stderr);
+
 app.listen(8000, function() {
     console.log('Started Proxy Server: http://localhost:8000/');
 });

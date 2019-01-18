@@ -1,5 +1,5 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { red, lightBlue } from '@material-ui/core/colors/purple';
 
@@ -19,4 +19,4 @@ function Theme(props) {
     );
 }
 
-export default hot(module)(Theme);
+export default hot(Theme);

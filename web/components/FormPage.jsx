@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { Link } from '@reach/router';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import Typography from '@material-ui/core/Typography';
 
 const FieldTypes = {
@@ -38,7 +38,7 @@ class FormPage extends Component {
                 form.items.map((item, i) => {
                     const Field = FieldTypes[item.type];
                     if(!Field) {
-                        return <div>
+                        return <div key={i}>
                             <h4 style={{ color: 'red' }}>Uh Oh - Field Type <span style={{ fontFamily: 'monospace' }}>{item.type}</span> does not exist or is in development</h4>
                         </div>;
                     } else {
@@ -49,7 +49,6 @@ class FormPage extends Component {
                             config={item}
                             key={i}
                         />;
-
                     }
                 })
             }
@@ -57,4 +56,4 @@ class FormPage extends Component {
     }
 }
 
-export default hot(module)(FormPage);
+export default hot(FormPage);

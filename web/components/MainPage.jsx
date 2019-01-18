@@ -5,7 +5,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from '@reach/router';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 
 import ExtensionIcon from '@material-ui/icons/Extension';
 
@@ -34,4 +34,4 @@ class MainPage extends Component {
     }
 }
  
-export default hot(module)(MainPage);
+export default hot(MainPage);

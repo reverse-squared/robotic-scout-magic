@@ -1,94 +1,60 @@
 // This is the root component of the App, contains the app state, router
 // and other things.
-import React, { Component } from 'react';
-import { Link, Router } from '@reach/router';
-import { hot } from 'react-hot-loader';
+import React, { Component, Fragment } from 'react';
+import { Router } from '@reach/router';
+import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
 import Theme from './Theme';
-// MUI Components
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import SVGMenu from '@material-ui/icons/Menu';
+// MUI
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 // Pages
-import MainPage from './MainPage';
-import FormPage from './FormPage';
+import AppBar from './AppBar';
 
 import '../css/App.css';
 
-const RouterLoading = Loadable({
+const Loader = () => <div className='container' style={{
+    display: 'flex',
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+}}>
+    <CircularProgress />
+</div>;
+
+const AppLoader = Loadable({
     loader: () => fetch('./all-forms.json').then(res => res.json()).then(json => {
-        return () => <Router>
-            <MainPage path="/" formData={json} />
-            <FormPage path="/form/:formID" formData={json} />
-        </Router>;
+        return () => <App formData={json}/>;
     }),
-    loading: () => <div>Loading Data...</div>,
+    loading: Loader,
 });
+const PageLoadable = (dynamic_import) => Loadable({ loader: dynamic_import, loading: Loader });
+
+const MainPage = PageLoadable(() => import('./MainPage'));
+const FormPage = PageLoadable(() => import('./FormPage'));
 
 class App extends Component {
     constructor() {
         super();
-        this.state = {
-            anchorMenuEl: null
-        };
-        this.handleMenu = event => {
-            this.setState({ anchorMenuEl: event.currentTarget });
-        };
-        this.handleClose = () => {
-            this.setState({ anchorMenuEl: null });
-        };
     }
     render() {
-        const { anchorMenuEl } = this.state;
-        const open = Boolean(anchorMenuEl);
-
-        return <Theme>
-            <AppBar position='static' color='primary'>
-                <Toolbar>
-                    <Typography variant='h6' color='inherit'>
-                        Robotic Scout Magic
-                    </Typography>
-                    <div style={{flexGrow: '1'}}></div>
-                    <div>
-                        <IconButton
-                            aria-owns={open ? 'menu-appbar' : undefined}
-                            aria-haspopup="true"
-                            onClick={this.handleMenu}
-                            color="inherit"
-                        >
-                            <SVGMenu />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorMenuEl}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={open}
-                            onClose={this.handleClose}
-                        >
-                            <MenuItem onClick={this.handleClose}>this doesnt get filled out yet</MenuItem>
-                            <MenuItem onClick={this.handleClose}>this doesnt get filled out yet</MenuItem>
-                            <MenuItem onClick={this.handleClose}>this doesnt get filled out yet</MenuItem>
-                        </Menu>
-                    </div>
-                </Toolbar>
-            </AppBar>
-            <div className="container">
-                
-                <RouterLoading />
+        const formData = this.props.formData;
+        return <Fragment>
+            <AppBar formData={formData} url={location.pathname} />
+            <div className='container'>
+                <Router>
+                    <MainPage path='/' formData={formData} />
+                    <FormPage path='/form/:formID' formData={formData} />
+                </Router>
             </div>
-        </Theme>;
+        </Fragment>;
     }
 }
+
+const PreLoadedApp = () => <Theme>
+    <AppLoader />
+</Theme>;
  
-export default hot(module)(App);
+export default hot(PreLoadedApp);
