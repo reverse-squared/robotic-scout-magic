@@ -17,15 +17,16 @@ class Counter extends Component {
         // props.value
         // props.onChange
         super(props);
-        this.resolveValue = () => this.props.value || this.props.default || 0;
-        
+        this.resolveValue = () => this.props.value || this.props.config.default || 0;
+        const step = this.props.config.step || 1;
+
         this.handleDecrease = () => {
             const value = this.resolveValue();
-            this.props.onChange(value - 1);
+            this.props.onChange(value - step);
         };
         this.handleIncrease = () => {
             const value = this.resolveValue();
-            this.props.onChange(value + 1);
+            this.props.onChange(value + step);
         };
     }
     render() {
@@ -36,7 +37,7 @@ class Counter extends Component {
         let max = config.max || undefined;
 
         return <div style={{
-            padding: '0.5em'
+            paddingTop: '0.5em'
         }}>
             <p>
                 {config.label}
@@ -46,7 +47,7 @@ class Counter extends Component {
                     <SubtractIcon />
                 </Button>
             </span>
-            <span style={{ margin: '0.5em' }}>{value}</span>
+            <span style={{ margin: '0.5em', fontWeight: 'bold' }}>{value}</span>
             <span style={{ margin: '0.5em' }}>
                 <Button variant="outlined" size="medium" color="primary" onClick={this.handleIncrease} disabled={value >= max}>
                     <AddIcon />

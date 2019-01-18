@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 const FieldTypes = {
     'text': require('./fields/Text').default,
+    'number': require('./fields/Number').default,
     'counter': require('./fields/Counter').default,
 };
 
