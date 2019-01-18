@@ -14,7 +14,8 @@ by running `ipconfig` in the console.
 
 ## Why Bluetooth?
 RSM uses bluetooth for it's connections to it's devices because WiFi access points are banned at competitions.
-![](http://i.imgur.com/aKL8OjC.png)
+![](./docs/img/no-wifi.png)
+Soruce at [https://firstfrc.blob.core.windows.net/frc2019/EventRules/EventRulesManual.pdf](https://firstfrc.blob.core.windows.net/frc2019/EventRules/EventRulesManual.pdf).
 
 ## Documentation
 You can view the full documentation for RSM including how to create, edit, and export form data at [https://wearedevs.github.io/robotic-scout-magic/](https://wearedevs.github.io/robotic-scout-magic/).
