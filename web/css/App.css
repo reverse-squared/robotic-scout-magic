@@ -1,6 +1,6 @@
 body {
-    margin: 0;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 @font-face {
@@ -26,4 +26,9 @@ body {
   font-style: italic;
   font-weight: 700;
   src: url(../fonts/Roboto-BoldItalic.ttf);
+}
+
+.container {
+  box-sizing: border-box;
+  padding: 2em;
 }

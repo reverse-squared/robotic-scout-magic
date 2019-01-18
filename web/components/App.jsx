@@ -23,7 +23,7 @@ const RouterLoading = Loadable({
     loader: () => fetch('./all-forms.json').then(res => res.json()).then(json => {
         return () => <Router>
             <MainPage path="/" formData={json} />
-            <FormPage path="/form/:form" formData={json} />
+            <FormPage path="/form/:formID" formData={json} />
         </Router>;
     }),
     loading: () => <div>Loading Data...</div>,
@@ -83,7 +83,10 @@ class App extends Component {
                     </div>
                 </Toolbar>
             </AppBar>
-            <RouterLoading />
+            <div className="container">
+                
+                <RouterLoading />
+            </div>
         </Theme>;
     }
 }

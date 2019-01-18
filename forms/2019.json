@@ -14,7 +14,7 @@
         },
         {
             "type": "counter",
-            "label": "How much Cargo was scored."
+            "label": "How much Cargo was scored?"
         },
         {
             "type": "boolean",
@@ -26,7 +26,7 @@
         },
         {
             "type": "radio",
-            "label": "What level did the robot climb to at the end of the match.",
+            "label": "What level did the robot climb to at the end of the match?",
             "options": ["0", "1", "2", "3"]
         },
         {
