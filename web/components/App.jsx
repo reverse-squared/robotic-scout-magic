@@ -50,15 +50,15 @@ class App extends Component {
     render() {
         const formData = this.props.formData;
         return <Fragment>
-            <AppBar formData={formData} url={location.pathname} />
-            <div className='container'>
-                <LocationProvider history={history}>
+            <LocationProvider history={history}>
+                <AppBar formData={formData} url={hashSource.location.pathname} />
+                <div className='container'>
                     <Router>
                         <MainPage path='/' formData={formData} />
                         <FormPage path='/form/:formID' formData={formData} />
                     </Router>
-                </LocationProvider>
-            </div>
+                </div>
+            </LocationProvider>
         </Fragment>;
     }
 }
