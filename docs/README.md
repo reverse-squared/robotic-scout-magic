@@ -20,7 +20,7 @@ Are one of the forms missing something you want? Do you not need something on on
 
 ## Why Bluetooth?
 RSM uses bluetooth for it's connections to it's devices because WiFi access points are banned at competitions.
-![](./../img/no-wifi.png)
+![](https://i.imgur.com/fN10Xx1.png)
 Soruce at [https://firstfrc.blob.core.windows.net/frc2019/EventRules/EventRulesManual.pdf](https://firstfrc.blob.core.windows.net/frc2019/EventRules/EventRulesManual.pdf).
 
 ## Licensing
