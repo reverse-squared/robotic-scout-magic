@@ -3,42 +3,19 @@
 import React, { Component, Fragment } from 'react';
 import { Router, createHistory, LocationProvider } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
-import Loadable from 'react-loadable';
 import Theme from './Theme';
 import createHashSource from 'hash-source';
-// MUI
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { AppLoadable, PageLoadable } from './Loader';
 
-// Pages
 import AppBar from './AppBar';
 
 import '../css/App.css';
-
-// Loader
-const Loader = () => <div className='container' style={{
-    display: 'flex',
-    position: 'absolute',
-    height: '100%',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-}}>
-    <CircularProgress />
-</div>;
 
 // Create Hash Routing History
 const hashSource = createHashSource();
 const history = createHistory(hashSource);
 
-// Dynamically Loading Sections
-const AppLoader = Loadable({
-    loader: () => fetch('./all-forms.json').then(res => res.json()).then(json => {
-        return () => <App formData={json}/>;
-    }),
-    loading: Loader,
-});
-const PageLoadable = (dynamic_import) => Loadable({ loader: dynamic_import, loading: Loader });
-
+// Loadable Pages
 const MainPage = PageLoadable(() => import('./MainPage'));
 const FormPage = PageLoadable(() => import('./FormPage'));
 
@@ -51,7 +28,7 @@ class App extends Component {
         const formData = this.props.formData;
         return <Fragment>
             <LocationProvider history={history}>
-                <AppBar formData={formData} url={hashSource.location.pathname} />
+                <AppBar formData={formData} />
                 <div className='container'>
                     <Router>
                         <MainPage path='/' formData={formData} />
@@ -63,8 +40,10 @@ class App extends Component {
     }
 }
 
+// Use the AppLoadable to create a loading screen for loading
+// the form data.
 const PreLoadedApp = () => <Theme>
-    <AppLoader />
+    {React.createElement(AppLoadable(App)) }
 </Theme>;
  
 export default hot(PreLoadedApp);

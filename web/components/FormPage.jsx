@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
-import Typography from '@material-ui/core/Typography';
+import { Typography } from '@material-ui/core';
 
 function requireAll(r) { return r.keys().map(r); }
 const fieldModules = requireAll(require.context('./fields/', true, /\.jsx?$/));

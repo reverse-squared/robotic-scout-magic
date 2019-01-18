@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import ListItemText from '@material-ui/core/ListItemText';
+import { Button, Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
 
@@ -30,6 +26,8 @@ class MainPage extends Component {
                     })
                 }
             </List>
+            <h1>Export Data</h1>
+            <Button>Export Data to USB Drive</Button>
         </div>;
     }
 }

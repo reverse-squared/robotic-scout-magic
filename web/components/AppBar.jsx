@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Location, redirectTo } from '@reach/router';
 
-import MUIAppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import { AppBar as MUIAppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import SVGBack from '@material-ui/icons/ArrowBack';
 
 class AppBar extends Component {

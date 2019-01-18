@@ -1,7 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { red, lightBlue } from '@material-ui/core/colors/purple';
 
 const theme = createMuiTheme({
     palette: {  
