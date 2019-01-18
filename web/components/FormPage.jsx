@@ -39,7 +39,7 @@ class FormPage extends Component {
                     const Field = FieldTypes[item.type];
                     if(!Field) {
                         return <div>
-                            <h4 style={{ color: 'red' }}>Uh Oh - Field Type <span style={{ fontFamily: 'monospace' }}>{item.type}</span> does not exist or is in development</h4>
+                            <h4 style={{ color: 'red' }}>Uh Oh - Field Type <span style={{ fontFamily: 'monospace' }}>{item.type}</span> does not exist or is in development.</h4>
                         </div>;
                     } else {
                         return <Field
