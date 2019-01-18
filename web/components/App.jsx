@@ -9,6 +9,10 @@ import Theme from './Theme';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import SVGMenu from '@material-ui/icons/Menu';
 // Pages
 import MainPage from './MainPage';
 import FormPage from './FormPage';
@@ -28,14 +32,54 @@ const RouterLoading = Loadable({
 class App extends Component {
     constructor() {
         super();
+        this.state = {
+            anchorMenuEl: null
+        };
+        this.handleMenu = event => {
+            this.setState({ anchorMenuEl: event.currentTarget });
+        };
+        this.handleClose = () => {
+            this.setState({ anchorMenuEl: null });
+        };
     }
-    render() { 
+    render() {
+        const { anchorMenuEl } = this.state;
+        const open = Boolean(anchorMenuEl);
+
         return <Theme>
             <AppBar position='static' color='primary'>
                 <Toolbar>
                     <Typography variant='h6' color='inherit'>
                         Robotics Magic
                     </Typography>
+                    <div style={{flexGrow: '1'}}></div>
+                    <div>
+                        <IconButton
+                            aria-owns={open ? 'menu-appbar' : undefined}
+                            aria-haspopup="true"
+                            onClick={this.handleMenu}
+                            color="inherit"
+                        >
+                            <SVGMenu />
+                        </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorMenuEl}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={open}
+                            onClose={this.handleClose}
+                        >
+                            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                            <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                        </Menu>
+                    </div>
                 </Toolbar>
             </AppBar>
             <RouterLoading />
