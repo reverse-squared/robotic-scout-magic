@@ -12,7 +12,7 @@ class MainPage extends Component {
     }
     render() { 
         return <div>
-            <h1>Main Page</h1>
+            <h1>Available Forms</h1>
             <List component="nav">
                 {
                     this.props.formData.map(item => {

@@ -1,0 +1,37 @@
+{
+    "$schema": "../form-schema.json",
+    "id": "2019",
+    "name": "2019 Destination: Deep Space",
+    "description": "Blast off with scouting with this form.",
+    "items": [
+        {
+            "type": "number",
+            "label": "The Team / Robot Number"
+        },
+        {
+            "type": "counter",
+            "label": "How many Hatch Panels were scored?"
+        },
+        {
+            "type": "counter",
+            "label": "How much Cargo was scored."
+        },
+        {
+            "type": "boolean",
+            "label": "Can the robot pick hatch panels off the ground?"
+        },
+        {
+            "type": "boolean",
+            "label": "Did the robot even climb at the end of the match?"
+        },
+        {
+            "type": "radio",
+            "label": "What level did the robot climb to at the end of the match.",
+            "options": ["0", "1", "2", "3"]
+        },
+        {
+            "type": "boolean",
+            "label": "Can the robot even climb to level three. If you are not sure, select false."
+        }   
+    ]
+}   
