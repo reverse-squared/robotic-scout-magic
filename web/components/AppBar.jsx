@@ -39,35 +39,6 @@ class AppBar extends Component {
                             <Typography variant='h6' color='inherit'>
                                 Robotic Scout Magic
                             </Typography>
-                            <div style={{ flexGrow: '1' }}></div>
-                            <div>
-                                {/* <IconButton
-                                    aria-owns={open ? 'menu-appbar' : undefined}
-                                    aria-haspopup="true"
-                                    onClick={this.handleMenu}
-                                    color="inherit"
-                                >
-                                    <SVGMenu />
-                                </IconButton>                    
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorMenuEl}
-                                    anchorOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    open={open}
-                                    onClose={this.handleClose}
-                                >
-                                    <MenuItem onClick={this.handleClose}>this doesnt get filled out yet</MenuItem>
-                                    <MenuItem onClick={this.handleClose}>this doesnt get filled out yet</MenuItem>
-                                    <MenuItem onClick={this.handleClose}>this doesnt get filled out yet</MenuItem>
-                                </Menu> */}
-                            </div>
                         </Toolbar>
                     </MUIAppBar>
                 </div>;
