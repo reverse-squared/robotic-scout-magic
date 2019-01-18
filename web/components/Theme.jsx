@@ -1,12 +1,12 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
+import { red, lightBlue } from '@material-ui/core/colors/purple';
 
 const theme = createMuiTheme({
-    palette: {
-        primary: { main: purple[600] }, // Purple and green play nicely together.
-        secondary: { main: '#11cb5f' }, // This is just green.A700 as hex.
+    palette: {  
+        primary: { main: '#3f51b5' }, // Purple and green play nicely together.
+        secondary: { main: '#4caf50' }, // This is just green.A700 as hex.
     },
     typography: { useNextVariants: true },
 });
