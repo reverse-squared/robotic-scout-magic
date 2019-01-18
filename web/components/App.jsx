@@ -5,7 +5,7 @@ import { Router, createHistory, LocationProvider } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
 import Theme from './Theme';
-import createHashSource from '../createHashSource';
+import createHashSource from 'hash-source';
 // MUI
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -27,7 +27,8 @@ const Loader = () => <div className='container' style={{
 </div>;
 
 // Create Hash Routing History
-const history = createHashSource();
+const hashSource = createHashSource();
+const history = createHistory(hashSource);
 
 // Dynamically Loading Sections
 const AppLoader = Loadable({

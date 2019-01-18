@@ -19,6 +19,7 @@
     "@reach/router": "^1.2.1",
     "chalk": "^2.4.2",
     "express": "^4.16.4",
+    "hash-source": "^1.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-hot-loader": "^4.6.3",
