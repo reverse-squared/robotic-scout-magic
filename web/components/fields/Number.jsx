@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader/root';
 
 import TextField from '@material-ui/core/TextField';
 
@@ -45,4 +46,4 @@ class Number extends Component {
     }
 }
  
-export default Number;
+export default hot(Number);

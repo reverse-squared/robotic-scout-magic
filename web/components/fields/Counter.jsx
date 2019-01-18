@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader/root';
 
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -57,4 +58,4 @@ class Counter extends Component {
     }
 }
  
-export default Counter;
+export default hot(Counter);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { Link } from '@reach/router';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import Typography from '@material-ui/core/Typography';
 
 const FieldTypes = {
@@ -49,7 +49,6 @@ class FormPage extends Component {
                             config={item}
                             key={i}
                         />;
-
                     }
                 })
             }
@@ -57,4 +56,4 @@ class FormPage extends Component {
     }
 }
 
-export default hot(module)(FormPage);
+export default hot(FormPage);
