@@ -22,13 +22,99 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "enum": ["text", "number"]
+                        "enum": ["text", "number", "counter", "boolean"],
+                        "description": "Sets the form component that this item uses. Required for all form elements."
                     },
                     "label": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The display text explaining what this form item is. Required for all form elements."
                     }
-                }
-            }
+                },
+                "required": [
+                    "label"
+                ],
+                "anyOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "text",
+                                        "number"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "helperText": {
+                                    "type": "string",
+                                    "description": "Extra text below the input element to help the user type the right data in."
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "counter"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "min": {
+                                    "type": ["number", "null"],
+                                    "description": "Minimum value this counter goes to, null to disable. Defaults to 0"
+                                },
+                                "max": {
+                                    "type": ["number", "null"],
+                                    "description": "Maximum value this counter goes to, null to disable. Defaults to 0"
+                                },
+                                "step": {
+                                    "type": "number",
+                                    "description": "The amount the + and - buttons change the value by. Defaults to 1"
+                                },
+                                "default": {
+                                    "type": "number",
+                                    "description": "The starting number of this counter. Defaults to 0"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "boolean"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "default": {
+                                    "type": "boolean",
+                                    "description": "Override the default value, default false."
+                                },
+                                "trueValue": {
+                                    "type": "string",
+                                    "description": "Change the label of the true button, default 'True'"
+                                },
+                                "falseValue": {
+                                    "type": "string",
+                                    "description": "Change the label of the false button, default 'False'"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "description": "List of form elements for this form."
         }
     },
     "required": [ "id", "name", "items"]
