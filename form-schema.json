@@ -39,7 +39,25 @@
                             "properties": {
                                 "type": {
                                     "enum": [
-                                        "text",
+                                        "text"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "helperText": {
+                                    "type": "string",
+                                    "description": "Extra text below the input element to help the user type the right data in."
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
                                         "number"
                                     ]
                                 }
@@ -50,6 +68,10 @@
                                 "helperText": {
                                     "type": "string",
                                     "description": "Extra text below the input element to help the user type the right data in."
+                                },
+                                "errorText": {
+                                    "type": "string",
+                                    "description": "Extra text below the input element when you type a non number. Defaults to 'You can only enter numbers'"
                                 }
                             }
                         }

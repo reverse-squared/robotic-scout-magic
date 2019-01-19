@@ -24,6 +24,7 @@ class TextArea extends Component {
                 margin="normal"
                 variant="outlined"
                 multiline={true}
+                helperText={config.helperText}
             />
         </div>;
     }
