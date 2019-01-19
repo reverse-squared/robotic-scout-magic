@@ -9,13 +9,13 @@ class Text extends Component {
         // props.value
         // props.onChange
         super(props);
-        this.handleChange = (ev) => {
+        this.handleChange = (event) => {
             this.props.onChange(event.target.value);
         };
     }
     render() {
-        const value = this.props.value || '';
         const config = this.props.config;
+        const value = this.props.value || config.default || '';
         return <div>
             <TextField
                 label={config.label}
@@ -23,6 +23,7 @@ class Text extends Component {
                 onChange={this.handleChange}
                 margin="normal"
                 variant="outlined"
+                helperText={config.helperText}
             />
         </div>;
     }

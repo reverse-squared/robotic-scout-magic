@@ -13,7 +13,7 @@ class Number extends Component {
             showCharacterError: false,
         };
         let timer = null;
-        this.handleChange = (ev) => {
+        this.handleChange = (event) => {
             if (/[^0-9]/.test(event.target.value)) {
                 // warn
                 this.setState({ showCharacterError: true });
@@ -40,7 +40,7 @@ class Number extends Component {
                 margin='normal'
                 variant='outlined'
                 error={this.state.showCharacterError}
-                helperText={this.state.showCharacterError ? <span style={{color:'red', fontWeight: 'bold'}}>You can only enter numbers</span> : ' '}
+                helperText={this.state.showCharacterError ? <span style={{color:'red', fontWeight: 'bold'}}>{config.errorText || 'You can only enter numbers'}</span> : config.helperText || ' '}
             />
         </div>;
     }
