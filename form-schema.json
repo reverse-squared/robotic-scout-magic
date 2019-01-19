@@ -200,6 +200,25 @@
                             }
                         }
                     }
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "text-area"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "helperText": {
+                                    "type": "string",
+                                    "description": "The text to display below the textbox to help users know what to enter."
+                                }
+                            }
+                        }
+                    }
                 ]
             },
             "description": "List of form elements for this form."

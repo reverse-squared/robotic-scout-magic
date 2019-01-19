@@ -15,6 +15,8 @@ class MainPage extends Component {
             <List component="nav">
                 {
                     this.props.formData.map(item => {
+                        if(item.id === 'example') return;
+
                         return <ListItem key={item.id} button component={Link} to={'/form/' + item.id}>
                             <ListItemAvatar>
                                 <Avatar>

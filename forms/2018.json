@@ -2,7 +2,7 @@
     "$schema": "../form-schema.json",
     "id": "2018",
     "name": "2018 FIRST Power Up",
-    "description": "Blast off with scouting with this form.",
+    "description": "A scouting form for 2018's FIRST Power Up Game",
     "items": [
         {
             "type": "number",
@@ -16,7 +16,8 @@
             "type": "boolean",
             "label": "Did the robot cross the auto line?",
             "trueValue": "Yes",
-            "falseValue": "No"
+            "falseValue": "No",
+            "default": false
         },
         {
             "type": "counter",

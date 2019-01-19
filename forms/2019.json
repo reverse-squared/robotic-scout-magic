@@ -16,7 +16,8 @@
             "type": "boolean",
             "label": "Did the robot leave the HAB?",
             "trueValue": "Yes",
-            "falseValue": "No"
+            "falseValue": "No",
+            "default": false
         },
         {
             "type": "counter",
