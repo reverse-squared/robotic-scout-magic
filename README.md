@@ -14,7 +14,7 @@ by running `ipconfig` in the console.
 
 ## Why Bluetooth?
 RSM uses bluetooth for it's connections to it's devices because WiFi access points are banned at competitions.
-![](https://i.imgur.com/fN10Xx1.png)
+![no-wifi](https://i.imgur.com/fN10Xx1.png)
 Soruce at [https://firstfrc.blob.core.windows.net/frc2019/EventRules/EventRulesManual.pdf](https://firstfrc.blob.core.windows.net/frc2019/EventRules/EventRulesManual.pdf).
 
 ## Documentation
