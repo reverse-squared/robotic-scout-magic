@@ -22,9 +22,9 @@ Components have a spcific data type with properties to customize it.
 - [Text](components/text.md)
 - [Number](components/number.md)
 - [Counter](components/counter.md)
-- [Boolean]()
-- [Radio]()
-- [Checkbox]()
+- [Boolean](components/boolean.md)
+- [Radio](components/radio.md)
+- [Checkbox](components/checkbox.md)
 - [Text Area](components/text-area.md)
 - [Header](components/header.md)
 
