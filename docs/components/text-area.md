@@ -30,4 +30,4 @@ An example form with two text boxes.
 
 ## Images
 ![text](../img/text-area.png ":size=200%")
-![text](../img/text-big.png ":size=200%")
+![text](../img/text-area-big.png ":size=200%")
