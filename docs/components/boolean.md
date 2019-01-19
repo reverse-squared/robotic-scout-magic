@@ -6,10 +6,12 @@ A simple true / false input.
 
 ## Properties
 
-| Property |   Type  |                    Description                   |
-|:--------:|:-------:|:------------------------------------------------:|
-|   label  |  String | The text to display above the boolean selection. |
-| default? | Boolean |    The default selected value. (Default: None)   |
+|   Property  |   Type  |                    Description                    |
+|:-----------:|:-------:|:-------------------------------------------------:|
+|    label    |  String |  The text to display above the boolean selection. |
+|   default?  | Boolean |    The default selected value. (Default: None)    |
+|  trueValue? |  String |  The label of the true button. (Default: "True")  |
+| falseValue? |  String | The label of the false button. (Default: "False") |
 
 ## Usage
 An example form with a boolean component.
@@ -25,7 +27,9 @@ An example form with a boolean component.
         {
             "type": "boolean",
             "label": "Did the robot climb?",
-            "default": false
+            "default": false,
+            "trueValue": "Yes",
+            "falseValue": "No"
         }
     ]
 }

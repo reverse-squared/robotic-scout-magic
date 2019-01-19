@@ -8,8 +8,8 @@ A list of items, selectable by radio inputs, where only one is selectable.
 
 | Property |  Type  |                           Description                          |
 |:--------:|:------:|:--------------------------------------------------------------:|
-|   label  | String |        The text to display above the boolean selection.        |
-|  options | Array  |    An array of strings representing each possible selection.   |
+|   label  | String |            The text to display above the selection.            |
+|  options |  Array |    An array of strings representing each possible selection.   |
 | default? | Number | The index of the default selected radio input. (Default: None) |
 
 ## Usage

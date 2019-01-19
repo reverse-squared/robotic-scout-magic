@@ -22,7 +22,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "enum": ["text", "number", "counter", "boolean"],
+                        "enum": ["text", "number", "counter", "boolean","header","radio","checkbox"],
                         "description": "Sets the form component that this item uses. Required for all form elements."
                     },
                     "label": {
@@ -130,6 +130,72 @@
                                 "falseValue": {
                                     "type": "string",
                                     "description": "Change the label of the false button, default 'False'"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "header"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "description": {
+                                    "type": "string",
+                                    "description": "The text below the header. Commonly used to describe the section."
+                                }
+                            }
+                        }
+                    }, 
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "radio"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "options": {
+                                    "type": "array",
+                                    "description": "An array of strings representing each possible selection."
+                                },
+                                "default": {
+                                    "type": "integer",
+                                    "description": "The index of the default selected radio input. (Default: None)"
+                                }
+                                
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "checkbox"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "options": {
+                                    "type": "array",
+                                    "description": "An array of strings representing each possible selection."
+                                },
+                                "multiple": {
+                                    "type": "boolean",
+                                    "description": "Can the user select multiple boxes? (Default: False)"
                                 }
                             }
                         }

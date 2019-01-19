@@ -1,4 +1,4 @@
-# Counter
+# Header
 Large text used for seperating and organizing form components.
 
 ## Properties

@@ -8,4 +8,5 @@
     * [Radio](components/radio.md)
     * [Checkbox](components/checkbox.md)
     * [Text Area](components/text-area.md)
+    * [Header](components/header.md)
 * [Contributing](contributing.md)
