@@ -51,10 +51,7 @@ An example form with two text boxes.
 ```
 
 ## Exporting Form Data
-Once your form data submissions have been collected, navigate to `http://localhost:8000/` on the machine that is hosting the server, and click **EXPORT DATA TO USB DRIVE**. This will generate a CSV file with all the data submissions. Only do this when you are sure that all your scouting submissions are submitted, as it will delete the submission data off of the server.
-
-> [!DANGER]
-> We recommend to only have one USB storage drive inserted into the machine at a time, to prevent the CSV file from going to a drive you don't want it to. Possible drive selection UI in a later update to fix this issue.
+Once your form data submissions have been collected, navigate to `http://localhost:8000/` on the machine that is hosting the server, and click **EXPORT DATA TO USB DRIVE**. This will generate a CSV file with all the data submissions. There is a checkbox when you export data with the option to delete the data on the server when you export. 
 
 > [!WARNING]
 > This feature has not been tested yet.

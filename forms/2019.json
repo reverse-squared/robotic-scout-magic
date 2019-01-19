@@ -9,6 +9,28 @@
             "label": "The Team / Robot Number"
         },
         {
+            "type": "header",
+            "label": "Sandstorm Period"
+        },
+        {
+            "type": "boolean",
+            "label": "Did the robot leave the HAB?",
+            "trueValue": "Yes",
+            "falseValue": "No"
+        },
+        {
+            "type": "counter",
+            "label": "How many Hatch Panels were scored during the sandstorm period?"
+        },
+        {
+            "type": "counter",
+            "label": "How much Cargo was scored during the sandstorm period?"
+        },
+        {
+            "type": "header",
+            "label": "Driver Period"
+        },
+        {
             "type": "counter",
             "label": "How many Hatch Panels were scored?"
         },
@@ -18,24 +40,24 @@
         },
         {
             "type": "boolean",
-            "label": "Can the robot pick hatch panels off the ground?"
+            "label": "Can the robot pick hatch panels off the ground?",
+            "trueValue": "Yes",
+            "falseValue": "No"
         },
         {
             "type": "header",
             "label": "End Game"
         },
         {
-            "type": "boolean",
-            "label": "Did the robot even climb at the end of the match?"
-        },
-        {
             "type": "radio",
             "label": "What level did the robot climb to at the end of the match?",
-            "options": ["0", "1", "2", "3"]
+            "options": ["0 (Wasn't in the HAB)", "1", "2", "3"]
         },
         {
             "type": "boolean",
-            "label": "Can the robot even climb to level three. If you are not sure, select false."
+            "label": "Can the robot even climb to level three. If you are not sure, select No.",
+            "trueValue": "Yes",
+            "falseValue": "No"
         },
         {
             "type": "text-area",

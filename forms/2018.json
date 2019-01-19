@@ -1,0 +1,63 @@
+{
+    "$schema": "../form-schema.json",
+    "id": "2018",
+    "name": "2018 FIRST Power Up",
+    "description": "Blast off with scouting with this form.",
+    "items": [
+        {
+            "type": "number",
+            "label": "The Team / Robot Number"
+        },
+        {
+            "type": "header",
+            "label": "Autonomous Period"
+        },
+        {
+            "type": "boolean",
+            "label": "Did the robot cross the auto line?",
+            "trueValue": "Yes",
+            "falseValue": "No"
+        },
+        {
+            "type": "counter",
+            "label": "How many cubes were scored on the scale during the autonomous period?"
+        },
+        {
+            "type": "counter",
+            "label": "How many cubes were scored on the switch during the autonomous period?"
+        },
+        {
+            "type": "header",
+            "label": "Driver Control Period"
+        },
+        {
+            "type": "counter",
+            "label": "How many cubes were scored on the scale?"
+        },
+        {
+            "type": "counter",
+            "label": "How many cubes were scored on the switch?"
+        },
+        {
+            "type": "counter",
+            "label": "How many cubes were scored in the exchange?"
+        },
+        {
+            "type": "header",
+            "label": "End Game"
+        },
+        {
+            "type": "radio",
+            "label": "What did the robot do at the end of the match?",
+            "options": [
+                "The robot climbed.",
+                "The robot ended on the mat.",
+                "The robot didn't climb or end on the mat."
+            ]
+        },
+        {
+            "type": "text-area",
+            "label": "Other notes."
+        }
+    ]
+}
