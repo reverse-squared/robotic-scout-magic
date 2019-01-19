@@ -5,6 +5,7 @@ const proxyMiddleware = require('proxy-middleware');
 const chokidar = require('chokidar');
 const express = require('express');
 const url = require('url');
+const chalk = require('chalk');
 const path = require('path');
 const reload = require('require-reload');
 const npmRunScript = require('npm-run-script');
@@ -12,7 +13,7 @@ const npmRunScript = require('npm-run-script');
 const app = express();
 let api = reload(path.join(__dirname, 'api'));
 chokidar.watch('./server/api.js').on('change', () => {
-    console.log('Reloading API.js');
+    console.log(chalk.cyan('Reloading API.js'));
     api = reload(path.join(__dirname, 'api'));
 });
 const proxy = proxyMiddleware('/', {
@@ -36,5 +37,5 @@ child.stdout.on('data', (data) => {
 child.stderr.pipe(process.stderr);
 
 app.listen(8000, function() {
-    console.log('Started Proxy Server: http://localhost:8000/');
+    console.log(chalk.green('Started Proxy Server: http://localhost:8000/'));
 });

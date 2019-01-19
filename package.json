@@ -3,7 +3,7 @@
   "description": "Does some magic",
   "version": "1.0.0",
   "main": "server/server_development.js",
-  "author": "",
+  "author": "WeAreDevs",
   "license": "MIT",
   "scripts": {
     "build": "webpack -D --env true",
@@ -20,6 +20,7 @@
     "@reach/router": "^1.2.1",
     "chalk": "^2.4.2",
     "express": "^4.16.4",
+    "fs-extra": "^7.0.1",
     "hash-source": "^1.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

@@ -1,39 +1,37 @@
 const fs = require('fs');
 const path = require('path');
 
-describe('Node', function() {
+describe('NPM Packages', function() {
     const packageJSON = require('../package.json');
-    Object.keys(packageJSON.dependencies || {}).forEach(dep => {
-        it(`${dep} should be installed`, function (done) {
-            fs.exists(path.join(__dirname, '../node_modules/' + dep), (exists) => {
-                if(exists) {
-                    done();
-                } else {
-                    done('Not Found');
-                }
-            });
-        });
+    
+    it('Dependencies should be installed', function () {
+        return Promise.all(
+            Object.keys(packageJSON.dependencies || {}).map(dep => {
+                return new Promise((resolve, reject) => {
+                    fs.exists(path.join(__dirname, '../node_modules/' + dep), (exists) => {
+                        if (exists) {
+                            resolve();
+                        } else {
+                            reject('Could not find ' + dep);
+                        }
+                    });
+                });
+            })
+        );
     });
-    Object.keys(packageJSON.devDependencies || {}).forEach(dep => {
-        it(`${dep} should be installed`, function (done) {
-            fs.exists(path.join(__dirname, '../node_modules/' + dep), (exists) => {
-                if(exists) {
-                    done();
-                } else {
-                    done('Not Found');
-                }
-            });
-        });
-    });
-    Object.keys(packageJSON.optionalDependencies || {}).forEach(dep => {
-        it(`${dep} should be installed`, function (done) {
-            fs.exists(path.join(__dirname, '../node_modules/' + dep), (exists) => {
-                if(exists) {
-                    done();
-                } else {
-                    done('Not Found');
-                }
-            });
-        });
+    it('Dev Dependencies should be installed', function () {
+        return Promise.all(
+            Object.keys(packageJSON.devDependencies || {}).map(dep => {
+                return new Promise((resolve, reject) => {
+                    fs.exists(path.join(__dirname, '../node_modules/' + dep), (exists) => {
+                        if (exists) {
+                            resolve();
+                        } else {
+                            reject('Could not find ' + dep);
+                        }
+                    });
+                });
+            })
+        );
     });
 });

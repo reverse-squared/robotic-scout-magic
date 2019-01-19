@@ -4,12 +4,6 @@ const api = express.Router();
 const path = require('path');
 const fs = require('fs');
 
-let lastUpdated = Date.now();
-
-api.get('/last-updated', (req, res) => {
-    res.send({ lastUpdated });
-});
-
 api.get('/all-forms.json', (req, res) => {
     fs.readdir('./forms', (err, files) => {
         if(err) {
