@@ -21,6 +21,10 @@
             "label": "Can the robot pick hatch panels off the ground?"
         },
         {
+            "type": "header",
+            "label": "End Game"
+        },
+        {
             "type": "boolean",
             "label": "Did the robot even climb at the end of the match?"
         },
@@ -36,6 +40,6 @@
         {
             "type": "text-area",
             "label": "Other notes."
-        }   
+        }
     ]
 }

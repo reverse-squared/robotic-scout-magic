@@ -54,3 +54,4 @@ An example form with radio and checkbox options.
 - [Radio]()
 - [Checkbox]()
 - [Text Area](components/text-area.md)
+- [Header](components/header.md)

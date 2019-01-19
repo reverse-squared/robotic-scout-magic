@@ -19,7 +19,7 @@ An example form with a number input.
     "description": "Starter Example Form",
     "items": [
         {
-            "type": "Counter",
+            "type": "counter",
             "label": "Power Cubes Scored"
         }
     ]

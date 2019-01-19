@@ -6,6 +6,8 @@ The list of all the badges.
 
 ![maintained](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
 
+[![Build Status](https://travis-ci.com/WeAreDevs/robotic-scout-magic.svg?branch=master)](https://travis-ci.com/WeAreDevs/robotic-scout-magic)
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ba701c56ba349d181204eb5201f7105)](https://www.codacy.com/app/WeAreDevs/robotic-scout-magic?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WeAreDevs/robotic-scout-magic&amp;utm_campaign=Badge_Grade)
 
 ![](https://img.shields.io/github/followers/WeAreDevs.svg?label=Follow&style=social)
