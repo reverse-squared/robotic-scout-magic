@@ -10,6 +10,8 @@ class Header extends Component {
             <Typography variant='h6' color='inherit'>
                 {config.label}
             </Typography>
+            
+            {config.description}
         </div>;
     }
 }

@@ -3,9 +3,10 @@ Large text used for seperating and organizing form components.
 
 ## Properties
 
-| Property |  Type  |    Description   |
-|:--------:|:------:|:----------------:|
-|   label  | String | The header text. |
+|   Property   |  Type  |                            Description                            |
+|:------------:|:------:|:-----------------------------------------------------------------:|
+|     label    | String |                          The header text.                         |
+| description? | String | The text below the header. Commonly used to describe the section. |
 
 ## Usage
 An example form with a number input.
@@ -20,7 +21,8 @@ An example form with a number input.
     "items": [
         {
             "type": "header",
-            "label": "End Game"
+            "label": "End Game",
+            "description": "Things fill out after the match."
         },
         {
             "type": "boolean",

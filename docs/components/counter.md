@@ -3,9 +3,13 @@ A number with two buttons to increase it's value, and decrease. Great for counti
 
 ## Properties
 
-| Property |  Type  |             Description             |
-|:--------:|:------:|:-----------------------------------:|
-|   label  | String | The text display above the counter. |
+| Property |  Type  |                                 Description                                |
+|:--------:|:------:|:--------------------------------------------------------------------------:|
+|   label  | String |                     The text display above the counter.                    |
+| default? | Number |              The number to start the counter at. (Default: 0)              |
+|   min?   | Number |       The minimum number the counter can count down to. (Default: 0)       |
+|   max?   | Number |    The maximum number the counter can count up to. (Default: No limit.)    |
+|   step?  | Number | The number to increase or decrease the count by when changed. (Default: 1) |
 
 ## Usage
 An example form with a number input.
@@ -27,4 +31,4 @@ An example form with a number input.
 ```
 
 ## Images
-![counter](img/counter.png ":size=200%")
+![counter](../img/counter.png ":size=200%")
