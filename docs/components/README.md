@@ -19,14 +19,14 @@ Components have a spcific data type with properties to customize it.
 > The checkbox data type is not currently not supported, and will not show on forms, and will instead show an error message in it's place.
 
 **Component Pages**
-- [Text](components/text.md)
-- [Number](components/number.md)
-- [Counter](components/counter.md)
 - [Boolean](components/boolean.md)
-- [Radio](components/radio.md)
 - [Checkbox](components/checkbox.md)
-- [Text Area](components/text-area.md)
+- [Counter](components/counter.md)
 - [Header](components/header.md)
+- [Number](components/number.md)
+- [Radio](components/radio.md)
+- [Text Area](components/text-area.md)
+- [Text](components/text.md)
 
 > [!NOTE]
 > In the component pages, optional properties are represented by the property name, followed by a question mark. All optional properties have a default value and are displayed in the description column.

@@ -107,6 +107,30 @@
             "label": "Checkboxes"
         },
         {
+            "type": "radio",
+            "label": "Default",
+            "options": [
+                "A",
+                "B",
+                "C"
+            ]
+        },
+        {
+            "type": "radio",
+            "label": "Default Value",
+            "options": [
+                "A",
+                "B",
+                "C"
+            ],
+            "default": 1
+        },
+
+        {
+            "type": "header",
+            "label": "Checkboxes"
+        },
+        {
             "type": "checkbox",
             "label": "This is a checkbox"
         },

@@ -4,8 +4,8 @@ modular so you can add new form components, export methods, and change the UI St
 
 ## Extending Table of Contents
 - [Overview of the Code](#Overview_of_the_Code)
-- [Creating New Form Fields](./fields.md)
-- [Creating New Export Types](./exports.md)
+- [Creating New Form Fields](extending/fields.md)
+- [Creating New Export Types](extending/exports.md)
 
 ## Overview of the Code
-
+Coming soon!
