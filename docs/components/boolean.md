@@ -1,9 +1,6 @@
 # Boolean
 A simple true / false input.
 
-> [!DANGER]
-> This component is not fully developed and will show an error message on the form instead of the actual component.
-
 ## Properties
 
 |   Property  |   Type  |                    Description                    |

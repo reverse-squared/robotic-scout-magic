@@ -16,7 +16,7 @@ class Text extends Component {
     render() {
         const config = this.props.config;
         const value = this.props.value || config.default || '';
-        return <div>
+        return <div style={{ paddingTop: '0.5em' }}>
             <TextField
                 label={config.label}
                 value={value}

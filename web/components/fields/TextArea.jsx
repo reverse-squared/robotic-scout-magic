@@ -16,7 +16,7 @@ class TextArea extends Component {
     render() {
         const value = this.props.value || '';
         const config = this.props.config;
-        return <div>
+        return <div style={{ paddingTop: '0.5em' }}>
             <TextField
                 label={config.label}
                 value={value}

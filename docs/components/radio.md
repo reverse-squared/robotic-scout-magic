@@ -1,9 +1,6 @@
 # Radio
 A list of items, selectable by radio inputs, where only one is selectable.
 
-> [!DANGER]
-> This component is not fully developed and will show an error message on the form instead of the actual component.
-
 ## Properties
 
 | Property |  Type  |                           Description                          |
@@ -12,6 +9,9 @@ A list of items, selectable by radio inputs, where only one is selectable.
 |  options |  Array |    An array of strings representing each possible selection.   |
 | default? | Number | The index of the default selected radio input. (Default: None) |
 
+> [!DANGER]
+> This component is not fully developed and will show an error message on the form instead of the actual component.
+> 
 ## Usage
 An example form with a radio component.
 ```json

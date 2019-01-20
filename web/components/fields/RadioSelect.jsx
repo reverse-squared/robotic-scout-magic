@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-class Boolean extends Component {
+class RadioSelect extends Component {
     constructor(props) {
         super(props);
 
@@ -17,22 +17,25 @@ class Boolean extends Component {
 
     render() {
         const config = this.props.config;
-        const value = this.props.value || String(config.default) || 'null';
+        const value = this.props.value || config.options[config.default] || 'null';
 
-        return <div style={{ paddingTop: '0.5em' }}>
+        return <div style={{paddingTop: '10px'}}>
             <FormControl component="fieldset">
                 <FormLabel component="legend">{config.label}</FormLabel>
                 <RadioGroup
                     value={value}
                     onChange={this.handleChange}
                 >
-                    <FormControlLabel value="true" control={<Radio />} label={config.trueValue || 'True'} />
-                    <FormControlLabel value="false" control={<Radio />} label={config.falseValue || 'False'} />
+                    {
+                        this.props.config.options.map(option => {
+                            return <FormControlLabel value={option} control={<Radio />} label={option} />;
+                        })
+                    }
                 </RadioGroup>
             </FormControl>
         </div>;
     }
 }
  
-export const id = 'boolean';
-export default hot(Boolean);
+export const id = 'radio';
+export default hot(RadioSelect);

@@ -16,7 +16,7 @@ Components have a spcific data type with properties to customize it.
 |   header  |                   Large-ish text for defining sections of form components.                  |
 
 > [!DANGER]
-> The boolean, radio, and checkbox data types are currently not supported, and will not show on forms, and will instead show an error message in it's place.
+> The checkbox data type is not currently not supported, and will not show on forms, and will instead show an error message in it's place.
 
 **Component Pages**
 - [Text](components/text.md)
