@@ -6,17 +6,14 @@ Components have a spcific data type with properties to customize it.
 
 | Data Type |                                         Description                                         |
 |:---------:|:-------------------------------------------------------------------------------------------:|
-|    text   |                              A text box for short text inputs.                              |
-|   number  |                     A simple text box that only accepts a number input.                     |
-|  counter  | A number with two buttons next to it with the jobs of increasing and decreasing the number. |
 |  boolean  |              Two checkboxes with true and false labels. Only one is selectable.             |
-|   radio   |                       A list of radio buttons with customizable text.                       |
 |  checkbox |                         A list of checkboxes with customizable text.                        |
-| text-area |           A large text box made for notes and text longer than a normal text box.           |
+|  counter  | A number with two buttons next to it with the jobs of increasing and decreasing the number. |
 |   header  |                   Large-ish text for defining sections of form components.                  |
-
-> [!DANGER]
-> The checkbox data type is not currently not supported, and will not show on forms, and will instead show an error message in it's place.
+|   number  |                     A simple text box that only accepts a number input.                     |
+|   radio   |                       A list of radio buttons with customizable text.                       |
+| text-area |           A large text box made for notes and text longer than a normal text box.           |
+|    text   |                              A text box for short text inputs.                              |
 
 **Component Pages**
 - [Boolean](components/boolean.md)
