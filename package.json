@@ -6,7 +6,7 @@
   "author": "WeAreDevs",
   "license": "MIT",
   "scripts": {
-    "build": "webpack -D --env true",
+    "build": "webpack-cli --env true",
     "start": "node ./server/server_development.js",
     "production": "node ./server/server_production.js",
     "lint": "eslint .",

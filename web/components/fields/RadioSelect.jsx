@@ -27,8 +27,8 @@ class RadioSelect extends Component {
                     onChange={this.handleChange}
                 >
                     {
-                        this.props.config.options.map(option => {
-                            return <FormControlLabel value={option} control={<Radio />} label={option} />;
+                        this.props.config.options.map((option, i) => {
+                            return <FormControlLabel key={i} value={option} control={<Radio />} label={option} />;
                         })
                     }
                 </RadioGroup>

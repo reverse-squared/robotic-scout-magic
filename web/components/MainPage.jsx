@@ -3,7 +3,7 @@ import { Button, Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@m
 import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
 
-import ExtensionIcon from '@material-ui/icons/Extension';
+import { AnyIconLoader } from  './Loader';
 
 class MainPage extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class MainPage extends Component {
                         return <ListItem key={item.id} button component={Link} to={'/form/' + item.id}>
                             <ListItemAvatar>
                                 <Avatar>
-                                    <ExtensionIcon />
+                                    <AnyIconLoader icon={item.icon || 'Extension'} />
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText primary={item.name} secondary={item.description || undefined} />
@@ -28,8 +28,14 @@ class MainPage extends Component {
                     })
                 }
             </List>
+            <h1>View Data</h1>
+            <p>
+                Coming Soon
+            </p>
             <h1>Export Data</h1>
-            <Button>Export Data to USB Drive</Button>
+            <p>
+                Coming Soon
+            </p>
         </div>;
     }
 }

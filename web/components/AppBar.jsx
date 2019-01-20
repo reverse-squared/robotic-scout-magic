@@ -63,7 +63,7 @@ class AppBar extends Component {
 
                 const showBackBtn = location.pathname !== '/';
                 return <div>
-                    <MUIAppBar position='fixed' color='primary'>
+                    <MUIAppBar position='fixed' color='primary' style={{zIndex:'-10'}}>
                         <Toolbar>
                             {
                                 showBackBtn
