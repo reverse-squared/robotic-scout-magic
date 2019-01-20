@@ -46,10 +46,10 @@ class Boolean extends Component {
             <div className={classes.toggleContainer}>
                 <ToggleButtonGroup value={value} exclusive onChange={this.handleChange}>
                     <ToggleButton classes={btnClasses} value="true">
-                        Yes
+                        {config.trueValue || 'Yes'}
                     </ToggleButton>
                     <ToggleButton classes={btnClasses} value="false">
-                        No
+                        {config.falseValue || 'No'}
                     </ToggleButton>
                 </ToggleButtonGroup>
             </div>
