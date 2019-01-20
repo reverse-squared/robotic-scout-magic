@@ -57,7 +57,7 @@ module.exports = (prod = false) => ({
         extensions: ['.jsx', '.js', '.json']
     },
     output: {
-        filename: 'app.js',
+        filename: 'rsm.js',
         path: path.resolve(__dirname, 'dist')
     },
     devtool: prod ? 'none' : 'source-map',
