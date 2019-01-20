@@ -21,4 +21,4 @@ Soruce at [https://firstfrc.blob.core.windows.net/frc2019/EventRules/EventRulesM
 You can view the full documentation for RSM including how to create, edit, and export form data at [https://wearedevs.github.io/robotic-scout-magic/](https://wearedevs.github.io/robotic-scout-magic/).
 
 ## Licensing
-This software is under the MIT Licesne, meaning you can do what ever you want to it. ~~Just don't sue us.~~
+This software is under the MIT License, meaning you can do what ever you want with it. ~~Just don't sue us.~~
