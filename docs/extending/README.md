@@ -3,7 +3,7 @@ RSM is created using [React]() and [Material UI](), and a [Node.js]() server. It
 modular so you can add new form components, export methods, and change the UI Style.
 
 ## Extending Table of Contents
-- [Overview of the Code](#Overview_of_the_Code)
+- [Overview of the Code](#Overview-of-the-Code)
 - [Creating New Form Fields](extending/fields.md)
 - [Creating New Export Types](extending/exports.md)
 

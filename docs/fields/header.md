@@ -1,5 +1,5 @@
 # Header
-Large text used for seperating and organizing form components.
+Large text used for seperating and organizing form fields.
 
 ## Properties
 

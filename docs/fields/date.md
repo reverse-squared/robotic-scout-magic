@@ -1,5 +1,5 @@
 # Date
-A simple component for selecting the date.
+A simple field for selecting the date.
 
 ## Properties
 

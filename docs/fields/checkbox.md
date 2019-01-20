@@ -1,5 +1,5 @@
 # Checkbox
-A checkbox, with a label to determine a yes or no value to a question. Use multiple of these components.
+A checkbox, with a label to determine a yes or no value to a question. Use multiple of these fields.
 
 ## Properties
 
@@ -9,7 +9,7 @@ A checkbox, with a label to determine a yes or no value to a question. Use multi
 |  default | Boolean | Determines whether or not the checkbox should start checked. |
 
 ## Usage
-An example form with a checkbox components.
+An example form with a checkbox fields.
 ```json
 // forms/example.json
 

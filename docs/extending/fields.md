@@ -1,5 +1,5 @@
-# Fields
-A Field (Called a "Component" everywhere else in the documentation, now "Component" will mean a `React.Component`) is one element of a form, which is what you specify in the `items` array of a form. The field's type is set by the `type` property on a form item. Each field type is it's own React component defined in it's own file. These files are automatically loaded from `/web/components/fields/`
+# Fields (Code)
+A **Field** is one element of a form, which is what you specify in the `items` array of a form. The field's type is set by the `type` property on a form item. Each field type is it's own React component defined in it's own file. These files are automatically loaded from `/web/components/fields/`
 
 This is a simple field acting as a wrapper around Material-UI's `TextField` component. The actual Text Field is a little more complex than this for dealing with default values and hot reloading.
 ```js

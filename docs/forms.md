@@ -26,10 +26,10 @@ Creating your own forms for your needs is one of the main purposes of this appli
 - `hidden` is a boolean value, which determines whether or not a form is displayed in production mode. This defaults to `false` unless set to `true`. You can still see hidden forms in development mode.
 - `icon` is a Material Icon you can find at [https://fontawesome.com/icons/](https://fontawesome.com/icons/). You can view the `icon-schema.json` file to check if you are using the right case and spelling of your icon. If you do not provide an icon, it defaults to the `file-alt` solid icon. It looks like a piece of paper with writing on it.
 
-Once this is created, continue to [**Editing Forms**](#Editing_Forms).
+Once this is created, continue to [**Editing Forms**](#Editing-Forms).
 
 ## Editing Forms
-Inside of the `items` array, you will have to place components containing a `type` of data to be entered, along with a `label` to be shown above the input. To view all the components, view the [Components](components/) page.
+Inside of the `items` array, you will have to place fields containing a `type` of data to be entered, along with a `label` to be shown above the input. To view all the fields, view the [Fields](fields/) page.
 
 ### Examples
 An example form with two text boxes.

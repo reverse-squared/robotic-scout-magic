@@ -1,5 +1,5 @@
 # Text
-A small text field for entering short amount text. For larger amounts of text, use [Text Area](components/text-area.md).
+A small text field for entering short amount text. For larger amounts of text, use [Text Area](field/text-area.md).
 
 
 ## Properties

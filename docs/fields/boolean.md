@@ -11,7 +11,7 @@ A simple Yes / No input.
 | falseValue? |  String | The label of the false button. (Default: "False") |
 
 ## Usage
-An example form with a boolean component.
+An example form with a boolean field.
 ```json
 // forms/example.json
 

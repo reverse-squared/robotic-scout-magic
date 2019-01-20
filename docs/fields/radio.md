@@ -1,5 +1,5 @@
-# Dropdown
-A list of items, selectable by a dropdown. Only one is selectable.
+# Radio
+A list of items, selectable by radio inputs, where only one is selectable.
 
 ## Properties
 
@@ -10,7 +10,7 @@ A list of items, selectable by a dropdown. Only one is selectable.
 | default? | Number | The index of the default selected radio input. (Default: None) |
 
 ## Usage
-An example form with a dropdown component.
+An example form with a radio field.
 ```json
 // forms/example.json
 
@@ -21,12 +21,12 @@ An example form with a dropdown component.
     "description": "Starter Example Form",
     "items": [
         {
-            "type": "dropdown",
-            "label": "Select your favorite letter.?",
+            "type": "radio",
+            "label": "What did the robot do?",
             "options": [
-                "A",
-                "B",
-                "C"
+                "It climbed.",
+                "It was on the mat.",
+                "It wasn't on the mat."
             ]
         }
     ]
@@ -34,6 +34,5 @@ An example form with a dropdown component.
 ```
 
 ## Images
-![dropdown](../img/dropdown.png ":size=200%")
-![dropdown-list](../img/dropdown-list.png ":size=200%")
-![dropdown-selected](../img/dropdown-selected.png ":size=200%")
+![radio](../img/radio.png ":size=200%")
+![radio-default](../img/radio-default.png ":size=200%")
