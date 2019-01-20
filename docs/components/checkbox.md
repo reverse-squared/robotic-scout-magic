@@ -6,10 +6,11 @@ A list of items, selectable by checkboxes inputs, multiple selected boxes possib
 
 ## Properties
 
-|  Property |   Type  |                        Description                        |
-|:---------:|:-------:|:---------------------------------------------------------:|
-|   label   |  String |      The text to display above the boolean selection.     |
-|  options  |  Array  | An array of strings representing each possible selection. |
+|  Property |  Type  |                          Description                          |
+|:---------:|:------:|:-------------------------------------------------------------:|
+|   label   | String |        The text to display above the boolean selection.       |
+|  options  |  Array |   An array of strings representing each possible selection.   |
+| defaults? |  Array | The indexes of the checkboxes that should already be checked. |
 
 ## Usage
 An example form with a radio component.

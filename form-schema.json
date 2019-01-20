@@ -193,13 +193,13 @@
                                     "type": "array",
                                     "description": "An array of strings representing each possible selection."
                                 },
-                                "multiple": {
-                                    "type": "boolean",
-                                    "description": "Can the user select multiple boxes? (Default: False)"
+                                "defaults": {
+                                    "type": "array",
+                                    "description": "The indexes of the checkboxes that should already be checked."
                                 }
                             }
                         }
-                    }
+                    },
                     {
                         "if": {
                             "properties": {

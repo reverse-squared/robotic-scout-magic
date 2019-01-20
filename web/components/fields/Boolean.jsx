@@ -19,7 +19,7 @@ class Boolean extends Component {
         const config = this.props.config;
         const value = this.props.value || String(config.default) || 'null';
 
-        return <div style={{ paddingTop: '0.5em' }}>
+        return <div style={{ paddingTop: '25px' }}>
             <FormControl component="fieldset">
                 <FormLabel component="legend">{config.label}</FormLabel>
                 <RadioGroup

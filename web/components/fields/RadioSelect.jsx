@@ -19,7 +19,7 @@ class RadioSelect extends Component {
         const config = this.props.config;
         const value = this.props.value || config.options[config.default] || 'null';
 
-        return <div style={{paddingTop: '10px'}}>
+        return <div style={{ paddingTop: '25px' }}>
             <FormControl component="fieldset">
                 <FormLabel component="legend">{config.label}</FormLabel>
                 <RadioGroup
