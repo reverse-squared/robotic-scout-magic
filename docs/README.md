@@ -11,7 +11,7 @@
 by running `ipconfig` in the console.
 
 > [!DANGER]
-> It is important that you run `npm i -D && npm run build` before your start the production server, as the rendering happens from the dist/ folder. Also remember to do this if you ever update RSM.
+> It is important that you run `npm i -D && npm run build` before your start the production server, as the rendering happens from the dist/ folder. Also remember to do this if you ever update RSM's components or forms.
 
 > [!WARNING]
 > We are not sure 100% on how panr works, as we have not tested on a Linux machine yet.

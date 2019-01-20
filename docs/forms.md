@@ -4,7 +4,8 @@ Creating your own forms for your needs is one of the main purposes of this appli
 
 **Step 1:** Locate the `forms/` directory, and create a JSON file for your form. For this example, I will use `exmaple.json`.
 
-**Step 2:** All forms need an `id`, `name`, `description`, and an `options` array defined in them.
+**Step 2:** All forms need an `id`, `name`, `description`, and an `options` array defined in them. Optional fields include, `$schema` (see below), `hidden`, and `icon`.
+
 ```json
 // forms/example.json
 
@@ -22,7 +23,10 @@ Creating your own forms for your needs is one of the main purposes of this appli
 > [!TIP]
 > If you are editing this with [Visual Studio Code](https://code.visualstudio.com/), then `$schema` is optional. It just gives more type information. It is very useful, **But if you are not using Visual Studio Code**, you don't need `$schema`.
 
-Once this is created, continue to **Editing Forms**.
+- `hidden` is a boolean value, which determines whether or not a form is displayed in production mode. This defaults to `true` unless set to `false`. You can still see hidden forms in development mode.
+- `icon` is a Material Icon you can find at [https://material.io/tools/icons/](https://material.io/tools/icons/). You can view the `icon-schema.json` file to check if you are using the right case and spelling of your icon. If you do not provide an icon, it defaults to the Extenstion icon. It looks like a puzzle piece.
+
+Once this is created, continue to [**Editing Forms**](#Editing_Forms).
 
 ## Editing Forms
 Inside of the options array, you will have to place components containing a `type` of data to be entered, along with a `label` to be shown above the input. To view all the components, view the [Components](components/) page.
