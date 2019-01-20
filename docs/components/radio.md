@@ -37,4 +37,5 @@ An example form with a radio component.
 ```
 
 ## Images
-Coming soon!
+![radio](../img/radio.png ":size=200%")
+![radio-default](../img/radio-default.png ":size=200%")

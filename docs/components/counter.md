@@ -32,3 +32,8 @@ An example form with a number input.
 
 ## Images
 ![counter](../img/counter.png ":size=200%")
+![counter-max](../img/counter-max.png ":size=200%")
+![counter-no-min](../img/counter-no-min.png ":size=200%")
+![counter-start](../img/counter-start.png ":size=200%")
+![counter-step-1](../img/counter-step-1.png ":size=200%")
+![counter-step-2](../img/counter-step-2.png ":size=200%")

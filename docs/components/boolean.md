@@ -33,4 +33,6 @@ An example form with a boolean component.
 ```
 
 ## Images
-Coming soon!
+![boolean](../img/boolean.png ":size=200%")
+![boolean-default](../img/boolean-default.png ":size=200%")
+![boolean-custom](../img/boolean-custom.png ":size=200%")

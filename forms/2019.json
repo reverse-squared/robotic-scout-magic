@@ -10,8 +10,15 @@
         },
         {
             "type": "header",
-            "label": "Sandstorm Period",
-            "description": "Whatever"
+            "label": "Sandstorm Period"
+        },
+        {
+            "type": "radio",
+            "label": "What game piece did the robot start with?",
+            "options": [
+                "Hatch Panel",
+                "Cargo"
+            ]
         },
         {
             "type": "boolean",

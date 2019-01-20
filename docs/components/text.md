@@ -34,3 +34,5 @@ An example form with two text boxes.
 
 ## Images
 ![text](../img/text.png ":size=200%")
+![text-filled](../img/text-filled.png ":size=200%")
+![text-helper](../img/text-helper.png ":size=200%")

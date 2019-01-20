@@ -33,4 +33,4 @@ An example form with a number input.
 ```
 
 ## Images
-Coming soon!
+![header](../img/header.png ":size=200%")

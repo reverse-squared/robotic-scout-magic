@@ -30,5 +30,7 @@ An example form with a number input.
 ```
 
 ## Images
-![number](../img/number.png)
-![number](../img/number-wrong.png)
+![number](../img/number.png ":size=200%")
+![number-wrong](../img/number-wrong.png ":size=200%")
+![number-helper](../img/number-helper.png ":size=200%")
+![number-custom-wrong](../img/number-custom-wrong.png ":size=200%")
