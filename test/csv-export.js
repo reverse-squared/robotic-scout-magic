@@ -81,10 +81,10 @@ describe('CSV', function () {
     });
     describe('Default File Name', function() {
         it('Test 1', function() {
-            assert.strictEqual(csv.defaultFileName('2019'), '2019.csv');
+            assert.strictEqual(csv.defaultFileName({ id: '2019' }), '2019.csv');
         });
         it('Test 2', function() {
-            assert.strictEqual(csv.defaultFileName('hello'), 'hello.csv');
+            assert.strictEqual(csv.defaultFileName({ id: 'hello' }), 'hello.csv');
         });
     });
 });
