@@ -3,7 +3,7 @@ import { Button, Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@m
 import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
 
-import ExtensionIcon from '@material-ui/icons/Extension';
+import { AnyIconLoader } from  './Loader';
 
 class MainPage extends Component {
     constructor(props) {
@@ -15,21 +15,38 @@ class MainPage extends Component {
             <List component="nav">
                 {
                     this.props.formData.map(item => {
-                        if(item.id === 'example') return;
+                        // Hidden forms only show hidden in production mode
+                        if(item.hidden && $production) return;
 
+                        let secondaryText;
+                        if (!item.hidden && !item.description) {
+                            secondaryText = undefined;
+                        } else {
+                            secondaryText = <span>{item.hidden && <strong>Hidden in Production Mode.{' '}</strong>}{item.description || ''}</span>;
+                        }
+                        
                         return <ListItem key={item.id} button component={Link} to={'/form/' + item.id}>
                             <ListItemAvatar>
                                 <Avatar>
-                                    <ExtensionIcon />
+                                    <AnyIconLoader icon={item.icon || 'Extension'} />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item.name} secondary={item.description || undefined} />
+                            <ListItemText
+                                primary={item.name}
+                                secondary={secondaryText}
+                            />
                         </ListItem>;
                     })
                 }
             </List>
+            <h1>View Data</h1>
+            <p>
+                Coming Soon
+            </p>
             <h1>Export Data</h1>
-            <Button>Export Data to USB Drive</Button>
+            <p>
+                Coming Soon
+            </p>
         </div>;
     }
 }

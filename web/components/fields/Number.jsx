@@ -32,7 +32,7 @@ class Number extends Component {
     render() {
         const value = this.props.value || '';
         const config = this.props.config;
-        return <div style={{ paddingTop: '0.5em', marginBottom: '-1.5em' }}>
+        return <div style={{ paddingTop: '0.5em', marginBottom: '-1em' }}>
             <TextField
                 label={config.label}
                 value={value}

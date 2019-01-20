@@ -13,7 +13,15 @@
         },
         "description": {
             "type": "string",
-            "description": "Short description displayed on the form page"
+            "description": "Short description displayed on the main page"
+        },
+        "icon": {
+            "description": "Icon to display on the main page",
+            "$ref": "./icon-schema.json"
+        },
+        "hidden": {
+            "type": "boolean",
+            "description": "If true, it will be hidden from the main page."
         },
         "items": {
             "type": "array",
@@ -22,7 +30,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "enum": ["text", "number", "counter", "boolean","header","radio","checkbox"],
+                        "enum": ["text", "number", "counter", "boolean","header","radio","checkbox","text-area"],
                         "description": "Sets the form component that this item uses. Required for all form elements."
                     },
                     "label": {

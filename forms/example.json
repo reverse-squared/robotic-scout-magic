@@ -1,16 +1,136 @@
 {
     "$schema": "../form-schema.json",
+    "hidden": true,
+    "icon": "Extension",
     "id": "example",
     "name": "Example Form",
     "description": "Starter Example Form",
     "items": [
         {
-            "type": "text",
-            "label": "A thing"
+            "type": "header",
+            "label": "Text Fields"
         },
         {
             "type": "text",
-            "label": "Another thing"
+            "label": "Default"
+        },
+        {
+            "type": "text",
+            "label": "With Helper Text",
+            "helperText": "Enter whatever!"
+        },
+
+
+        {
+            "type": "header",
+            "label": "Number Text Fields"
+        },
+        {
+            "type": "number",
+            "label": "Default"
+        },
+        {
+            "type": "number",
+            "label": "With Helper Text",
+            "helperText": "Enter whatever!"
+        },
+        {
+            "type": "number",
+            "label": "With Error Text",
+            "helperText": "Enter whatever!",
+            "errorText": "That is not a number!"
+        },
+
+
+        {
+            "type": "header",
+            "label": "Booleans (Yes/No boxes)"
+        },
+        {
+            "type": "boolean",
+            "label": "Default"
+        },
+        {
+            "type": "boolean",
+            "label": "True Default",
+            "default": true
+        },
+        {
+            "type": "boolean",
+            "label": "False Default",
+            "default": false
+        },
+        {
+            "type": "boolean",
+            "label": "Different Labels",
+            "falseValue": "Green",
+            "trueValue": "Purple"
+        },
+
+        {
+            "type": "header",
+            "label": "Counters"
+        },
+        {
+            "type": "counter",
+            "label": "Default Counter"
+        },
+        {
+            "type": "counter",
+            "label": "Minimum and Maximum (0-10)",
+            "min": 0,
+            "max": 10
+        },
+        {
+            "type": "counter",
+            "label": "Starting Value",
+            "min": 0,
+            "max": 10,
+            "default": 5
+        },
+        {
+            "type": "counter",
+            "label": "Step by 5",
+            "min": 0,
+            "max": 100,
+            "default": 50,
+            "step": 5
+        },
+        {
+            "type": "counter",
+            "label": "No minimum value (min: null)",
+            "min": null
+        },
+
+        {
+            "type": "header",
+            "label": "Checkboxes"
+        },
+        {
+            "type": "checkbox",
+            "label": "This is a checkbox"
+        },
+        {
+            "type": "checkbox",
+            "label": "This is another checkbox"
+        },
+        {
+            "type": "checkbox",
+            "label": "This one is default selected"
+        },
+        {
+            "type": "header",
+            "label": "Text Areas",
+            "description": "Same as Text Field, but with more than one line"
+        },
+        {
+            "type": "text-area",
+            "label": "Default"
+        },
+        {
+            "type": "text-area",
+            "label": "With Helper Text",
+            "helperText": "Make sure to use the multiple lines with the Enter button."
         }
     ]
 }

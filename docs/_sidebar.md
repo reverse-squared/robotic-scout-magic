@@ -9,4 +9,7 @@
     * [Checkbox](components/checkbox.md)
     * [Text Area](components/text-area.md)
     * [Header](components/header.md)
+* [Extending RSM](extending/)
+    * [Fields](extending/fields.md)
+    * [Exports](extending/exports.md)
 * [Contributing](contributing.md)

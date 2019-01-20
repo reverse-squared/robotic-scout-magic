@@ -1,2 +1,8 @@
+# Build
 /dist
-node_modules
+
+# Dependencies
+/node_modules
+
+# Data
+.data

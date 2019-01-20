@@ -51,14 +51,19 @@ module.exports = (prod = false) => ({
         new webpack.DefinePlugin({
             $production: prod
         }),
-        new (require('html-webpack-plugin'))({template:'./web/index.html'})
+        new (require('html-webpack-plugin'))({template:'./web/index.html'}),
     ],
     resolve: {
         extensions: ['.jsx', '.js', '.json']
     },
     output: {
-        filename: 'app.js',
+        filename: 'rsm.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
     },
     devtool: prod ? 'none' : 'source-map',
     mode: prod ? 'production' : 'development'

@@ -4,37 +4,20 @@ body {
   user-select: none;
 }
 
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/Roboto-Regular.ttf);
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: url(../fonts/Roboto-Bold.ttf);
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: italic;
-  font-weight: 400;
-  src: url(../fonts/Roboto-BoldItalic.ttf);
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: italic;
-  font-weight: 700;
-  src: url(../fonts/Roboto-BoldItalic.ttf);
-}
-
 .container {
   box-sizing: border-box;
   padding: 2em;
+  padding-top: 0;
 }
 .container .container {
   padding: 0;
   left: -0.5em;
   top: -0.5em;
+}
+.containsRouter > div {
+  padding-top: 56px;
+}
+.containsRouter > div > div {
+  padding-top: 2em;
+  padding-bottom: 6em;
 }

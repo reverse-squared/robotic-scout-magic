@@ -18,6 +18,7 @@ const history = createHistory(hashSource);
 // Loadable Pages
 const MainPage = PageLoadable(() => import('./MainPage'));
 const FormPage = PageLoadable(() => import('./FormPage'));
+const NotFoundPage = PageLoadable(() => import('./NotFoundPage'));
 
 // Main App Component, passed a formData prop.
 class App extends Component {
@@ -29,10 +30,11 @@ class App extends Component {
         return <Fragment>
             <LocationProvider history={history}>
                 <AppBar formData={formData} />
-                <div className='container'>
+                <div className='container containsRouter'>
                     <Router>
                         <MainPage path='/' formData={formData} />
                         <FormPage path='/form/:formID' formData={formData} />
+                        <NotFoundPage default />
                     </Router>
                 </div>
             </LocationProvider>

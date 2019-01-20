@@ -18,7 +18,15 @@ class Counter extends Component {
         // props.value
         // props.onChange
         super(props);
-        this.resolveValue = () => this.props.value || this.props.config.default || 0;
+        this.resolveValue = () => {
+            if (this.props.value !== undefined) {
+                return this.props.value;
+            } else if ('default' in this.props.config) {
+                return this.props.config.default;
+            } else {
+                return 0;
+            }
+        };
         const step = this.props.config.step || 1;
 
         this.handleDecrease = () => {
