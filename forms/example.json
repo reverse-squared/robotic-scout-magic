@@ -163,6 +163,20 @@
         {
             "type": "date",
             "label": "Select the Date"
+        },
+
+        {
+            "type": "header",
+            "label": "Dropdowns"
+        },
+        {
+            "type": "dropdown",
+            "label": "Select your favorite letter.",
+            "options": [
+                "A",
+                "B",
+                "C"
+            ]
         }
     ]
 }

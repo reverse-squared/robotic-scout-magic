@@ -5,6 +5,7 @@
     * [Checkbox](components/checkbox.md)
     * [Counter](components/counter.md)
     * [Date](components/date.md)
+    * [Dropdown](components/dropdown.md)
     * [Header](components/header.md)
     * [Number](components/number.md)
     * [Radio](components/radio.md)

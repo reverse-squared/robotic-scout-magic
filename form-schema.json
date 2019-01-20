@@ -226,6 +226,30 @@
                                 }
                             }
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "dropdown"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "options": {
+                                    "type": "array",
+                                    "description": "An array of strings representing each possible selection."
+                                },
+                                "default": {
+                                    "type": "integer",
+                                    "description": "The index of the default selected dropdown input. (Default: None)"
+                                }
+                                
+                            }
+                        }
                     }
                 ]
             },
