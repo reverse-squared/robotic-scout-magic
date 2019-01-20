@@ -154,6 +154,15 @@
             "type": "text-area",
             "label": "With Helper Text",
             "helperText": "Make sure to use the multiple lines with the Enter button."
+        },
+
+        {
+            "type": "header",
+            "label": "Date"
+        },
+        {
+            "type": "date",
+            "label": "Select the Date"
         }
     ]
 }

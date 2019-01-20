@@ -30,7 +30,7 @@
         },
         {
             "type": "header",
-            "label": "Driver Control Period"
+            "label": "Teleop Period"
         },
         {
             "type": "counter",

@@ -19,8 +19,7 @@
             "options": [
                 "Hatch Panel",
                 "Cargo"
-            ],
-            "default": 1
+            ]
         },
         {
             "type": "boolean",
@@ -37,7 +36,7 @@
         },
         {
             "type": "header",
-            "label": "Driver Period"
+            "label": "Teleop Period"
         },
         {
             "type": "counter",
@@ -63,6 +62,10 @@
         {
             "type": "boolean",
             "label": "Can the robot even climb to level three. If you are not sure, select No."
+        },
+        {
+            "type": "boolean",
+            "label": "Was it a ramp bot?"
         },
         {
             "type": "text-area",

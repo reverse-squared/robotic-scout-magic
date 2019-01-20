@@ -4,7 +4,7 @@ Creating your own forms for your needs is one of the main purposes of this appli
 
 **Step 1:** Locate the `forms/` directory, and create a JSON file for your form. For this example, I will use `exmaple.json`.
 
-**Step 2:** All forms need an `id`, `name`, `description`, and an `options` array defined in them. Optional fields include, `$schema` (see below), `hidden`, and `icon`.
+**Step 2:** All forms need an `id`, `name`, `description`, and an `items` array defined in them. Optional fields include, `$schema` (see below), `hidden`, and `icon`.
 
 ```json
 // forms/example.json
@@ -29,7 +29,7 @@ Creating your own forms for your needs is one of the main purposes of this appli
 Once this is created, continue to [**Editing Forms**](#Editing_Forms).
 
 ## Editing Forms
-Inside of the options array, you will have to place components containing a `type` of data to be entered, along with a `label` to be shown above the input. To view all the components, view the [Components](components/) page.
+Inside of the `items` array, you will have to place components containing a `type` of data to be entered, along with a `label` to be shown above the input. To view all the components, view the [Components](components/) page.
 
 ### Examples
 An example form with two text boxes.

@@ -1,5 +1,5 @@
 # Boolean
-A simple true / false input.
+A simple Yes / No input.
 
 ## Properties
 
