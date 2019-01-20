@@ -38,3 +38,6 @@ body {
   left: -0.5em;
   top: -0.5em;
 }
+.containsRouter > div {
+  padding-top: 56px;
+}

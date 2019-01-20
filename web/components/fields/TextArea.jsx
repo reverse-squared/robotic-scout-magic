@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core';
+
+const styles = theme => ({
+    root: {
+        minHeight: '6em'
+    }
+});
 
 class TextArea extends Component {
     constructor(props) {
@@ -16,8 +23,17 @@ class TextArea extends Component {
     render() {
         const value = this.props.value || '';
         const config = this.props.config;
+        const classes = this.props.classes;
+
         return <div style={{ paddingTop: '0.5em' }}>
             <TextField
+                fullWidth
+                InputProps={{
+                    classes
+                }}
+                inputProps={{
+                    classes
+                }}
                 label={config.label}
                 value={value}
                 onChange={this.handleChange}
@@ -29,6 +45,6 @@ class TextArea extends Component {
         </div>;
     }
 }
- 
+
 export const id = 'text-area';
-export default hot(TextArea);
+export default hot(withStyles(styles)(TextArea));

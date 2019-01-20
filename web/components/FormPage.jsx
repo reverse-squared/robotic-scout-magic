@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Typography } from '@material-ui/core';
+import {
+    Typography,
+} from '@material-ui/core';
 
 function requireAll(r) { return r.keys().map(r); }
 const fieldModules = requireAll(require.context('./fields/', true, /\.jsx?$/));
@@ -16,21 +18,41 @@ class FormPage extends Component {
     constructor(props) {
         super(props);
         const form = this.props.formData.find(x => x.id === this.props.formID);
+        if(!form) {
+            return;
+        }
         this.handleFieldChange = (i, new_value) => {
             const inputs = this.state.inputs.concat();
             inputs[i] = new_value;
             this.setState({
-                inputs: inputs
+                inputs: inputs,
+                exitWithoutSaving: true
             });
         };
         this.state = {
             inputs: form.items.map(() => undefined),
-            inputChangeHandlers: form.items.map((item, i) => this.handleFieldChange.bind(this, i))
+            inputChangeHandlers: form.items.map((item, i) => this.handleFieldChange.bind(this, i)),
+            exitWithoutSaving: false,
         };
+    }
+
+    componentDidMount() {
+        window.ExitWithoutSave = () => this.state.exitWithoutSaving;
+    }
+    componentWillUnmount() {
+        window.ExitWithoutSave = null;
     }
 
     render() {
         const form = this.props.formData.find(x => x.id === this.props.formID);
+        if(!form) {
+            return <div>
+                <h1>404 Not Found!</h1>
+                <p>
+                    Cannot find the form with id "<span style={{fontFamily: 'monospace', fontWeight: 'bold'}}>{this.props.formID}</span>", try checking the forms folder.
+                </p>
+            </div>;
+        }
         return <div>
             <Typography variant='h4' color='inherit'>
                 {form.name}
@@ -53,6 +75,7 @@ class FormPage extends Component {
                     }
                 })
             }
+            
         </div>;
     }
 }

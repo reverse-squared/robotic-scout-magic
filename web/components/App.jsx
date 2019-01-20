@@ -29,7 +29,7 @@ class App extends Component {
         return <Fragment>
             <LocationProvider history={history}>
                 <AppBar formData={formData} />
-                <div className='container'>
+                <div className='container containsRouter'>
                     <Router>
                         <MainPage path='/' formData={formData} />
                         <FormPage path='/form/:formID' formData={formData} />

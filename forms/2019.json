@@ -10,13 +10,12 @@
         },
         {
             "type": "header",
-            "label": "Sandstorm Period"
+            "label": "Sandstorm Period",
+            "description": "Whatever"
         },
         {
             "type": "boolean",
             "label": "Did the robot leave the HAB?",
-            "trueValue": "Yes",
-            "falseValue": "No",
             "default": false
         },
         {
@@ -41,9 +40,7 @@
         },
         {
             "type": "boolean",
-            "label": "Can the robot pick hatch panels off the ground?",
-            "trueValue": "Yes",
-            "falseValue": "No"
+            "label": "Can the robot pick hatch panels off the ground?"
         },
         {
             "type": "header",
@@ -56,9 +53,7 @@
         },
         {
             "type": "boolean",
-            "label": "Can the robot even climb to level three. If you are not sure, select No.",
-            "trueValue": "Yes",
-            "falseValue": "No"
+            "label": "Can the robot even climb to level three. If you are not sure, select No."
         },
         {
             "type": "text-area",
