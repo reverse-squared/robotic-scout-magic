@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Location, redirectTo } from '@reach/router';
+import { Location } from '@reach/router';
+import Loadable from 'react-loadable';
 
-import {
-    AppBar as MUIAppBar,
-    Button,
-    Dialog,
-    DialogContent,
-    DialogActions,
-    DialogContentText,
-    DialogTitle,
-    IconButton,
-    Toolbar,
-    Typography,
-} from '@material-ui/core';
+import MUIAppBar from '@material-ui/core/AppBar';
+
+import IconButton from '@material-ui/core/IconButton';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 import SVGBack from '@material-ui/icons/ArrowBack';
+
+const DialogLoader = Loadable({
+    loader: () => import('./AppBarExitDialog').then(Dialog => {
+        return Dialog.default;
+    }),
+    loading: () => null,
+});
 
 class AppBar extends Component {
     constructor(props) {
@@ -63,7 +64,7 @@ class AppBar extends Component {
 
                 const showBackBtn = location.pathname !== '/';
                 return <div>
-                    <MUIAppBar position='fixed' color='primary' style={{zIndex:'-10'}}>
+                    <MUIAppBar position='fixed' color='primary' style={{zIndex:'2'}}>
                         <Toolbar>
                             {
                                 showBackBtn
@@ -79,27 +80,12 @@ class AppBar extends Component {
                             </Typography>
                         </Toolbar>
                     </MUIAppBar>
-                    <Dialog
-                        open={this.state.dialogOpen}
-                        onClose={this.handleExitDialogClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                    >
-                        <DialogTitle id="alert-dialog-title">Exit form without submitting?</DialogTitle>
-                        <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
-                                Your submission will not be saved if you exit.
-                            </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={this.handleCloseCancel} color="primary" autoFocus>
-                                Cancel
-                            </Button>
-                            <Button onClick={this.handleCloseNavigate} color="primary">
-                                Exit without Saving
-                            </Button>
-                        </DialogActions>
-                    </Dialog>
+                    <DialogLoader
+                        dialogOpen={this.state.dialogOpen}
+                        handleExitDialogClose={this.handleExitDialogClose}
+                        handleCloseCancel={this.handleCloseCancel}
+                        handleCloseNavigate={this.handleCloseNavigate}
+                    />
                 </div>;
             }}
         </Location>;

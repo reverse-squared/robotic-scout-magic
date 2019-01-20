@@ -1,6 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
-import { CircularProgress } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Loader = () => <div className='container' style={{
     display: 'flex',

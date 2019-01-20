@@ -3,7 +3,10 @@ module.exports = {
         'browser': true,
         'es6': true,
         'node': true,
-        'mocha': true
+        'mocha': true,
+    },
+    'globals': {
+        '$production': true
     },
     'extends': 'eslint:recommended',
     'parser': 'babel-eslint',

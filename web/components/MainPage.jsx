@@ -15,15 +15,26 @@ class MainPage extends Component {
             <List component="nav">
                 {
                     this.props.formData.map(item => {
-                        if(item.hidden) return;
+                        // Hidden forms only show hidden in production mode
+                        if(item.hidden && $production) return;
 
+                        let secondaryText;
+                        if (!item.hidden && !item.description) {
+                            secondaryText = undefined;
+                        } else {
+                            secondaryText = <span>{item.hidden && <strong>Hidden in Production Mode.{' '}</strong>}{item.description || ''}</span>;
+                        }
+                        
                         return <ListItem key={item.id} button component={Link} to={'/form/' + item.id}>
                             <ListItemAvatar>
                                 <Avatar>
                                     <AnyIconLoader icon={item.icon || 'Extension'} />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item.name} secondary={item.description || undefined} />
+                            <ListItemText
+                                primary={item.name}
+                                secondary={secondaryText}
+                            />
                         </ListItem>;
                     })
                 }

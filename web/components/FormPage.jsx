@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import {
-    Typography,
-} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 function requireAll(r) { return r.keys().map(r); }
 const fieldModules = requireAll(require.context('./fields/', true, /\.jsx?$/));
