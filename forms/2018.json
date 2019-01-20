@@ -1,6 +1,6 @@
 {
     "$schema": "../form-schema.json",
-    "icon": "ArrowUpward",
+    "icon": "arrow-up",
     "id": "2018",
     "name": "2018 FIRST Power Up",
     "description": "A scouting form for 2018's FIRST Power Up Game",

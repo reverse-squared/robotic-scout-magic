@@ -9,16 +9,9 @@ module.exports = (prod = false) => ({
     module: {
         rules: [
             {
-                test: /\.ttf$/,
+                test: /\.(ttf|svg|eot|woff2?|otf)$/,
                 use: 'file-loader',
             },
-            // {
-            //     test: /\.jsx?$/,
-            //     include: /(node_modules)/,
-            //     use: {
-            //         loader: 'react-hot-loader/webpack'
-            //     }
-            // },
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,

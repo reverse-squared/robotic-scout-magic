@@ -22,20 +22,8 @@ const AppLoadable = (App) => Loadable({
     loading: Loader,
 });
 
-const AnyIconLoader = ({ icon }) => {
-    const Loader = Loadable({
-        loader: () => import('./AnyIcon').then(AnyIcon => {
-            return () => <AnyIcon.default icon={icon} />;
-        }),
-        loading: () => null
-    });
-    return <Loader />;
-};
-
-
 export {
     Loader,
     PageLoadable,
     AppLoadable,
-    AnyIconLoader
 };

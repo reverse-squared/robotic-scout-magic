@@ -1,6 +1,7 @@
 {
     "$schema": "../form-schema.json",
     "id": "2019",
+    "icon": "space-shuttle",
     "name": "2019 Destination: Deep Space",
     "description": "Blast off with scouting with this form.",
     "items": [

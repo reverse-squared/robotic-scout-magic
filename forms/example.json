@@ -1,7 +1,6 @@
 {
     "$schema": "../form-schema.json",
     "hidden": true,
-    "icon": "Extension",
     "id": "example",
     "name": "Example Form",
     "description": "Starter Example Form",

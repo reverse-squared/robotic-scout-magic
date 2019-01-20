@@ -3,7 +3,7 @@ import { Button, Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@m
 import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
 
-import { AnyIconLoader } from  './Loader';
+import FontAwesome from './FontAwesome';
 
 class MainPage extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class MainPage extends Component {
                         return <ListItem key={item.id} button component={Link} to={'/form/' + item.id}>
                             <ListItemAvatar>
                                 <Avatar>
-                                    <AnyIconLoader icon={item.icon || 'Extension'} />
+                                    <FontAwesome icon={item.icon || 'file-alt'} />
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText
