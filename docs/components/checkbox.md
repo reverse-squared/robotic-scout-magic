@@ -1,19 +1,15 @@
-# Radio
-A list of items, selectable by checkboxes inputs, multiple selected boxes possible.
-
-> [!DANGER]
-> This component is not fully developed and will show an error message on the form instead of the actual component.
+# Checkbox
+A checkbox, with a label to determine a yes or no value to a question. Use multiple of these components.
 
 ## Properties
 
-|  Property |  Type  |                          Description                          |
-|:---------:|:------:|:-------------------------------------------------------------:|
-|   label   | String |        The text to display above the boolean selection.       |
-|  options  |  Array |   An array of strings representing each possible selection.   |
-| defaults? |  Array | The indexes of the checkboxes that should already be checked. |
+| Property |   Type  |                          Description                         |
+|:--------:|:-------:|:------------------------------------------------------------:|
+|   label  |  String |       The text to display above the boolean selection.       |
+|  default | Boolean | Determines whether or not the checkbox should start checked. |
 
 ## Usage
-An example form with a radio component.
+An example form with a checkbox components.
 ```json
 // forms/example.json
 
@@ -24,17 +20,21 @@ An example form with a radio component.
     "description": "Starter Example Form",
     "items": [
         {
+            "type": "header",
+            "label": "Select everything the robot did."
+        },
+        {
             "type": "checkbox",
-            "label": "What did the robot do? (Select multiple.)",
-            "options": [
-                "It crossed the line.",
-                "It climbed.",
-                "It defended."
-            ]
+            "label": "It crossed the line."
+        },
+        {
+            "type": "checkbox",
+            "label": "It crossed did cubesx."
         }
     ]
 }
 ```
 
 ## Images
-Coming soon!
+![checkbox](../img/checkbox.png)
+![checkbox-true](../img/checkbox-true.png)

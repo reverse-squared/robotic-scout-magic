@@ -19,7 +19,8 @@
             "options": [
                 "Hatch Panel",
                 "Cargo"
-            ]
+            ],
+            "default": 1
         },
         {
             "type": "boolean",

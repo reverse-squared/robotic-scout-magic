@@ -23,8 +23,8 @@ Creating your own forms for your needs is one of the main purposes of this appli
 > [!TIP]
 > If you are editing this with [Visual Studio Code](https://code.visualstudio.com/), then `$schema` is optional. It just gives more type information. It is very useful, **But if you are not using Visual Studio Code**, you don't need `$schema`.
 
-- `hidden` is a boolean value, which determines whether or not a form is displayed in production mode. This defaults to `true` unless set to `false`. You can still see hidden forms in development mode.
-- `icon` is a Material Icon you can find at [https://material.io/tools/icons/](https://material.io/tools/icons/). You can view the `icon-schema.json` file to check if you are using the right case and spelling of your icon. If you do not provide an icon, it defaults to the Extenstion icon. It looks like a puzzle piece.
+- `hidden` is a boolean value, which determines whether or not a form is displayed in production mode. This defaults to `false` unless set to `true`. You can still see hidden forms in development mode.
+- `icon` is a Material Icon you can find at [https://fontawesome.com/icons/](https://fontawesome.com/icons/). You can view the `icon-schema.json` file to check if you are using the right case and spelling of your icon. If you do not provide an icon, it defaults to the `file-alt` solid icon. It looks like a piece of paper with writing on it.
 
 Once this is created, continue to [**Editing Forms**](#Editing_Forms).
 

@@ -201,9 +201,9 @@
                                     "type": "array",
                                     "description": "An array of strings representing each possible selection."
                                 },
-                                "defaults": {
-                                    "type": "array",
-                                    "description": "The indexes of the checkboxes that should already be checked."
+                                "default": {
+                                    "type": "boolean",
+                                    "description": "Determines whether or not the checkbox should start checked."
                                 }
                             }
                         }
