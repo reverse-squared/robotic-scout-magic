@@ -55,7 +55,7 @@ class ExportPage extends Component {
                                         let icon = 'question';
                                         if (item.type === 'sdcard') icon = 'sd-card';
                                         if (item.type === 'usb') icon = 'usb';
-                                        if (item.type === 'uas') icon = 'hdd';
+                                        if (item.type === 'hdd') icon = 'hdd';
 
                                         return <ListItem key={item.path} button onClick={this.handleSelectUSB(item)}>
                                             <ListItemAvatar>
