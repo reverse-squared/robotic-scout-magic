@@ -10,12 +10,8 @@ const api = express.Router();
 
 api.use(require('body-parser').json());
 
-api.get('/all-forms.json', (req, res) => {
+api.get('/all-forms', (req, res) => {
     res.send(form.getFormList());
-});
-
-api.get('/usb.json', (req, res) => {
-    res.send(usb.getExportDestinations());
 });
 
 api.post('/submit/:formID', (req, res) => {
@@ -29,8 +25,17 @@ api.post('/submit/:formID', (req, res) => {
         res.send({ success: false });
     });
 });
-api.get('/submission-count', (req, res) => {
-    exporthandler.GetSubmissionCounts().then(counts => res.send(counts));
+
+api.get('/export-handlers', (req, res) => {
+    res.send(exporthandler.GetExportTypeList());
+});
+
+api.get('/default-file-name/:formID/:handlerType', (req, res) => {
+    const name = exporthandler.getDefaultFilename(
+        form.getFormList().find(x => x.id === req.params.formID),
+        req.params.handlerType
+    );
+    res.send({ string: name });
 });
 
 module.exports = api;

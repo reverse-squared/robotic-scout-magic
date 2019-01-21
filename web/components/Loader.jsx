@@ -18,7 +18,7 @@ const Loader = () => <div className='container' style={{
 const PageLoadable = (dynamic_import) => Loadable({ loader: dynamic_import, loading: Loader });
 
 const AppLoadable = (App) => Loadable({
-    loader: () => fetch('./all-forms.json').then(res => res.json()).then(json => {
+    loader: () => fetch('./all-forms').then(res => res.json()).then(json => {
         return () => <SocketAppFormReloader App={App} formData={json} />;
     }),
     loading: Loader,

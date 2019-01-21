@@ -11,6 +11,16 @@ if (!fs.existsSync(SUBMISSION_FILE)) {
     fs.writeFileSync(SUBMISSION_FILE, '{}');
 }
 
+const ExportHandlers = fs.readdirSync(path.join(__dirname, 'exports')).map(name => {
+    const mod = require('./exports/' + name);
+    if (typeof mod.name !== 'string') throw 'Error loading export handler ' + name + ', name not a string';
+    if (typeof mod.description !== 'string') throw 'Error loading export handler ' + name + ', description not a string';
+    if (typeof mod.handler !== 'function') throw 'Error loading export handler ' + name + ', handler not a function';
+    if (typeof mod.extension !== 'string') throw 'Error loading export handler ' + name + ', extension not a string';
+    mod.type = name.substr(0, name.length - 3);
+    return mod;
+});
+
 function HandleSubmit(id, submission) {
     return fs.readJSON(SUBMISSION_FILE).then(data => {
         if(!data[id]) data[id] = [];
@@ -22,6 +32,18 @@ function HandleSubmit(id, submission) {
 }
 function BeginExport(form, type, output) {
     
+}
+function getDefaultFilename(form, type) {
+    if (!GetExportHandler(type)) return 'unknown.txt';
+    if (!form) return 'unknown.txt';
+    return GetExportHandler(type).defaultFileName(form);
+}
+function GetExportTypeList() {
+    return ExportHandlers;
+}
+function GetExportHandler(type) {
+    console.log(ExportHandlers);
+    return ExportHandlers.find(x => x.type === type);
 }
 function GetSubmissionList() {
     return fs.readJSON(SUBMISSION_FILE);    
@@ -37,7 +59,10 @@ function GetSubmissionCounts() {
 
 module.exports = {
     HandleSubmit,
-    BeginExport,
     GetSubmissionList,
-    GetSubmissionCounts
+    GetSubmissionCounts,
+
+    BeginExport,
+    getDefaultFilename,
+    GetExportTypeList
 };

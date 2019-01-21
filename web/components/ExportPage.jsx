@@ -16,6 +16,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import FontAwesome from './FontAwesome';
 
 class ExportPage extends Component {
@@ -28,6 +30,10 @@ class ExportPage extends Component {
             usbDeviceRemoved: null,
             
             formChooseEmptyOpen: false,
+            exportFormats: [],
+
+            selectedFormat: null,
+            exportFilename: '',
         };
         this.handleSelectUSB = (item) => () => {
             this.setState({
@@ -49,6 +55,12 @@ class ExportPage extends Component {
                 });
             }
         };
+        this.handleSelectType = (item) => () => {
+            this.setState({ selectedFormat: item.type });
+        };
+        this.handleFilenameChange = (ev) => {
+            this.setState({ exportFilename: ev.target.value });
+        };
         this.handleFormChooseEmptyDialogClose = () => {
             this.setState({
                 form: null,
@@ -61,8 +73,24 @@ class ExportPage extends Component {
                 formChooseEmptyOpen: false,
             });
         };
+        this.handleFinishStep3 = () => {
+            this.setState({
+                activeStep: this.state.activeStep + 1,
+            });
+            // send the magical magic
+        };
     }
-    componentDidUpdate(prevProps, prevState) {
+    componentDidMount() {
+        window.ExitWithoutSave = () => this.state.activeStep > 0;
+        
+        fetch('/export-handlers').then(r => r.json()).then(exportFormats => {
+            this.setState({ exportFormats });
+        });
+    }
+    componentWillUnmount() {
+        window.ExitWithoutSave = null;        
+    }
+    componentDidUpdate() {
         if(this.state.usbDevice) {
             if (this.props.usbData.find(dev => {
                 return this.state.usbDevice.name === dev.name
@@ -87,7 +115,7 @@ class ExportPage extends Component {
             <div>
                 <h1>Export Data to a USB Drive</h1>
                 <Stepper activeStep={activeStep} orientation="vertical">
-                    <Step key={1}>
+                    <Step>
                         <StepLabel>Choose a Device to Export To{
                             this.state.activeStep > 0 && <span>. <strong>Selected {this.state.usbDevice.path}</strong></span>
                         }</StepLabel>
@@ -95,7 +123,7 @@ class ExportPage extends Component {
                             <Typography>
                                 {this.state.usbDeviceRemoved?<span><strong>Uh Oh, your selected device was disconnected. </strong></span>:''}Choose a USB Drive to export to from this list. This list will refresh automatically within 10 seconds.
                             </Typography>
-                            <List component="nav">
+                            <List>
                                 {
                                     this.props.usbData.map(item => {
                                         let icon = 'question';
@@ -138,7 +166,7 @@ class ExportPage extends Component {
                             <Typography>
                                 Select a form in this list to export to the device on <strong>{this.state.usbDevice && this.state.usbDevice.path}</strong>.
                             </Typography>
-                            <List component="nav">
+                            <List>
                                 {
                                     this.props.formData.map(item => {
                                         // Hidden forms only show hidden in production mode
@@ -182,8 +210,59 @@ class ExportPage extends Component {
                         <StepLabel>Select an Export Format and File Name</StepLabel>
                         <StepContent>
                             <Typography>
-                                etc
+                                Choose a format to use in the export.
                             </Typography>
+                            <List>
+                                {
+                                    this.state.exportFormats.map(item => {
+                                        return <ListItem
+                                            key={item.type}
+                                            button
+                                            selected={this.state.selectedFormat === item.type}
+                                            onClick={this.handleSelectType(item)}
+                                        >
+                                            <ListItemAvatar>
+                                                <Avatar>
+                                                    <FontAwesome icon={item.icon || 'file-alt'} />
+                                                </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText
+                                                primary={item.name}
+                                                secondary={item.description}
+                                            />
+                                        </ListItem>;
+                                    })
+                                }
+                            </List>
+                            <br/>
+                            <TextField
+                                variant="outlined"
+                                label="Filename to export to."
+                                onChange={this.handleFilenameChange}
+                                value={this.state.exportFilename}
+                                disabled={!this.state.selectedFormat}
+                                InputProps={{
+                                    startAdornment: <InputAdornment position="start">
+                                        {this.state.activeStep > 0 &&
+                                            <span style={{opacity:'0.7'}}>
+                                                {this.state.usbDevice.path}RSM_Data\
+                                            </span>
+                                        }
+                                    </InputAdornment>,
+                                    endAdornment: this.state.selectedFormat && <InputAdornment position="end">
+                                        <span style={{opacity:'0.7'}}>
+                                            .{this.state.exportFormats.find(x => x.type === this.state.selectedFormat).extension}
+                                        </span>
+                                    </InputAdornment>,
+                                }}
+                            />
+                            <br/>
+                            <br/>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                disabled={!this.state.exportFilename}
+                            >Continue</Button>
                         </StepContent>
                     </Step>
                     <Step>

@@ -14,10 +14,14 @@ export default (props) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
     >
-        <DialogTitle id="alert-dialog-title">Exit form without submitting?</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{location.href.includes('/form/') ? 'Exit form without submitting?' : 'Exit without exporting?'}</DialogTitle>
         <DialogContent>
             <DialogContentText id="alert-dialog-description">
-                Your submission will not be saved if you exit.
+                {
+                    location.href.includes('/form/')
+                        ? 'Your submission will not be saved if you exit.'
+                        : 'You will lose all information entered here.'
+                }
             </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -25,7 +29,7 @@ export default (props) => {
                 Cancel
             </Button>
             <Button onClick={props.handleCloseNavigate} color="primary">
-                Exit without Saving
+                Exit without {location.href.includes('/form/') ? 'Saving' : 'Exporting'}
             </Button>
         </DialogActions>
     </Dialog>;

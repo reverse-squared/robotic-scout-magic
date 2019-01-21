@@ -14,9 +14,10 @@ function ExportCSV(formData, submissions) {
 module.exports = {
     name: 'CSV',
     description: 'Comma Seperated Values file which can be imported to Excel or another spreadsheet program.',
-
+    icon: 'file-csv',
+    
     handler: ExportCSV,
-    defaultFileName: (form) => `${form.id}.csv`,
+    extension: 'csv',
 
     CSVString
 };
