@@ -73,7 +73,7 @@ class ExportPage extends Component {
                     usbDevice: null,
                     form: null,
                     activeStep: 0,
-                    
+                    formChooseEmptyOpen: false,                    
                     usbDeviceRemoved: true,
                 });
             }
