@@ -30,4 +30,7 @@ class Text extends Component {
 }
  
 export const id = 'text';
+export function resolveSubmissionValue(config, value) {
+    return value || '';
+}
 export default hot(Text);

@@ -197,10 +197,6 @@
                         },
                         "then": {
                             "properties": {
-                                "options": {
-                                    "type": "array",
-                                    "description": "An array of strings representing each possible selection."
-                                },
                                 "default": {
                                     "type": "boolean",
                                     "description": "Determines whether or not the checkbox should start checked."

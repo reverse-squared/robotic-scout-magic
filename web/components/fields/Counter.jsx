@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader/root';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import SubtractIcon from '@material-ui/icons/Remove';
+import { func } from 'prop-types';
 
 // Config can have:
 //   label: string
@@ -67,4 +68,9 @@ class Counter extends Component {
 }
  
 export const id = 'counter';
+export function resolveSubmissionValue(config, value) {
+    if(value !== undefined) return value;
+    if(config.default) return config.default;
+    return 0;
+}
 export default hot(Counter);

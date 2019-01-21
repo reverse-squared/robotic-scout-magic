@@ -47,4 +47,7 @@ class TextArea extends Component {
 }
 
 export const id = 'text-area';
+export function resolveSubmissionValue(config, value) {
+    return value || '';
+}
 export default hot(withStyles(styles)(TextArea));

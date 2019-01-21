@@ -22,5 +22,4 @@ class Header extends Component {
 }
  
 export const id = 'header';
-export const IGNORE_IN_EXPORT = true;
 export default hot(Header);
