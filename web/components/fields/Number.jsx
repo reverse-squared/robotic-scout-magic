@@ -47,4 +47,7 @@ class Number extends Component {
 }
  
 export const id = 'number';
+export function resolveSubmissionValue(config, value) {
+    return value || '';
+}
 export default hot(Number);

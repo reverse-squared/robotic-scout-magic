@@ -38,4 +38,9 @@ class RadioSelect extends Component {
 }
  
 export const id = 'radio';
+export function resolveSubmissionValue(config, value) {
+    if (!('default' in config) && value === undefined) return undefined;
+    if (value !== undefined) return value;
+    return config.options[config.default];
+}
 export default hot(RadioSelect);

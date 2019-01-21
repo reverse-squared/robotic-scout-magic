@@ -38,4 +38,7 @@ class Date extends Component {
 }
  
 export const id = 'date';
+export function resolveSubmissionValue(config, value) {
+    return value || '';
+}
 export default hot(Date);

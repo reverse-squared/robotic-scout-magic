@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 function requireAll(r) { return r.keys().map(r); }
 const fieldModules = requireAll(require.context('./fields/', true, /\.jsx?$/));
 const FieldTypes = fieldModules.reduce(
     (obj, mod) => {
         obj[mod.id] = mod.default;
+        obj[mod.id].resolveSubmissionValue = mod.resolveSubmissionValue;
         return obj;
     },
     {}
 );
+
+const IsHeaderSymbol = Symbol('IsHeaderSymbol');
 
 class FormPage extends Component {
     constructor(props) {
@@ -31,6 +35,25 @@ class FormPage extends Component {
             inputs: form.items.map(() => undefined),
             inputChangeHandlers: form.items.map((item, i) => this.handleFieldChange.bind(this, i)),
             exitWithoutSaving: false,
+        };
+        this.getSubmitData = () => {
+            return form.items.map((item, i) => {
+                if (item.type === 'header') return IsHeaderSymbol;
+                const Field = FieldTypes[item.type];
+
+                if (!Field) {
+                    return null;
+                } else {
+                    if (Field.resolveSubmissionValue) {
+                        return Field.resolveSubmissionValue(item, this.state.inputs[i]);
+                    } else {
+                        return this.state.inputs[i];
+                    }
+                }
+            }).filter(x => x !== IsHeaderSymbol);
+        };
+        this.handleSubmit = () => {
+            this.props.handleFormSubmit(this.props.formID, this.getSubmitData());
         };
     }
 
@@ -74,6 +97,14 @@ class FormPage extends Component {
                 })
             }
             
+            <br/><br/>
+
+            <Button
+                variant="contained"
+                color="primary"
+                disabled={this.getSubmitData().some(x => x === undefined)}
+                onClick={this.handleSubmit}
+            >Submit</Button>
         </div>;
     }
 }

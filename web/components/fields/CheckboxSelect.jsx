@@ -31,4 +31,7 @@ class CheckboxSelect extends Component {
 }
  
 export const id = 'checkbox';
+export function resolveSubmissionValue(config, value) {
+    return value || config.default || false;
+}
 export default hot(CheckboxSelect);

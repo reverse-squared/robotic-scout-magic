@@ -58,4 +58,10 @@ class Boolean extends Component {
 }
  
 export const id = 'boolean';
+export function resolveSubmissionValue(config, value) {
+    if (!('default' in config) && value === undefined) return undefined;
+    if(value !== undefined)
+        return value === 'true' ? (config.trueValue || 'Yes') : (config.falseValue || 'No');
+    return config.default ? (config.trueValue || 'Yes') : (config.falseValue || 'No');
+}
 export default hot(withStyles(styles)(Boolean));

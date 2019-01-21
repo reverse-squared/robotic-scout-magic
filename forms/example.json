@@ -139,8 +139,10 @@
         },
         {
             "type": "checkbox",
-            "label": "This one is default selected"
+            "label": "This one is default selected",
+            "default": true
         },
+        
         {
             "type": "header",
             "label": "Text Areas",
