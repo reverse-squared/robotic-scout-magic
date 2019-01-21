@@ -13,11 +13,11 @@ if (!fs.existsSync(SUBMISSION_FILE)) {
 
 function HandleSubmit(id, submission) {
     return fs.readJSON(SUBMISSION_FILE).then(data => {
-        if(data[id]) data[id] = [];
+        if(!data[id]) data[id] = [];
         
         data[id].push(submission);
 
-        return fs.writeJSON(data);
+        return fs.writeJSON(SUBMISSION_FILE, data);
     });
 }
 function BeginExport(form, type, output) {

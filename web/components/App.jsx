@@ -19,6 +19,7 @@ const history = createHistory(hashSource);
 // Loadable Pages
 const MainPage = PageLoadable(() => import('./MainPage'));
 const FormPage = PageLoadable(() => import('./FormPage'));
+const ExportPage = PageLoadable(() => import('./ExportPage'));
 const NotFoundPage = PageLoadable(() => import('./NotFoundPage'));
 
 // Main App Component, passed a formData prop.
@@ -34,6 +35,7 @@ class App extends Component {
             fetch('/submit/' + formId, {
                 method: 'POST',
                 body: JSON.stringify(formData),
+                headers: { 'Content-Type': 'application/json' }
             }).then(x => {
                 if (x.status === 200) {
                     this.setState({ snackbarOpen: true });
@@ -56,6 +58,7 @@ class App extends Component {
                 <div className='container containsRouter'>
                     <Router>
                         <MainPage path='/' formData={formData} />
+                        <ExportPage path='/export' formData={formData} />
                         <FormPage path='/form/:formID' formData={formData} handleFormSubmit={this.handleFormSubmit} />
                         <NotFoundPage default />
                     </Router>
@@ -64,7 +67,8 @@ class App extends Component {
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                     open={this.state.snackbarOpen}
                     onClose={this.handleSnackbarClose}
-                    message={'I love snacks'}
+                    autoHideDuration={3000}
+                    message={'Your form submission has been recorded.'}
                 />
             </LocationProvider>
         </Fragment>;
