@@ -26,4 +26,7 @@ A simple field for selecting the time.
 ```
 
 # Images
-Coming soon!
+![time](../img/time.png ":size=200%")
+![time-hours](../img/time-hours.png ":size=200%")
+![time-minutes](../img/time-minutes.png ":size=200%")
+![time-filled](../img/time-filled.png ":size=200%")
