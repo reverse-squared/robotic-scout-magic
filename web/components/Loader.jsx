@@ -46,7 +46,7 @@ class SocketAppFormReloader extends Component {
 
     render() { 
         const { formData, usbData } = this.state;
-        return React.createElement(this.props.App, { usbData, formData });
+        return React.createElement(this.props.App, { usbData: usbData || [], formData: formData || [] });
     }
 }
  

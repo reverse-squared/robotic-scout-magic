@@ -37,7 +37,7 @@ module.exports.onSocket = (socket) => {
     });
     
     const data = usb.getExportDestinations();
-    socket.emit('update:usb', data);
+    socket.emit('update:usbData', data);
 };
 usb.onUSBChange(() => {
     const data = usb.getExportDestinations();

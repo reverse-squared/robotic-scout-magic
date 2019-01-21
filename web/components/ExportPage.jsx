@@ -1,40 +1,15 @@
 import React, { Component } from 'react';
+import Avatar from '@material-ui/core/Avatar';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Typography from '@material-ui/core/Typography';
-
-function getSteps() {
-    return [
-        'Select Devices to Export to.',
-        'Select Export Format.',
-        'Choose the Forms to Export.',
-        'Finish Export.',
-    ];
-}
-
-function getStepContent(step) {
-    switch (step) {
-    case 0:
-        return `For each ad campaign that you create, you can control how much
-            you're willing to spend on clicks and conversions, which networks
-            and geographical locations you want your ads to show on, and more.`;
-    case 1:
-        return 'An ad group contains one or more ads which target a shared set of keywords.';
-    case 2:
-        return `Try out different ad text to see what brings in the most customers,
-            and learn how to enhance your ads using features like ad extensions.
-            If you run into any problems with your ads, find out how to tell if
-            they're running and how to resolve approval issues.`;
-    case 3:
-        return 'Lmao it\'s running now, and should be done like now.';
-    default:
-        return 'Unknown step';
-    }
-}
+import FontAwesome from './FontAwesome';
 
 class ExportPage extends Component {
     constructor(props) {
@@ -63,30 +38,79 @@ class ExportPage extends Component {
     }
 
     render() {
-        const steps = getSteps();
         const { activeStep } = this.state;
 
         return (
             <div>
                 <h1>Export Data to a USB Drive</h1>
                 <Stepper activeStep={activeStep} orientation="vertical">
-                    {steps.map((label, index) => (
-                        <Step key={label}>
-                            <StepLabel>{label}</StepLabel>
-                            <StepContent>
-                                <Typography>{getStepContent(index)}</Typography>
-                                <div style={{marginTop:'20px'}}>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={this.handleNext}
-                                    >
-                                        {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                    </Button>
-                                </div>
-                            </StepContent>
-                        </Step>
-                    ))}
+                    <Step key={1}>
+                        <StepLabel>Choose a Device to Export to</StepLabel>
+                        <StepContent>
+                            <Typography>
+                                Choose a USB Drive to export to from this list. This list will refresh automatically within 10 seconds.
+                                <List component="nav">
+                                    {
+                                        this.props.usbData.map(item => {
+                                            let icon = 'question';
+                                            if (item.type === 'sdcard') icon = 'sd-card';
+                                            if (item.type === 'usb') icon = 'usb';
+                                            if (item.type === 'uas') icon = 'hdd';
+
+                                            return <ListItem key={item.id} button>
+                                                <ListItemAvatar>
+                                                    <Avatar>
+                                                        <FontAwesome icon={icon} />
+                                                    </Avatar>
+                                                </ListItemAvatar>
+                                                <ListItemText
+                                                    primary={item.name}
+                                                    secondary={'Found on path ' + item.path}
+                                                />
+                                            </ListItem>;
+                                        })
+                                    }
+                                    {
+                                        this.props.usbData.length === 0 && <ListItem>
+                                            <ListItemAvatar>
+                                                <Avatar>
+                                                    <FontAwesome icon={'exclamation'} />
+                                                </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText
+                                                primary={'No Storage Devices Detected'}
+                                                secondary={'Make sure it\'s plugged in, and try waiting up to 10 seconds.'}
+                                            />
+                                        </ListItem>
+                                    }
+                                </List>
+                            </Typography>
+                        </StepContent>
+                    </Step>
+                    <Step key={2}>
+                        <StepLabel>Choose a form to export the data from</StepLabel>
+                        <StepContent>
+                            <Typography>
+                                etc
+                            </Typography>
+                        </StepContent>
+                    </Step>
+                    <Step key={3}>
+                        <StepLabel>Select an export format and file name</StepLabel>
+                        <StepContent>
+                            <Typography>
+                                etc
+                            </Typography>
+                        </StepContent>
+                    </Step>
+                    <Step key={3}>
+                        <StepLabel>Finish Export</StepLabel>
+                        <StepContent>
+                            <Typography>
+                                etc
+                            </Typography>
+                        </StepContent>
+                    </Step>
                 </Stepper>
             </div>
         );

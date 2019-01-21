@@ -12,7 +12,7 @@ class MainPage extends Component {
     render() { 
         return <div>
             <h1>Available Forms</h1>
-            <List component="nav">
+            <List>
                 {
                     this.props.formData.map(item => {
                         // Hidden forms only show hidden in production mode

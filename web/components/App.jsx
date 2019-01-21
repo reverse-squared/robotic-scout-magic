@@ -47,7 +47,7 @@ class App extends Component {
         };
     }
     render() {
-        const formData = this.props.formData;
+        const { formData, usbData } = this.props;
         return <Fragment>
             <LocationProvider history={history}>
                 <Location>
@@ -58,7 +58,7 @@ class App extends Component {
                 <div className='container containsRouter'>
                     <Router>
                         <MainPage path='/' formData={formData} />
-                        <ExportPage path='/export' formData={formData} />
+                        <ExportPage path='/export' formData={formData} usbData={usbData} />
                         <FormPage path='/form/:formID' formData={formData} handleFormSubmit={this.handleFormSubmit} />
                         <NotFoundPage default />
                     </Router>
