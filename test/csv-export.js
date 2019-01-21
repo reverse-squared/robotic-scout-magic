@@ -79,12 +79,4 @@ describe('CSV', function () {
             assert.strictEqual(csv.CSVString('Hello\nWorld'), '"Hello\nWorld"');
         });
     });
-    describe('Default File Name', function() {
-        it('Test 1', function() {
-            assert.strictEqual(csv.defaultFileName({ id: '2019' }), '2019.csv');
-        });
-        it('Test 2', function() {
-            assert.strictEqual(csv.defaultFileName({ id: 'hello' }), 'hello.csv');
-        });
-    });
 });
