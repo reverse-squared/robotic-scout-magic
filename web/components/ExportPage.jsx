@@ -32,7 +32,7 @@ const redButtonTheme = createMuiTheme({
     },
 });
 
-const RedButton = (props) => <MuiThemeProvider theme={redButtonTheme}><Button color="primary" {...props} /></MuiThemeProvider>
+const RedButton = (props) => <MuiThemeProvider theme={redButtonTheme}><Button color="primary" {...props} /></MuiThemeProvider>;
 
 class ExportPage extends Component {
     constructor(props) {
@@ -119,7 +119,7 @@ class ExportPage extends Component {
                 selectedFormat: null,
                 exportFilename: '',
             });
-        }
+        };
     }
     componentDidMount() {
         window.ExitWithoutSave = () => this.state.activeStep > 0;
