@@ -9,13 +9,14 @@ const chalk = require('chalk');
 const path = require('path');
 const reload = require('require-reload');
 const npmRunScript = require('npm-run-script');
+const usb = require('./destination');
+usb.BeginUSBListening();
 
 const app = express();
 let api = reload(path.join(__dirname, 'api'));
 chokidar.watch('./server/api.js').on('change', () => {
     console.log(chalk.cyan('Reloading API.js'));
     api = reload(path.join(__dirname, 'api'));
-    console.log(api);
 });
 const proxy = proxyMiddleware('/', {
     target: url.parse('http://127.0.0.1:80'),

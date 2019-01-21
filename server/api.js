@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 
 const form = require('./form');
+const usb = require('./destination');
 const exporthandler = require('./export');
 
 const api = express.Router();
@@ -17,6 +18,10 @@ api.get('/all-forms.json', (req, res) => {
     });
 });
 
+api.get('/usb.json', (req, res) => {
+    res.send(usb.getExportDestinations());
+});
+
 api.post('/submit/:formID', (req, res) => {
     exporthandler.HandleSubmit(req.params.formID, req.body).then(x => {
         res.send({ success: true });
@@ -24,7 +29,5 @@ api.post('/submit/:formID', (req, res) => {
         res.send({ success: false });
     });
 });
-
-api.use(express.static(path.join(__dirname, '../public/')));
 
 module.exports = api;

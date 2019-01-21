@@ -8,14 +8,13 @@ async function BeginUSBListening() {
     lastList = await getUSBList();
     setInterval(() => {
         getUSBList().then(list => {
-            if(
-                list.length !== lastList.length
-            ) {
-                usbChangeListeners.forEach(x => x());
+            if(list.length !== lastList.length) {
+                lastList = list;
+                usbChangeListeners.forEach(x => x(list));
             }
             lastList = list;
         });
-    }, 3000);
+    }, 6000);
 }
 function onUSBChange(listener) {
     usbChangeListeners.push(listener);
@@ -34,7 +33,21 @@ function getCachedUSBList() {
     return lastList;
 }
 function getExportDestinations() {
-
+    return getCachedUSBList()
+        .filter(item => !item.isSystem && item.isRemovable)
+        .map(item => {
+            let type = 'Unknown';
+            if (item.isCard) type = 'sdcard';
+            if (item.isUSB) type = 'usb';
+            if (item.isUAS) type = 'uas';
+            return item.mountpoints.map(({ path }) => ({
+                name: item.description,
+                type: type,
+                readOnly: item.isReadOnly,
+                path
+            }));
+        })
+        .reduce((x, y) => x.concat(y), []);
 }
 
 module.exports = {
@@ -43,8 +56,3 @@ module.exports = {
     getUSBList: getCachedUSBList,
     getExportDestinations,
 };
-
-// BeginUSBListening();
-// onUSBChange((list) => {
-// console.log('USB List Changed!');
-// });
