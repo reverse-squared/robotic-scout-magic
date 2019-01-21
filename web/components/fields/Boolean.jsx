@@ -4,6 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
+// var trueColor = '#4caf50';
+// var falseColor = '#f44336';
+
 const styles = theme => ({
     toggleContainer: {
         paddingLeft: '0.5em',
@@ -20,8 +23,12 @@ const styles = theme => ({
         transition: 'all 100ms linear',
         background: '#FAFAFA'
     },
-    button_selected: {
-        background: theme.palette.secondary.main + '!important',
+    button_selected_true: {
+        background: '#4caf50' + '!important',
+        color: 'white!important',
+    },
+    button_selected_false: {
+        background: '#f44336' + '!important',
         color: 'white!important',
     }
 });
@@ -33,22 +40,23 @@ class Boolean extends Component {
         this.handleChange = (event, value) => {
             this.props.onChange(value);
         };
-    }
+    }   
 
     render() {
         const { classes, config } = this.props;
         const value = this.props.value || String(config.default) || 'null';
-        const btnClasses = { root: classes.button, selected: classes.button_selected };
+        const btnClassesTrue = { root: classes.button, selected: classes.button_selected_true };
+        const btnClassesFalse = { root: classes.button, selected: classes.button_selected_false };
         return <div style={{ paddingTop: '0.5em' }}>
             <p>
                 {config.label}
             </p>
             <div className={classes.toggleContainer}>
                 <ToggleButtonGroup value={value} exclusive onChange={this.handleChange}>
-                    <ToggleButton classes={btnClasses} value="true">
+                    <ToggleButton classes={btnClassesTrue} value="true">
                         {config.trueValue || 'Yes'}
                     </ToggleButton>
-                    <ToggleButton classes={btnClasses} value="false">
+                    <ToggleButton classes={btnClassesFalse} value="false">
                         {config.falseValue || 'No'}
                     </ToggleButton>
                 </ToggleButtonGroup>
