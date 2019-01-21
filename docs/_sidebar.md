@@ -11,6 +11,7 @@
     * [Radio](fields/radio.md)
     * [Text Area](fields/text-area.md)
     * [Text](fields/text.md)
+    * [Time](field/time.md)
 * [Extending RSM](extending/)
     * [Fields](extending/fields.md)
     * [Exports](extending/exports.md)

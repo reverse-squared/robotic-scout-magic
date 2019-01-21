@@ -179,6 +179,16 @@
                 "B",
                 "C"
             ]
+        },
+
+        {
+            "type": "header",
+            "label": "Time"
+        },
+        {
+            "type": "time",
+            "label": "Select the Time"
         }
+
     ]
 }

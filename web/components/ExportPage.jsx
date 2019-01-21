@@ -45,7 +45,7 @@ class ExportPage extends Component {
                 <h1>Export Data to a USB Drive</h1>
                 <Stepper activeStep={activeStep} orientation="vertical">
                     <Step key={1}>
-                        <StepLabel>Choose a Device to Export to</StepLabel>
+                        <StepLabel>Choose a Device to Export To</StepLabel>
                         <StepContent>
                             <Typography>
                                 Choose a USB Drive to export to from this list. This list will refresh automatically within 10 seconds.
@@ -88,7 +88,7 @@ class ExportPage extends Component {
                         </StepContent>
                     </Step>
                     <Step key={2}>
-                        <StepLabel>Choose a form to export the data from</StepLabel>
+                        <StepLabel>Choose a Form to Export the Data From</StepLabel>
                         <StepContent>
                             <Typography>
                                 etc
@@ -96,7 +96,7 @@ class ExportPage extends Component {
                         </StepContent>
                     </Step>
                     <Step key={3}>
-                        <StepLabel>Select an export format and file name</StepLabel>
+                        <StepLabel>Select an Export Format and File Name</StepLabel>
                         <StepContent>
                             <Typography>
                                 etc

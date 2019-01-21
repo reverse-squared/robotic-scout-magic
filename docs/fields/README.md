@@ -28,6 +28,7 @@ Fields have a spcific data type with properties to customize it.
 - [Radio](field/radio.md)
 - [Text Area](field/text-area.md)
 - [Text](field/text.md)
+- [Time](field/time.md)
 
 > [!NOTE]
 > In the field pages, optional properties are represented by the property name, followed by a question mark. All optional properties have a default value and are displayed in the description column.
