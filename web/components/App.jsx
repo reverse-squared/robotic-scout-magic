@@ -63,6 +63,9 @@ class App extends Component {
                         <NotFoundPage default />
                     </Router>
                 </div>
+                <div>
+                    {JSON.stringify(this.props.usbData)}
+                </div>
                 <Snackbar
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                     open={this.state.snackbarOpen}

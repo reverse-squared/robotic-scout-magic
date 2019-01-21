@@ -11,11 +11,7 @@ const api = express.Router();
 api.use(require('body-parser').json());
 
 api.get('/all-forms.json', (req, res) => {
-    form.getFormList().then(jsons => {
-        res.send(jsons);
-    }).catch(() => {
-        res.send({error: true});
-    });
+    res.send(form.getFormList());
 });
 
 api.get('/usb.json', (req, res) => {
@@ -31,3 +27,22 @@ api.post('/submit/:formID', (req, res) => {
 });
 
 module.exports = api;
+
+// Socket Server
+var sockets = [];
+module.exports.onSocket = (socket) => {
+    sockets.push(socket);
+    socket.on('disconnect', () => {
+        sockets = sockets.filter(x => x.id !== socket.id);
+    });
+    
+    const data = usb.getExportDestinations();
+    socket.emit('update:usb', data);
+};
+usb.onUSBChange(() => {
+    const data = usb.getExportDestinations();
+    sockets.forEach(socket => socket.emit('update:usbData', data));
+});
+form.onFormChange((data) => {
+    sockets.forEach(socket => socket.emit('update:formData', data));
+});

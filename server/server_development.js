@@ -29,11 +29,16 @@ app.use(proxy);
 
 const child = npmRunScript('webpack-dev-server --port 80', { stdio: 'pipe' });
 
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
+io.on('connection', api.onSocket);
+
 child.stdin.pipe(process.stdin);
 child.stdout.on('data', (data) => {
     // Filter out the "Project is running at localhost:80" message
     if(data.toString().indexOf('Project is running at') !== -1) {
-        app.listen(8000, function () {
+        http.listen(8000, function () {
             console.log(chalk.green('Started Server: http://localhost:8000/'));
         });
         return;
