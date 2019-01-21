@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
 import Avatar from '@material-ui/core/Avatar';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -16,23 +17,19 @@ class ExportPage extends Component {
         super(props);
         this.state = {
             activeStep: 0,
+            usbDevice: null,
+            form: null,
         };
-    
-        this.handleNext = () => {
-            this.setState(state => ({
-                activeStep: state.activeStep + 1,
-            }));
-        };
-    
-        this.handleBack = () => {
-            this.setState(state => ({
-                activeStep: state.activeStep - 1,
-            }));
-        };
-    
-        this.handleReset = () => {
+        this.handleSelectUSB = (item) => () => {
             this.setState({
-                activeStep: 0,
+                activeStep: this.state.activeStep + 1,
+                usbDevice: item
+            });
+        };
+        this.handleSelectForm = (item) => () => {
+            this.setState({
+                activeStep: this.state.activeStep + 1,
+                form: item
             });
         };
     }
@@ -45,57 +42,98 @@ class ExportPage extends Component {
                 <h1>Export Data to a USB Drive</h1>
                 <Stepper activeStep={activeStep} orientation="vertical">
                     <Step key={1}>
-                        <StepLabel>Choose a Device to Export To</StepLabel>
+                        <StepLabel>Choose a Device to Export To
+                            activeStep > 0 && <span>. <strong>Selected {this.state.usbDevice.path}</strong></span>
+                        }</StepLabel>
                         <StepContent>
                             <Typography>
                                 Choose a USB Drive to export to from this list. This list will refresh automatically within 10 seconds.
-                                <List component="nav">
-                                    {
-                                        this.props.usbData.map(item => {
-                                            let icon = 'question';
-                                            if (item.type === 'sdcard') icon = 'sd-card';
-                                            if (item.type === 'usb') icon = 'usb';
-                                            if (item.type === 'uas') icon = 'hdd';
+                            </Typography>
+                            <List component="nav">
+                                {
+                                    this.props.usbData.map(item => {
+                                        let icon = 'question';
+                                        if (item.type === 'sdcard') icon = 'sd-card';
+                                        if (item.type === 'usb') icon = 'usb';
+                                        if (item.type === 'uas') icon = 'hdd';
 
-                                            return <ListItem key={item.id} button>
-                                                <ListItemAvatar>
-                                                    <Avatar>
-                                                        <FontAwesome icon={icon} />
-                                                    </Avatar>
-                                                </ListItemAvatar>
-                                                <ListItemText
-                                                    primary={item.name}
-                                                    secondary={'Found on path ' + item.path}
-                                                />
-                                            </ListItem>;
-                                        })
-                                    }
-                                    {
-                                        this.props.usbData.length === 0 && <ListItem>
+                                        return <ListItem key={item.path} button onClick={this.handleSelectUSB(item)}>
                                             <ListItemAvatar>
                                                 <Avatar>
-                                                    <FontAwesome icon={'exclamation'} />
+                                                    <FontAwesome icon={icon} />
                                                 </Avatar>
                                             </ListItemAvatar>
                                             <ListItemText
-                                                primary={'No Storage Devices Detected'}
-                                                secondary={'Make sure it\'s plugged in, and try waiting up to 10 seconds.'}
+                                                primary={item.name}
+                                                secondary={'Found on path ' + item.path}
                                             />
-                                        </ListItem>
-                                    }
-                                </List>
-                            </Typography>
+                                        </ListItem>;
+                                    })
+                                }
+                                {
+                                    this.props.usbData.length === 0 && <ListItem>
+                                        <ListItemAvatar>
+                                            <Avatar>
+                                                <FontAwesome icon={'exclamation'} />
+                                            </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText
+                                            primary={'No Storage Devices Detected'}
+                                            secondary={'Make sure it\'s plugged in, and try waiting up to 10 seconds.'}
+                                        />
+                                    </ListItem>
+                                }
+                            </List>
                         </StepContent>
                     </Step>
-                    <Step key={2}>
+                    <Step>
                         <StepLabel>Choose a Form to Export the Data From</StepLabel>
                         <StepContent>
                             <Typography>
-                                etc
+                                Select a form in this list to export to the device on <strong>{this.state.usbDevice && this.state.usbDevice.path}</strong>.
                             </Typography>
+                            <List component="nav">
+                                {
+                                    this.props.formData.map(item => {
+                                        // Hidden forms only show hidden in production mode
+                                        if (item.hidden && $production) return;
+
+                                        let secondaryText;
+                                        if (!item.hidden && !item.description) {
+                                            secondaryText = undefined;
+                                        } else {
+                                            secondaryText = <span>{item.hidden && <strong>Hidden in Production Mode.{' '}</strong>}{item.description || ''}</span>;
+                                        }
+
+                                        return <ListItem key={item.id} button onClick={this.handleSelectForm(item)}>
+                                            <ListItemAvatar>
+                                                <Avatar>
+                                                    <FontAwesome icon={item.icon || 'file-alt'} />
+                                                </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText
+                                                primary={item.name}
+                                                secondary={secondaryText}
+                                            />
+                                        </ListItem>;
+                                    })
+                                }
+                                {
+                                    this.props.formData.length === 0 && <ListItem>
+                                        <ListItemAvatar>
+                                            <Avatar>
+                                                <FontAwesome icon={'exclamation'} />
+                                            </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText
+                                            primary={'No Forms found in the /forms folder!'}
+                                        />
+                                    </ListItem>
+                                }
+                            </List>
                         </StepContent>
                     </Step>
-                    <Step key={3}>
+                    <Step>
                         <StepLabel>Select an Export Format and File Name</StepLabel>
                         <StepContent>
                             <Typography>
@@ -103,7 +141,7 @@ class ExportPage extends Component {
                             </Typography>
                         </StepContent>
                     </Step>
-                    <Step key={3}>
+                    <Step>
                         <StepLabel>Finish Export</StepLabel>
                         <StepContent>
                             <Typography>
@@ -117,4 +155,4 @@ class ExportPage extends Component {
     }
 }
  
-export default ExportPage;
+export default hot(ExportPage);

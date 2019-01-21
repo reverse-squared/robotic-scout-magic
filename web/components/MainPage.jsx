@@ -38,6 +38,18 @@ class MainPage extends Component {
                         </ListItem>;
                     })
                 }
+                {
+                    this.props.formData.length === 0 && <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <FontAwesome icon={'exclamation'} />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText
+                            primary={'No Forms found in the /forms folder!'}
+                        />
+                    </ListItem>
+                }
             </List>
             <h1>View Data</h1>
             <p>
