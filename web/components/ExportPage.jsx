@@ -30,7 +30,7 @@ function getStepContent(step) {
             If you run into any problems with your ads, find out how to tell if
             they're running and how to resolve approval issues.`;
     case 3:
-        return "Lmao it's running now, and should be done like now.";
+        return 'Lmao it\'s running now, and should be done like now.';
     default:
         return 'Unknown step';
     }
