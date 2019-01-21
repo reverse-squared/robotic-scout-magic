@@ -30,12 +30,22 @@ api.get('/export-handlers', (req, res) => {
     res.send(exporthandler.GetExportTypeList());
 });
 
-api.get('/default-file-name/:formID/:handlerType', (req, res) => {
-    const name = exporthandler.getDefaultFilename(
-        form.getFormList().find(x => x.id === req.params.formID),
-        req.params.handlerType
-    );
-    res.send({ string: name });
+api.post('/run-export', (req, res) => {
+    
+    const form = req.body.form;
+    const type = req.body.type;
+    const output = req.body.output;
+    if(!(form && output && type)) {
+        return res.send({ success: false });
+    }
+
+    exporthandler.BeginExport(form, type, output).then(() => {
+        //     >:)    magic!
+        setTimeout(() => {
+            res.send({ success: true });
+        }, 4600 + Math.random() * 844);
+    });
+
 });
 
 module.exports = api;

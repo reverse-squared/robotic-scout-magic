@@ -31,18 +31,12 @@ function HandleSubmit(id, submission) {
     });
 }
 function BeginExport(form, type, output) {
-    
-}
-function getDefaultFilename(form, type) {
-    if (!GetExportHandler(type)) return 'unknown.txt';
-    if (!form) return 'unknown.txt';
-    return GetExportHandler(type).defaultFileName(form);
+    return Promise.resolve(1);
 }
 function GetExportTypeList() {
     return ExportHandlers;
 }
 function GetExportHandler(type) {
-    console.log(ExportHandlers);
     return ExportHandlers.find(x => x.type === type);
 }
 function GetSubmissionList() {
@@ -63,6 +57,5 @@ module.exports = {
     GetSubmissionCounts,
 
     BeginExport,
-    getDefaultFilename,
     GetExportTypeList
 };

@@ -19,6 +19,20 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FontAwesome from './FontAwesome';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { Link } from '@reach/router';
+
+const redButtonTheme = createMuiTheme({
+    palette: {
+        primary: { main: '#ef5350' }, // red
+    },
+    typography: {
+        useNextVariants: true,
+    },
+});
+
+const RedButton = (props) => <MuiThemeProvider theme={redButtonTheme}><Button color="primary" {...props} /></MuiThemeProvider>
 
 class ExportPage extends Component {
     constructor(props) {
@@ -77,12 +91,38 @@ class ExportPage extends Component {
             this.setState({
                 activeStep: this.state.activeStep + 1,
             });
-            // send the magical magic
+            fetch('/run-export', {
+                method: 'POST',
+                body: JSON.stringify({
+                    form: this.state.form,
+                    type: this.state.selectedFormat,
+                    output: this.state.usbDevice.path + 'RSM_Data/' + this.state.exportFilename + '.' + this.state.exportFormats.find(x => x.type === this.state.selectedFormat).extension
+                }),
+                headers: {'Content-Type': 'application/json'}
+            }).then(() => {
+                // lmao ignore response if it failed
+                this.setState({
+                    activeStep: this.state.activeStep + 1,
+                });
+            });
         };
+        this.handleReset = () => {
+            this.setState({
+                activeStep: 0,
+                usbDevice: null,
+                form: null,
+                usbDeviceRemoved: null,
+                
+                formChooseEmptyOpen: false,
+                exportFormats: [],
+
+                selectedFormat: null,
+                exportFilename: '',
+            });
+        }
     }
     componentDidMount() {
         window.ExitWithoutSave = () => this.state.activeStep > 0;
-        
         fetch('/export-handlers').then(r => r.json()).then(exportFormats => {
             this.setState({ exportFormats });
         });
@@ -91,7 +131,7 @@ class ExportPage extends Component {
         window.ExitWithoutSave = null;        
     }
     componentDidUpdate() {
-        if(this.state.usbDevice) {
+        if(this.state.usbDevice && this.state.activeStep < 4) {
             if (this.props.usbData.find(dev => {
                 return this.state.usbDevice.name === dev.name
                     && this.state.usbDevice.type === dev.type
@@ -262,15 +302,55 @@ class ExportPage extends Component {
                                 variant="contained"
                                 color="primary"
                                 disabled={!this.state.exportFilename}
+                                onClick={this.handleFinishStep3}
                             >Continue</Button>
                         </StepContent>
                     </Step>
                     <Step>
-                        <StepLabel>Finish Export</StepLabel>
+                        <StepLabel>Exporting</StepLabel>
                         <StepContent>
                             <Typography>
-                                etc
+                                Exporting your form, this should take a few seconds.
                             </Typography>
+                            <br/>
+                            <LinearProgress />
+                        </StepContent>
+                    </Step>
+                    <Step>
+                        <StepLabel>Extra Actions</StepLabel>
+                        <StepContent>
+                            <Typography>
+                                Your form has been exported to the selected device at
+                                {' '}
+                                <strong>
+                                    {this.state.usbDevice && this.state.usbDevice.path}
+                                    RSM_Data\
+                                    {this.state.exportFilename}
+                                    .
+                                    {this.state.selectedFormat &&
+                                        this.state.exportFormats
+                                            .find(x => x.type === this.state.selectedFormat)
+                                            .extension
+                                    }
+                                </strong>
+                            </Typography>
+                            <br/>
+                            <RedButton
+                                variant="contained"
+                            >Delete Data From Server</RedButton>
+                            <br/><br/>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={this.handleReset}
+                            >Export another form</Button>
+                            <br/><br/>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                component={Link}
+                                to="/"
+                            >Go to the Main Page</Button>
                         </StepContent>
                     </Step>
                 </Stepper>
@@ -294,10 +374,10 @@ class ExportPage extends Component {
                             Select This Form
                         </Button>
                     </DialogActions>
-                </Dialog>;
+                </Dialog>
             </div>
         );
     }
 }
- 
+
 export default hot(ExportPage);
