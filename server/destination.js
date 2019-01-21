@@ -40,8 +40,9 @@ function getExportDestinations() {
             if (item.isUSB) type = 'usb';
             if (item.isCard) type = 'sdcard';
             
-            if (item.name.match(/SD($|HC)/g)) type = 'sdcard';
-            else if (item.name.match(/USB/g) || item.name.toLowerCase().match(/EXTERNAL/g)) type = 'hdd';
+            let name = item.description;
+            if (name.match(/SD($|HC)/g)) type = 'sdcard';
+            else if (name.match(/USB/g) && name.toUpperCase().match(/EXTERNAL/g)) type = 'hdd';
             
             return item.mountpoints.map(({ path }) => ({
                 name: item.description,

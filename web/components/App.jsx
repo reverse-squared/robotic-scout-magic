@@ -57,14 +57,11 @@ class App extends Component {
                 <AppBar formData={formData} />
                 <div className='container containsRouter'>
                     <Router>
-                        <MainPage path='/' formData={formData} />
-                        <ExportPage path='/export' formData={formData} usbData={usbData} />
-                        <FormPage path='/form/:formID' formData={formData} handleFormSubmit={this.handleFormSubmit} />
+                        <MainPage path='/' {...this.props} />
+                        <ExportPage path='/export' {...this.props} />
+                        <FormPage path='/form/:formID' {...this.props} handleFormSubmit={this.handleFormSubmit} />
                         <NotFoundPage default />
                     </Router>
-                </div>
-                <div>
-                    {JSON.stringify(this.props.usbData)}
                 </div>
                 <Snackbar
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

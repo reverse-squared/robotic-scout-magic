@@ -11,6 +11,8 @@ import Typography from '@material-ui/core/Typography';
 
 import SVGBack from '@material-ui/icons/ArrowBack';
 
+import Package from '../../package.json';
+
 const DialogLoader = Loadable({
     loader: () => import('./AppBarExitDialog').then(Dialog => {
         return Dialog.default;
@@ -76,7 +78,7 @@ class AppBar extends Component {
                                 </IconButton>
                             }
                             <Typography variant='h6' color='inherit'>
-                                Robotic Scout Magic
+                                {Package.displayName}{$production ? '' : ' - Development Build'}
                             </Typography>
                         </Toolbar>
                     </MUIAppBar>

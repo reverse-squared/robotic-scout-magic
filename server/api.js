@@ -21,9 +21,16 @@ api.get('/usb.json', (req, res) => {
 api.post('/submit/:formID', (req, res) => {
     exporthandler.HandleSubmit(req.params.formID, req.body).then(x => {
         res.send({ success: true });
+        
+        exporthandler.GetSubmissionCounts().then(counts => {
+            sockets.forEach(socket => socket.emit('update:submitCounts', counts));
+        });
     }).catch(x => {
         res.send({ success: false });
     });
+});
+api.get('/submission-count', (req, res) => {
+    exporthandler.GetSubmissionCounts().then(counts => res.send(counts));
 });
 
 module.exports = api;
@@ -38,6 +45,10 @@ module.exports.onSocket = (socket) => {
     
     const data = usb.getExportDestinations();
     socket.emit('update:usbData', data);
+    exporthandler.GetSubmissionCounts().then(counts => {
+        sockets.forEach(socket => socket.emit('update:submitCounts', counts));
+    });
+
 };
 usb.onUSBChange(() => {
     const data = usb.getExportDestinations();

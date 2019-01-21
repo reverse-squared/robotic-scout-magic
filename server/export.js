@@ -26,9 +26,18 @@ function BeginExport(form, type, output) {
 function GetSubmissionList() {
     return fs.readJSON(SUBMISSION_FILE);    
 }
+function GetSubmissionCounts() {
+    return GetSubmissionList().then(json => {
+        return Object.keys(json).reduce((obj, name) => {
+            obj[name] = json[name] ? json[name].length : 0;
+            return obj;
+        },{});
+    });
+}
 
 module.exports = {
     HandleSubmit,
     BeginExport,
     GetSubmissionList,
+    GetSubmissionCounts
 };

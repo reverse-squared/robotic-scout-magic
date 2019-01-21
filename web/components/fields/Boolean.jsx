@@ -4,9 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
-// var trueColor = '#4caf50';
-// var falseColor = '#f44336';
-
 const styles = theme => ({
     toggleContainer: {
         paddingLeft: '0.5em',
@@ -24,14 +21,17 @@ const styles = theme => ({
         background: '#FAFAFA'
     },
     button_selected_true: {
-        background: '#4caf50' + '!important',
+        background: 'var(--true)!important',
         color: 'white!important',
     },
     button_selected_false: {
-        background: '#f44336' + '!important',
+        background: 'var(--false)!important',
         color: 'white!important',
     }
 });
+
+const default_true_color = '#4caf50';
+const default_false_color = '#f44336';
 
 class Boolean extends Component {
     constructor(props) {
@@ -47,11 +47,12 @@ class Boolean extends Component {
         const value = this.props.value || String(config.default) || 'null';
         const btnClassesTrue = { root: classes.button, selected: classes.button_selected_true };
         const btnClassesFalse = { root: classes.button, selected: classes.button_selected_false };
+
         return <div style={{ paddingTop: '0.5em' }}>
             <p>
                 {config.label}
             </p>
-            <div className={classes.toggleContainer}>
+            <div className={classes.toggleContainer} style={{ '--true': (config.trueColor || default_true_color), '--false': (config.falseColor || default_false_color)}}>
                 <ToggleButtonGroup value={value} exclusive onChange={this.handleChange}>
                     <ToggleButton classes={btnClassesTrue} value="true">
                         {config.trueValue || 'Yes'}
