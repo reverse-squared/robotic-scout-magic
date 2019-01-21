@@ -36,10 +36,13 @@ function getExportDestinations() {
     return getCachedUSBList()
         .filter(item => !item.isSystem && item.isRemovable)
         .map(item => {
-            let type = 'Unknown';
-            if (item.isCard) type = 'sdcard';
+            let type = 'unknown';
             if (item.isUSB) type = 'usb';
-            if (item.isUAS) type = 'uas';
+            if (item.isCard) type = 'sdcard';
+            
+            if (item.name.match(/SD($|HC)/g)) type = 'sdcard';
+            else if (item.name.match(/USB/g) || item.name.toLowerCase().match(/EXTERNAL/g)) type = 'hdd';
+            
             return item.mountpoints.map(({ path }) => ({
                 name: item.description,
                 type: type,
