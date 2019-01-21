@@ -64,12 +64,9 @@
             "label": "Can the robot even climb to level three. If you are not sure, select No."
         },
         {
-            "type": "boolean",
-            "label": "Was it a ramp bot?"
-        },
-        {
             "type": "text-area",
-            "label": "Other notes."
+            "label": "Other notes.",
+            "helperText": "Anything else the robot did or has. Did it have a ramp? Did it defend well? Was the transition from the Sandstorm to Teleop fast?"
         }
     ]
 }

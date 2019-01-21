@@ -9,6 +9,8 @@ Fields have a spcific data type with properties to customize it.
 |  boolean  |              Two checkboxes with true and false labels. Only one is selectable.             |
 |  checkbox |                         A list of checkboxes with customizable text.                        |
 |  counter  | A number with two buttons next to it with the jobs of increasing and decreasing the number. |
+|    date   |                            A simple field for selecting the date.                           |
+|  dropdown |                          A list of items, selectable by a dropdown.                         |
 |   header  |                     Large-ish text for defining sections of form fields.                    |
 |   number  |                     A simple text box that only accepts a number input.                     |
 |   radio   |                       A list of radio buttons with customizable text.                       |

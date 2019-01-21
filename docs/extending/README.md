@@ -13,7 +13,7 @@ RSM is created using [React](https://reactjs.org/) and [Material UI](https://mat
 4. Run `npm start` or `node .` to start the server and access the hot reloading page at `http://localhost:8000/`.
 
 > [!NOTE]
-> This is very similar to the produciton server, but the code produced in development mode is not optimized and some things are different. For example, forms marked as hidden will always show in this mode.
+> This is very similar to the production server, but the code produced in development mode is not optimized and some things are different. For example, forms marked as hidden will always show in this mode.
 
 ## Overview of the Code
 Coming soon!
