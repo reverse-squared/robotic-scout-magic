@@ -7,7 +7,8 @@
     "items": [
         {
             "type": "number",
-            "label": "The Team / Robot Number"
+            "label": "The Team / Robot Number",
+            "exportLabel": "Team Number"
         },
         {
             "type": "header",

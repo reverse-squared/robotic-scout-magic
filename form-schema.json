@@ -39,9 +39,28 @@
                     }
                 },
                 "required": [
-                    "label"
+                    "label", "type"
                 ],
                 "anyOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "not": {
+                                        "enum": ["header"]
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "exportLabel": {
+                                    "type": "string",
+                                    "description": "A short description which will be used when the form is exported or viewed in a table."
+                                }
+                            }
+                        }
+                    },
                     {
                         "if": {
                             "properties": {
@@ -138,6 +157,14 @@
                                 "falseValue": {
                                     "type": "string",
                                     "description": "Change the label of the false button, default 'False'"
+                                },
+                                "trueColor": {
+                                    "type": "string",
+                                    "description": "HEX color of the true button when chosen, default shade of green."
+                                },
+                                "falseColor": {
+                                    "type": "string",
+                                    "description": "HEX color of the false button when chosen, default a shade of red."
                                 }
                             }
                         }
