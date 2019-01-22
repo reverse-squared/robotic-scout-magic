@@ -18,17 +18,17 @@ Fields have a spcific data type with properties to customize it.
 |    text   |                              A text box for short text inputs.                              |
 
 **Field Pages**
-- [Boolean](field/boolean.md)
-- [Checkbox](field/checkbox.md)
-- [Counter](field/counter.md)
-- [Date](field/date.md)
-- [Dropdown](field/dropdown.md)
-- [Header](field/header.md)
-- [Number](field/number.md)
-- [Radio](field/radio.md)
-- [Text Area](field/text-area.md)
-- [Text](field/text.md)
-- [Time](field/time.md)
+- [Boolean](fields/boolean.md)
+- [Checkbox](fields/checkbox.md)
+- [Counter](fields/counter.md)
+- [Date](fields/date.md)
+- [Dropdown](fields/dropdown.md)
+- [Header](fields/header.md)
+- [Number](fields/number.md)
+- [Radio](fields/radio.md)
+- [Text Area](fields/text-area.md)
+- [Text](fields/text.md)
+- [Time](fields/time.md)
 
 > [!NOTE]
 > In the field pages, optional properties are represented by the property name, followed by a question mark. All optional properties have a default value and are displayed in the description column.
