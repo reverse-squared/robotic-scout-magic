@@ -13,6 +13,9 @@ api.use(require('body-parser').json());
 api.get('/all-forms', (req, res) => {
     res.send(form.getFormList());
 });
+api.get('/submission-data/:formID', async(req, res) => {
+    res.send((await exporthandler.GetSubmissionList())[req.params.formID] || []);
+});
 
 api.post('/submit/:formID', (req, res) => {
     exporthandler.HandleSubmit(req.params.formID, req.body).then(x => {

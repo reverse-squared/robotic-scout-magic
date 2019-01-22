@@ -19,6 +19,7 @@ const history = createHistory(hashSource);
 // Loadable Pages
 const MainPage = PageLoadable(() => import('./MainPage'));
 const FormPage = PageLoadable(() => import('./FormPage'));
+const ViewPage = PageLoadable(() => import('./ViewPage'));
 const ExportPage = PageLoadable(() => import('./ExportPage'));
 const NotFoundPage = PageLoadable(() => import('./NotFoundPage'));
 
@@ -59,6 +60,7 @@ class App extends Component {
                     <Router>
                         <MainPage path='/' {...this.props} />
                         <ExportPage path='/export' {...this.props} />
+                        <ViewPage path='/view/:formID' {...this.props} />
                         <FormPage path='/form/:formID' {...this.props} handleFormSubmit={this.handleFormSubmit} />
                         <NotFoundPage default />
                     </Router>
