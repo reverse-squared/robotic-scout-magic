@@ -6,6 +6,7 @@ A simple field for selecting the time.
 | Property |  Type  |               Description               |
 |:--------:|:------:|:---------------------------------------:|
 |   label  | String | The text display above the time picker. |
+| exportLabel? |  String | A short description which will be used when the form is exported or viewed in a table. |
 
 ## Usage
 ```json

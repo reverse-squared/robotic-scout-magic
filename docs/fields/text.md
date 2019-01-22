@@ -8,6 +8,7 @@ A small text field for entering short amount text. For larger amounts of text, u
 |:-----------:|:------:|:-----------------------------------------------------------------------:|
 |    label    | String |                   The text to display on the textbox.                   |
 | helperText? | String | The text to display below the textbox to help users know what to enter. |
+| exportLabel? |  String | A short description which will be used when the form is exported or viewed in a table. |
 
 ## Usage
 An example form with two text boxes.

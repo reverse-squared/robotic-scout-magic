@@ -57,10 +57,7 @@ class MainPage extends Component {
                     </ListItem>
                 }
             </List>
-            <h1>View Data</h1>
-            <p>
-                
-            </p>
+            
             <h1>Export Data</h1>
             <p>
                 <Button

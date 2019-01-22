@@ -3,12 +3,18 @@ A simple Yes / No input.
 
 ## Properties
 
-|   Property  |   Type  |                    Description                    |
-|:-----------:|:-------:|:-------------------------------------------------:|
-|    label    |  String |  The text to display above the boolean selection. |
-|   default?  | Boolean |    The default selected value. (Default: None)    |
-|  trueValue? |  String |  The label of the true button. (Default: "True")  |
-| falseValue? |  String | The label of the false button. (Default: "False") |
+|   Property   |   Type  |                                       Description                                      |
+|:------------:|:-------:|:--------------------------------------------------------------------------------------:|
+|     label    |  String |                    The text to display above the boolean selection.                    |
+|   default?   | Boolean |                       The default selected value. (Default: None)                      |
+|  trueValue?  |  String |                     The label of the true button. (Default: "True")                    |
+|  falseValue? |  String |                    The label of the false button. (Default: "False")                   |
+|  trueColor?  |   HEX   |                    The color of the true button. (Default: #4caf50)                    |
+|  falseColor? |   HEX   |                    The color of the false button. (Default: #f44336)                   |
+| exportLabel? |  String | A short description which will be used when the form is exported or viewed in a table. |
+
+> [!WARNING]
+> Be sure to add a `#` before the hex value.
 
 ## Usage
 An example form with a boolean field.

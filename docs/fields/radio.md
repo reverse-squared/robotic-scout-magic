@@ -8,6 +8,7 @@ A list of items, selectable by radio inputs, where only one is selectable.
 |   label  | String |            The text to display above the selection.            |
 |  options |  Array |    An array of strings representing each possible selection.   |
 | default? | Number | The index of the default selected radio input. (Default: None) |
+| exportLabel? |  String | A short description which will be used when the form is exported or viewed in a table. |
 
 ## Usage
 An example form with a radio field.

@@ -10,6 +10,7 @@ A number with two buttons to increase it's value, and decrease. Great for counti
 |   min?   | Number |       The minimum number the counter can count down to. (Default: 0)       |
 |   max?   | Number |    The maximum number the counter can count up to. (Default: No limit.)    |
 |   step?  | Number | The number to increase or decrease the count by when changed. (Default: 1) |
+| exportLabel? |  String | A short description which will be used when the form is exported or viewed in a table. |
 
 ## Usage
 An example form with a number input.

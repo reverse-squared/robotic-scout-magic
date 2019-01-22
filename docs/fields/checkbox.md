@@ -3,10 +3,11 @@ A checkbox, with a label to determine a yes or no value to a question. Use multi
 
 ## Properties
 
-| Property |   Type  |                          Description                         |
-|:--------:|:-------:|:------------------------------------------------------------:|
-|   label  |  String |       The text to display above the boolean selection.       |
-|  default | Boolean | Determines whether or not the checkbox should start checked. |
+|  Property |   Type  |                          Description                         |
+|:---------:|:-------:|:------------------------------------------------------------:|
+|   label   |  String |       The text to display above the boolean selection.       |
+|  default? | Boolean | Determines whether or not the checkbox should start checked. |
+| exportLabel? |  String | A short description which will be used when the form is exported or viewed in a table. |
 
 ## Usage
 An example form with a checkbox fields.
