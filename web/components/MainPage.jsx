@@ -35,6 +35,12 @@ class MainPage extends Component {
                                 primary={item.name}
                                 secondary={secondaryText}
                             />
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                component={Link}
+                                to={'/view/' + item.id}
+                            >View Form Data</Button>
                         </ListItem>;
                     })
                 }
@@ -53,7 +59,7 @@ class MainPage extends Component {
             </List>
             <h1>View Data</h1>
             <p>
-                Coming Soon
+                
             </p>
             <h1>Export Data</h1>
             <p>

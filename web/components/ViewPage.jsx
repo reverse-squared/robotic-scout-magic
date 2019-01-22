@@ -53,6 +53,7 @@ class ViewPage extends Component {
             </div>;
         }
 
+        // FIXME: Detect if 0.
         if(submissions) {
             const headers = form.items.filter(x => x.type !== 'header').map(x => x.label);
             return <div>
@@ -79,7 +80,7 @@ class ViewPage extends Component {
                     </Table>
                 </Paper>
             </div>;
-        } else {
+        }else {
             return <div>
                 <p>No data found! Go out and get some data!</p>
             </div>;
