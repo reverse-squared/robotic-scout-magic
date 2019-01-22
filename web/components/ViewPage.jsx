@@ -53,10 +53,8 @@ class ViewPage extends Component {
             </div>;
         }
 
-        // FIXME: Detect if 0.
-        // TODO: Add exportLabel support.
-        if(submissions) {
-            const headers = form.items.filter(x => x.type !== 'header').map(x => x.label);
+        if(submissions && submissions.length > 0) {
+            const headers = form.items.filter(x => x.type !== 'header').map(x => x.exportLabel || x.label);
             return <div>
                 <h1>{form.name}</h1>
                 <Paper>
