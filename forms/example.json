@@ -61,9 +61,12 @@
         },
         {
             "type": "boolean",
-            "label": "Different Labels",
+            "label": "Different Labels and Colors",
+            "trueValue": "Purple",
             "falseValue": "Green",
-            "trueValue": "Purple"
+
+            "trueColor": "purple",
+            "falseColor": "green"
         },
 
         {

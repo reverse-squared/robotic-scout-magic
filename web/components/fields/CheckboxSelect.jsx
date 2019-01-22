@@ -14,7 +14,7 @@ class CheckboxSelect extends Component {
 
     render() {
         const config = this.props.config;
-        const value = this.props.value || config.default || false;
+        const value = this.props.value !== undefined ? this.props.value : (config.default || false);
 
         return <div style={{ paddingTop: '25px' }}>
             <FormControlLabel

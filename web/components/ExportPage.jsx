@@ -114,7 +114,6 @@ class ExportPage extends Component {
                 usbDeviceRemoved: null,
                 
                 formChooseEmptyOpen: false,
-                exportFormats: [],
 
                 selectedFormat: null,
                 exportFilename: '',

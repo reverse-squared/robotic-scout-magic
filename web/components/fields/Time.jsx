@@ -29,6 +29,7 @@ class Time extends Component {
                             label="Select Time"
                             value={value}
                             onChange={this.handleChange}
+                            variant='outlined'
                         />
                     </Grid>
                 </MuiPickersUtilsProvider>
