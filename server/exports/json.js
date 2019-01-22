@@ -1,5 +1,5 @@
 // JSON Export
-function ExportExcel(formData, submissions) {
+function ExportJSON(formData, submissions) {
     return JSON.stringify({
         name: formData.name,
         description: formData.description, 
@@ -12,8 +12,8 @@ function ExportExcel(formData, submissions) {
 module.exports = {
     name: 'JSON',
     description: 'JavaScript Object Notation, easy to parse with other programs.',
-    icon: 'js-sqaure',
+    icon: 'js',
     
-    handler: ExportExcel,
+    handler: ExportJSON,
     extension: 'json',
 };

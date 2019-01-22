@@ -3,8 +3,9 @@ const XLSX = require('xlsx');
 const fs = require('fs');
 
 function ExportExcel(formData, submissions) {
+    const labels = formData.items.map(item => item.label);
     const workbook = XLSX.utils.book_new();
-    const sheet = XLSX.utils.aoa_to_sheet(submissions);
+    const sheet = XLSX.utils.aoa_to_sheet([labels, ...submissions]);
     XLSX.utils.book_append_sheet(workbook, sheet, formData.name);
 
     XLSX.writeFile(workbook, './export.xlsx');
@@ -16,7 +17,7 @@ function ExportExcel(formData, submissions) {
 // Export Metadata
 module.exports = {
     name: 'Microsoft Excel',
-    description: 'something cool program etcetc',
+    description: 'Microsoft\'s Spreadsheet Editor, same format as the CSV',
     icon: 'file-excel',
     
     handler: ExportExcel,
