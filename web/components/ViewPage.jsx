@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Loader } from './Loader';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 class ViewPage extends Component {
     constructor(props) {
@@ -51,23 +57,32 @@ class ViewPage extends Component {
             const headers = form.items.filter(x => x.type !== 'header').map(x => x.label);
             return <div>
                 <h1>{form.name}</h1>
-                <table>
-                    <tr>
-                        {
-                            headers.map(label => <th>{label}</th>)
-                        }
-                    </tr>
-                    {
-                        submissions.map(submission => <tr>
+                <Paper>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                {
+                                    headers.map(label => <TableCell align="right">{label}</TableCell>)
+                                }
+                            </TableRow>
+                        </TableHead>
+                        
+                        <TableBody>
                             {
-                                submission.map(label => <td>{label}</td>)
+                                submissions.map(submission => <tr>
+                                    {
+                                        submission.map(label => <TableCell align="right">{label}</TableCell>)
+                                    }
+                                </tr>)
                             }
-                        </tr>)
-                    }
-                </table>
+                        </TableBody>
+                    </Table>
+                </Paper>
             </div>;
         } else {
-            return <Loader />;
+            return <div>
+                <p>No data found! Go out and get some data!</p>
+            </div>;
         }
     }
 }
