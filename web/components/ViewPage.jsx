@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader/root';
 import { Loader } from './Loader';
 
 class ViewPage extends Component {
@@ -71,4 +72,4 @@ class ViewPage extends Component {
     }
 }
  
-export default ViewPage;
+export default hot(ViewPage);
