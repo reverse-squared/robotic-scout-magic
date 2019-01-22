@@ -2,7 +2,6 @@
 // and other things.
 import React, { Component, Fragment } from 'react';
 import { Router, createHistory, LocationProvider, Location } from '@reach/router';
-import { hot } from 'react-hot-loader/root';
 import Theme from './Theme';
 import createHashSource from 'hash-source';
 import { AppLoadable, PageLoadable } from './Loader';
@@ -79,8 +78,6 @@ class App extends Component {
 
 // Use the AppLoadable to create a loading screen for loading
 // the form data.
-const PreLoadedApp = () => <Theme>
-    {React.createElement(AppLoadable(App)) }
+export default () => <Theme>
+    {React.createElement(AppLoadable(App))}
 </Theme>;
- 
-export default hot(PreLoadedApp);
