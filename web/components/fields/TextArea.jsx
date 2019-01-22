@@ -32,7 +32,7 @@ class TextArea extends Component {
                     classes
                 }}
                 inputProps={{
-                    classes
+                    className: classes.root
                 }}
                 label={config.label}
                 value={value}

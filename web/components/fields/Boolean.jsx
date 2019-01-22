@@ -38,6 +38,7 @@ class Boolean extends Component {
         super(props);
 
         this.handleChange = (event, value) => {
+            if(value === null) return;
             this.props.onChange(value);
         };
     }   
