@@ -36,8 +36,6 @@ function HandleSubmit(id, submission) {
 async function BeginExport(form, type, output) {
     const allSubmissions = await GetSubmissionList();
     const submissions = allSubmissions[form] || [];
-    console.log(form);
-    console.log(submissions);
     const formData = deepcopy(forms.getFormList().find(x => x.id === form));
     
     formData.items = formData.items.filter(x => x.type !== 'header');
