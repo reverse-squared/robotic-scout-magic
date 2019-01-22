@@ -23,11 +23,13 @@
         },
         {
             "type": "counter",
-            "label": "How many cubes were scored on the scale during the autonomous period?"
+            "label": "How many cubes were scored on the scale during the autonomous period?",
+            "exportLabel": "Scale Cubes Scored in Auton"
         },
         {
             "type": "counter",
-            "label": "How many cubes were scored on the switch during the autonomous period?"
+            "label": "How many cubes were scored on the switch during the autonomous period?",
+            "exportLabel": "Switc Cubes Scored in Auton"
         },
         {
             "type": "header",
@@ -35,15 +37,18 @@
         },
         {
             "type": "counter",
-            "label": "How many cubes were scored on the scale?"
+            "label": "How many cubes were scored on the scale?",
+            "exportLabel": "Scale Cubes Scored"
         },
         {
             "type": "counter",
-            "label": "How many cubes were scored on the switch?"
+            "label": "How many cubes were scored on the switch?",
+            "exportLabel": "Switch Cubes Scored"
         },
         {
             "type": "counter",
-            "label": "How many cubes were scored in the exchange?"
+            "label": "How many cubes were scored in the exchange?",
+            "exportLabel": "Exchange Cubes Scored"
         },
         {
             "type": "header",
@@ -56,11 +61,13 @@
                 "The robot climbed.",
                 "The robot ended on the mat.",
                 "The robot didn't climb or end on the mat."
-            ]
+            ],
+            "exportLabel": "Where Was the Robot At the End?"
         },
         {
             "type": "text-area",
-            "label": "Other notes."
+            "label": "Other notes.",
+            "exportLabel": "Notes"
         }
     ]
 }

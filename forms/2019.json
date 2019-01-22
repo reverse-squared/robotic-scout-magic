@@ -7,7 +7,8 @@
     "items": [
         {
             "type": "number",
-            "label": "The Team / Robot Number"
+            "label": "The Team / Robot Number",
+            "exportLabel": "Team Number"
         },
         {
             "type": "header",
@@ -19,20 +20,24 @@
             "options": [
                 "Hatch Panel",
                 "Cargo"
-            ]
+            ],
+            "exportLabel": "Starting Game Piece"
         },
         {
             "type": "boolean",
             "label": "Did the robot leave the HAB?",
-            "default": false
+            "default": false,
+            "exportLabel": "Left HAB During Sandstorm?"
         },
         {
             "type": "counter",
-            "label": "How many Hatch Panels were scored during the sandstorm period?"
+            "label": "How many Hatch Panels were scored during the sandstorm period?",
+            "exportLabel": "Hatch Panels Scored in Sandstorm"
         },
         {
             "type": "counter",
-            "label": "How much Cargo was scored during the sandstorm period?"
+            "label": "How much Cargo was scored during the sandstorm period?",
+            "exportLabel": "Cargo Stored in Sandstorm"
         },
         {
             "type": "header",
@@ -40,15 +45,18 @@
         },
         {
             "type": "counter",
-            "label": "How many Hatch Panels were scored?"
+            "label": "How many Hatch Panels were scored?",
+            "exportLabel": "Hatch Panels Scored"
         },
         {
             "type": "counter",
-            "label": "How much Cargo was scored?"
+            "label": "How much Cargo was scored?",
+            "exportLabel": "Cargo Scored"
         },
         {
             "type": "boolean",
-            "label": "Can the robot pick hatch panels off the ground?"
+            "label": "Can the robot pick hatch panels off the ground?",
+            "exportLabel": "Can Pick Hatch Panels Off Ground?"
         },
         {
             "type": "header",
@@ -57,16 +65,19 @@
         {
             "type": "radio",
             "label": "What level did the robot climb to at the end of the match?",
-            "options": ["0 (Wasn't in the HAB)", "1", "2", "3"]
+            "options": ["0 (Wasn't in the HAB)", "1", "2", "3"],
+            "exportLabel": "Level Climbed"
         },
         {
             "type": "boolean",
-            "label": "Can the robot even climb to level three. If you are not sure, select No."
+            "label": "Can the robot even climb to level three. If you are not sure, select No.",
+            "exportLabel": "Could the Robot Climb to Level 3?"
         },
         {
             "type": "text-area",
             "label": "Other notes.",
-            "helperText": "Anything else the robot did or has. Did it have a ramp? Did it defend well? Was the transition from the Sandstorm to Teleop fast?"
+            "helperText": "Anything else the robot did or has. Did it have a ramp? Did it defend well? Was the transition from the Sandstorm to Teleop fast?",
+            "exportLabel": "Notes"
         }
     ]
 }
