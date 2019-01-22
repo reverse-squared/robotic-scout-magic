@@ -94,7 +94,7 @@ class ExportPage extends Component {
             fetch('/run-export', {
                 method: 'POST',
                 body: JSON.stringify({
-                    form: this.state.form,
+                    form: this.state.form.id,
                     type: this.state.selectedFormat,
                     output: this.state.usbDevice.path + 'RSM_Data/' + this.state.exportFilename + '.' + this.state.exportFormats.find(x => x.type === this.state.selectedFormat).extension
                 }),

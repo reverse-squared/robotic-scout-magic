@@ -2,6 +2,7 @@
 // export handler.
 const fs = require('fs-extra');
 const path = require('path');
+const forms = require('./form');
 
 const DATA_DIR = path.join(__dirname, '../.data');
 const SUBMISSION_FILE = path.join(__dirname, '../.data/.submissions.json');
@@ -10,6 +11,8 @@ fs.ensureDirSync(DATA_DIR);
 if (!fs.existsSync(SUBMISSION_FILE)) {
     fs.writeFileSync(SUBMISSION_FILE, '{}');
 }
+
+function deepcopy(obj) {return JSON.parse(JSON.stringify(obj));}
 
 const ExportHandlers = fs.readdirSync(path.join(__dirname, 'exports')).map(name => {
     const mod = require('./exports/' + name);
@@ -30,8 +33,22 @@ function HandleSubmit(id, submission) {
         return fs.writeJSON(SUBMISSION_FILE, data);
     });
 }
-function BeginExport(form, type, output) {
-    return Promise.resolve(1);
+async function BeginExport(form, type, output) {
+    const allSubmissions = await GetSubmissionList();
+    const submissions = allSubmissions[form] || [];
+    console.log(form);
+    console.log(submissions);
+    const formData = deepcopy(forms.getFormList().find(x => x.id === form));
+    
+    formData.items = formData.items.filter(x => x.type !== 'header');
+
+    // handler may be async so lets await it (await is a no op when used on non promises)
+    const outputContent = await GetExportHandler(type).handler(formData, submissions);
+
+    await fs.ensureDir(path.dirname(output));
+    await fs.writeFile(output, outputContent);
+    
+    return;
 }
 function GetExportTypeList() {
     return ExportHandlers;

@@ -6,7 +6,8 @@ function CSVString(string) {
 function ExportCSV(formData, submissions) {
     const labels = formData.items.map(item => item.label);
     let csv = labels.map(CSVString).join(',');
-    csv += '\n' + submissions.map(submission => submission.items.map(CSVString).join(',')).join('\n');
+    if(submissions.length > 1)
+        csv += '\n' + submissions.map(submission => submission.map(CSVString).join(',')).join('\n');
     return csv;
 }
 

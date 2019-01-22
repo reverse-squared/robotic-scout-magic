@@ -43,7 +43,7 @@ api.post('/run-export', (req, res) => {
         //     >:)    magic!
         setTimeout(() => {
             res.send({ success: true });
-        }, 4600 + Math.random() * 844);
+        }, 1150 + Math.random() * 844);
     });
 
 });
