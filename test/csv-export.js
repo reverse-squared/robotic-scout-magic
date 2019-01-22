@@ -17,7 +17,7 @@ describe('CSV', function () {
                     }
                 ]
             }, [
-                { items: ['Dave', '912'] },
+                ['Dave', '912'],
             ]);
             assert.strictEqual(res, `"Name","Fav Number"
 "Dave","912"`);
@@ -35,9 +35,9 @@ describe('CSV', function () {
                     }
                 ]
             }, [
-                { items: ['Dave', '912'] },
-                { items: ['Hunter', '24'] },
-                { items: ['The Robot', '1'] },
+                ['Dave', '912'],
+                ['Hunter', '24'],
+                ['The Robot', '1'],
             ]);
             assert.strictEqual(res, `"Name","Fav Number"
 "Dave","912"
@@ -57,8 +57,8 @@ describe('CSV', function () {
                     }
                 ]
             }, [
-                { items: ['Using "Quotes"', 'And, Commas!'] },
-                { items: ['Using "Quotes" Again', 'And, Commas, Again!'] },
+                ['Using "Quotes"', 'And, Commas!'],
+                ['Using "Quotes" Again', 'And, Commas, Again!'],
             ]);
             assert.strictEqual(res, `"""Quoted Text""","Comma, Test"
 "Using ""Quotes""","And, Commas!"
