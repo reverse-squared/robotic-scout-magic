@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
 
@@ -8,6 +14,9 @@ import FontAwesome from './FontAwesome';
 class MainPage extends Component {
     constructor(props) {
         super(props);
+        this.handleGoToForm = (formID) => () => {
+            this.props.navigate('/form/' + formID);
+        };
     }
     render() { 
         return <div>
@@ -25,7 +34,7 @@ class MainPage extends Component {
                             secondaryText = <span>{item.hidden && <strong>Hidden in Production Mode.{' '}</strong>}{item.description || ''}</span>;
                         }
                         
-                        return <ListItem key={item.id} button component={Link} to={'/form/' + item.id}>
+                        return <ListItem key={item.id} button onClick={this.handleGoToForm(item.id)}>
                             <ListItemAvatar>
                                 <Avatar>
                                     <FontAwesome icon={item.icon || 'file-alt'} />
@@ -35,12 +44,14 @@ class MainPage extends Component {
                                 primary={item.name}
                                 secondary={secondaryText}
                             />
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                component={Link}
-                                to={'/view/' + item.id}
-                            >View Form Data</Button>
+                            <ListItemSecondaryAction>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    component={Link}
+                                    to={'/view/' + item.id}
+                                >View Form Data</Button>
+                            </ListItemSecondaryAction>
                         </ListItem>;
                     })
                 }
