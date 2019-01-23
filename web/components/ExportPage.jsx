@@ -48,6 +48,7 @@ class ExportPage extends Component {
 
             selectedFormat: null,
             exportFilename: '',
+            hasDeletedForm: false,
         };
         this.handleSelectUSB = (item) => () => {
             this.setState({
@@ -117,7 +118,12 @@ class ExportPage extends Component {
 
                 selectedFormat: null,
                 exportFilename: '',
+                hasDeletedForm: false,
             });
+        };
+        this.handleDelete = () => {
+            this.setState({ hasDeletedForm: true });
+            fetch('/delform/'+this.state.form.id, { method: 'DELETE' });
         };
     }
     componentDidMount() {
@@ -336,6 +342,8 @@ class ExportPage extends Component {
                             <br/>
                             <RedButton
                                 variant="contained"
+                                onClick={this.handleDelete}
+                                disabled={this.state.hasDeletedForm}
                             >Delete Data From Server</RedButton>
                             <br/><br/>
                             <Button

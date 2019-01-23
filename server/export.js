@@ -33,6 +33,12 @@ function HandleSubmit(id, submission) {
         return fs.writeJSON(SUBMISSION_FILE, data);
     });
 }
+function HandleDelete(id, submission) {
+    return fs.readJSON(SUBMISSION_FILE).then(data => {
+        delete data[id];
+        return fs.writeJSON(SUBMISSION_FILE, data);
+    });
+}
 async function BeginExport(form, type, output) {
     const allSubmissions = await GetSubmissionList();
     const submissions = allSubmissions[form] || [];
@@ -40,6 +46,7 @@ async function BeginExport(form, type, output) {
     
     formData.items = formData.items.filter(x => x.type !== 'header').map(item => {
         item.label = item.exportLabel || item.label;
+        return item;
     });
 
     // handler may be async so lets await it (await is a no op when used on non promises)
@@ -70,6 +77,7 @@ function GetSubmissionCounts() {
 
 module.exports = {
     HandleSubmit,
+    HandleDelete,
     GetSubmissionList,
     GetSubmissionCounts,
 

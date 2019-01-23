@@ -28,6 +28,17 @@ api.post('/submit/:formID', (req, res) => {
         res.send({ success: false });
     });
 });
+api.delete('/delform/:formID', (req, res) => {
+    exporthandler.HandleDelete(req.params.formID).then(x => {
+        res.send({ success: true });
+
+        exporthandler.GetSubmissionCounts().then(counts => {
+            sockets.forEach(socket => socket.emit('update:submitCounts', counts));
+        });
+    }).catch(x => {
+        res.send({ success: false });
+    });
+});
 
 api.get('/export-handlers', (req, res) => {
     res.send(exporthandler.GetExportTypeList());
