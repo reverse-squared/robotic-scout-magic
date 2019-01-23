@@ -14,5 +14,8 @@ io.on('connection', api.onSocket);
 
 http.listen(8000);
 
+const usb = require('./destination');
+usb.BeginUSBListening();
+
 // eslint-disable-next-line no-console
 console.log('Production Server running at http://localhost:8000/');
