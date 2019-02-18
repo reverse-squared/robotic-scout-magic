@@ -8,8 +8,8 @@
 ## Getting Started
 1. To start, make sure you have [Node.js](https://nodejs.org/) and [Node GYP](https://github.com/nodejs/node-gyp#installation) installed.
 2. Clone or download this repository to a folder somewhere on the device.
-3. Run `npm i -D && npm run build` to install all the needed dependencies.
-3. Install [panr](https://github.com/emmercm/panr) and set it up on the machine that is running the server.
+3. Run `npm i -D && npm run build` to install all the needed dependencies. **Always run `npm i -D` on the machine that is hosting the server.** This is because we use the npm module, `drivelist`.
+3. Some how connect your devices to the host machine using a Bluetooth PAN or reverse tethering.
 4. Run `npm run production` to start the server and access the form page at `http://localhost:8000/`.
 5. If you connect external devices, connect to the server though the PAN network, and instead of `localhost`, use the server's local IP. You can find this
 by running `ipconfig` in the console.
