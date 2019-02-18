@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import StickyScrollbar from './StickyScrollbar';
 import { Button } from '@material-ui/core';
+import Bar from './../components/Bar';
 
 class ViewPage extends Component {
     constructor(props) {
@@ -88,6 +89,8 @@ class ViewPage extends Component {
                         </Table>
                     </StickyScrollbar>
                 </Paper>
+
+                <Bar data={form} submissions={submissions} />
             </div>;
         } else {
             return <Loader />;
