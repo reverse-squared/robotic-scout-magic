@@ -30,7 +30,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "enum": ["text", "number", "counter", "boolean","header","radio","checkbox","text-area","date","dropdown","time"],
+                        "enum": ["label", "text", "number", "counter", "boolean","header","radio","checkbox","text-area","date","dropdown","time"],
                         "description": "Sets the form component that this item uses. Required for all form elements."
                     },
                     "label": {

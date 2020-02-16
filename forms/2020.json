@@ -59,6 +59,15 @@
             "exportLabel": "Control panel"
         },
         {
+            "type": "label",
+            "label": "How good are the drivers, 1 being the worst (jerky, slow to respond, always in the way), 10 being the best (smooth, aware of the field, can avoid defense)"
+        },
+        {
+            "type": "number",
+            "label": "Rating",
+            "exportLabel": "Driving"
+        },
+        {
             "type": "header",
             "label": "End Game"
         },
