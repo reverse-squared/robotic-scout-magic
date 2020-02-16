@@ -39,11 +39,11 @@ function HandleDelete(id, submission) {
         return fs.writeJSON(SUBMISSION_FILE, data);
     });
 }
-async function BeginExport(form, type, output) {
+async function BeginExport(form, type) {
     const allSubmissions = await GetSubmissionList();
     const submissions = allSubmissions[form] || [];
     const formData = deepcopy(forms.getFormList().find(x => x.id === form));
-    
+
     formData.items = formData.items.filter(x => x.type !== 'header').map(item => {
         item.label = item.exportLabel || item.label;
         return item;
@@ -51,11 +51,8 @@ async function BeginExport(form, type, output) {
 
     // handler may be async so lets await it (await is a no op when used on non promises)
     const outputContent = await GetExportHandler(type).handler(formData, submissions);
-
-    await fs.ensureDir(path.dirname(output));
-    await fs.writeFile(output, outputContent);
     
-    return;
+    return outputContent
 }
 function GetExportTypeList() {
     return ExportHandlers;

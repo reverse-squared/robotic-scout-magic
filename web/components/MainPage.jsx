@@ -69,14 +69,13 @@ class MainPage extends Component {
                 }
             </List>
             
-            <h1>Export Data</h1>
             <p>
                 <Button
                     variant="contained"
                     color="primary"
                     component={Link}
                     to={'/export'}
-                >Export Data to a USB Drive</Button>
+                >Export Data</Button>
             </p>
         </div>;
     }

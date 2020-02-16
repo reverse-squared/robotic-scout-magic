@@ -9,8 +9,6 @@ const chalk = require('chalk');
 const path = require('path');
 const reload = require('require-reload');
 const npmRunScript = require('npm-run-script');
-const usb = require('./destination');
-usb.BeginUSBListening();
 
 const app = express();
 let api = reload(path.join(__dirname, 'api'));
