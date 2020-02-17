@@ -10,6 +10,7 @@
     "build": "webpack-cli --env true",
     "start": "node ./server/server_development.js",
     "production": "node ./server/server_production.js",
+    "update": "git pull; npm run build; pm2 restart server_production",
     "lint": "eslint .",
     "docs": "docsify serve docs",
     "test": "mocha"
