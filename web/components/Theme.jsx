@@ -4,8 +4,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
     palette: {  
-        primary: { main: '#3f51b5' }, // Nice blue color. It is the same color as TBA uses. https://www.thebluealliance.com/.
-        secondary: { main: '#4caf50' }, // This is just Green.A700 as hex.
+        primary: { main: '#b71c1c' }, // red darken-4
+        secondary: { main: '#e53935' }, // red darken-1
     },
     typography: { useNextVariants: true },
 });

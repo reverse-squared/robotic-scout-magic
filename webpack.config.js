@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = (prod = false) => ({
     entry: [
@@ -8,6 +9,17 @@ module.exports = (prod = false) => ({
     ],
     module: {
         rules: [
+            {
+                test: /\.(ico|webmanifest)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]'
+                        }
+                    }
+                ]
+            },
             {
                 test: /\.(ttf|svg|eot|woff2?|otf)$/,
                 use: 'file-loader',
@@ -45,6 +57,10 @@ module.exports = (prod = false) => ({
             $production: prod
         }),
         new (require('html-webpack-plugin'))({template:'./web/index.html'}),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
+        }),
     ],
     resolve: {
         extensions: ['.jsx', '.js', '.json']

@@ -28,23 +28,59 @@ class App extends Component {
         super();
         this.state = {
             snackbarOpen: false,
+            offline: false
         };
-        this.handleFormSubmit = (formId, formData) => {
-            this.navigate('/');
-
+        this.uploadForm = (formId, formData) => {
             fetch('/submit/' + formId, {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: { 'Content-Type': 'application/json' }
             }).then(x => {
+                console.log('Uploaded form');
                 if (x.status === 200) {
                     this.setState({ snackbarOpen: true });
                 }
             });
+        }
+        this.handleFormSubmit = (formId, formData) => {
+            this.navigate('/');
+            
+            if (this.state.offline) {
+                let store = JSON.parse(localStorage.offlineQueue);
+                store.push({id: formId, data: formData})
+                console.log(store);
+                localStorage.offlineQueue = JSON.stringify(store); // Push to offline queue
+            } else {
+                this.uploadForm(formId, formData);
+            }
         };
         this.handleSnackbarClose = () => {
             this.setState({ snackbarOpen: false });
         };
+        this.checkIfOffline = () => {
+            fetch('/areweonline').then(() => {
+                if (this.state.offline) { // First loop where it's online again
+                    document.getElementById('offlineButton').style.display = 'none';
+                    this.processOfflineQueue();
+                }
+                this.state.offline = false;
+            }).catch(err => {
+                if (!this.state.offline) { 
+                    document.getElementById('offlineButton').style.display = 'block';
+                }
+                this.state.offline = true;
+            });
+        };
+        this.processOfflineQueue = () => {
+            for (let form of JSON.parse(localStorage.offlineQueue)) { // Process queue
+                this.uploadForm(form.id, form.data);
+            }
+            localStorage.offlineQueue = '[]'; // Reset queue
+        }
+        setInterval(this.checkIfOffline, 2000);
+        this.checkIfOffline();
+        if (localStorage.offlineQueue == undefined || localStorage.offlineQueue == '') localStorage.offlineQueue = '[]';
+        this.processOfflineQueue();
     }
     render() {
         const { formData, usbData } = this.props;

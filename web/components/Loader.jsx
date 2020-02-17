@@ -19,7 +19,15 @@ const PageLoadable = (dynamic_import) => Loadable({ loader: dynamic_import, load
 
 const AppLoadable = (App) => Loadable({
     loader: () => fetch('./all-forms').then(res => res.json()).then(json => {
+        localStorage.allForms = JSON.stringify(json);
         return () => <SocketAppFormReloader App={App} formData={json} />;
+    }).catch(err => {
+        if (localStorage.allForms == undefined || localStorage.allForms == '') {
+            document.body.innerHTML += 'Please load website when connected to internet atleast once before using offline';
+            return;
+        }
+        console.log('Offline, but got all-forms from cache');
+        return () => <SocketAppFormReloader App={App} formData={JSON.parse(localStorage.allForms)} />;
     }),
     loading: Loader,
 });
