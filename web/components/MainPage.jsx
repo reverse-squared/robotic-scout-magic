@@ -44,14 +44,16 @@ class MainPage extends Component {
                                 primary={item.name}
                                 secondary={secondaryText}
                             />
+                            {/*
                             <ListItemSecondaryAction>
                                 <Button
                                     variant="contained"
                                     color="primary"
                                     component={Link}
                                     to={'/view/' + item.id}
-                                >View Form Data</Button>
+                                >View Data</Button>
                             </ListItemSecondaryAction>
+                            */}
                         </ListItem>;
                     })
                 }

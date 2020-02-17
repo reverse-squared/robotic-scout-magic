@@ -127,7 +127,6 @@ class ExportPage extends Component {
         };
     }
     componentDidMount() {
-        window.ExitWithoutSave = () => this.state.activeStep > 0 && this.state.activeStep < 4;
         fetch('/export-handlers').then(r => r.json()).then(exportFormats => {
             this.setState({ exportFormats });
         });

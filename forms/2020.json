@@ -59,12 +59,9 @@
             "exportLabel": "Control panel"
         },
         {
-            "type": "label",
-            "label": "How good are the drivers, 1 being the worst (jerky, slow to respond, always in the way), 10 being the best (smooth, aware of the field, can avoid defense)"
-        },
-        {
             "type": "number",
-            "label": "Rating",
+            "label": "Driver rating",
+            "helperText": "How good are the drivers, 1 being the worst (jerky, slow to respond, always in the way), 10 being the best (smooth, aware of the field, can avoid defense)",
             "exportLabel": "Driving"
         },
         {
@@ -74,7 +71,7 @@
         {
             "type": "radio",
             "label": "How does the robot climb",
-            "options": ["It was not in the climb area", "It was on the floor of the climb area", "It climbed onto the bar when it was level", "It climbed onto the bar when it was angled up"],
+            "options": ["It was not in the climb area", "It was on the floor of the climb area", "It climbed onto the bar when it was level", "It climbed onto the bar when it was angled"],
             "exportLabel": "Climb"
         },
         {
