@@ -10,7 +10,7 @@ module.exports = (prod = false) => ({
     module: {
         rules: [
             {
-                test: /\.(ico|webmanifest)$/,
+                test: /\.(png|ico|webmanifest)$/,
                 use: [
                     {
                         loader: 'file-loader',
