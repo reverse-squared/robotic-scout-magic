@@ -3,6 +3,7 @@
     "id": "2020",
     "icon": "plug",
     "name": "2020 Infinite Recharge",
+    "hidden": true,
     "description": "Click here to open scouting form",
     "items": [
         {
