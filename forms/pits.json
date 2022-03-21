@@ -1,0 +1,42 @@
+{
+    "$schema": "../form-schema.json",
+    "id": "pits",
+    "icon": "plug",
+    "name": "Pit Scouting",
+    "description": "Click here to open scouting form",
+    "items": [
+        {
+            "type": "number",
+            "label": "The Team / Robot Number",
+            "exportLabel": "Team Number"
+        },
+        {
+            "type": "header",
+            "label": "Robot Information"
+        },
+        {
+            "type": "radio",
+            "label": "What kind of drivetrain does the robot have",
+            "options": ["Tank drive", "Swerve drive", "Mecanum drive", "Other"],
+            "exportLabel": "Shooter"
+        },
+        {
+            "type": "radio",
+            "label": "What kind of shooter does the robot have",
+            "options": ["Lower hub only", "Upper hub only", "Both"],
+            "exportLabel": "Shooter"
+        },
+        {
+            "type": "radio",
+            "label": "What kind of climber does the robot have",
+            "options": ["Everybot", "Climber in a box (or similar)", "Transversing climber", "Other first/second bar climber"],
+            "exportLabel": "Climb"
+        },
+        {
+            "type": "text-area",
+            "label": "Other notes.",
+            "helperText": "",
+            "exportLabel": "Notes"
+        }
+    ]
+}
