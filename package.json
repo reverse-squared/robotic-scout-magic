@@ -7,7 +7,7 @@
   "author": "WeAreDevs",
   "license": "MIT",
   "engines": {
-    "node": "14"
+    "node": "16"
   },
   "scripts": {
     "build": "webpack-cli --env true",
