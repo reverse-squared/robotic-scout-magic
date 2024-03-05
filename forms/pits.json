@@ -3,6 +3,7 @@
     "id": "pits",
     "icon": "plug",
     "name": "Pit Scouting",
+    "hidden": false,
     "description": "Click here to open scouting form",
     "items": [
         {
@@ -22,14 +23,14 @@
         },
         {
             "type": "radio",
-            "label": "What kind of shooter does the robot have",
-            "options": ["Lower hub only", "Upper hub only", "Both"],
+            "label": "Where can the robot score",
+            "options": ["Speaker only", "Amp only", "Both"],
             "exportLabel": "Shooter"
         },
         {
             "type": "radio",
             "label": "What kind of climber does the robot have",
-            "options": ["Everybot", "Climber in a box (or similar)", "Transversing climber", "Other first/second bar climber"],
+            "options": ["Climber in a box (or similar)", "Buddy climb", "Other", "None"],
             "exportLabel": "Climb"
         },
         {

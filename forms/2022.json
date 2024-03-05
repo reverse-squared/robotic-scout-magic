@@ -3,6 +3,7 @@
     "id": "2022",
     "icon": "plug",
     "name": "2022 Rapid React",
+    "hidden": true,
     "description": "Click here to open scouting form",
     "items": [
         {
