@@ -6,6 +6,9 @@
   "main": "server/server_development.js",
   "author": "WeAreDevs",
   "license": "MIT",
+  "engines": {
+    "node": "14"
+  }
   "scripts": {
     "build": "webpack-cli --env true",
     "dev": "node ./server/server_development.js",
