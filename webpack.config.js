@@ -38,10 +38,6 @@ module.exports = (prod = false) => ({
                     { loader: 'css-loader' },
                     {
                         loader: 'postcss-loader', options: {
-                            plugins: [
-                                require('cssnano')(),
-                                require('autoprefixer')(),
-                            ]
                         }
                     }
                 ]
@@ -56,7 +52,7 @@ module.exports = (prod = false) => ({
         new webpack.DefinePlugin({
             $production: prod
         }),
-        new (require('html-webpack-plugin'))({template:'./web/index.html'}),
+        new (require('html-webpack-plugin'))({ template: './web/index.html' }),
         new WorkboxPlugin.GenerateSW({
             clientsClaim: true,
             skipWaiting: true,
@@ -66,14 +62,14 @@ module.exports = (prod = false) => ({
         extensions: ['.jsx', '.js', '.json']
     },
     output: {
-        filename: 'rsm.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: ''
     },
     optimization: {
         splitChunks: {
             chunks: 'all'
         }
     },
-    devtool: prod ? 'none' : 'source-map',
     mode: prod ? 'production' : 'development'
 });
