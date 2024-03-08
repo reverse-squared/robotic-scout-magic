@@ -1,58 +1,64 @@
 let cacheName = 'rsm';
 let appShellFiles = [
-    '0.rsm.js',
-    '067595ad77ecc0db9c81c8905a7eef32.woff2',
-    '0724bb8b89ab6b8b9b7df917b17be0b7.svg',
-    '1.rsm.js',
-    '10.rsm.js',
-    '11.rsm.js',
-    '12.rsm.js',
-    '13.rsm.js',
-    '14.rsm.js',
-    '15.rsm.js',
-    '16.rsm.js',
-    '17.rsm.js',
-    '3.rsm.js',
-    '3351f435b3c9037fd88aeb04dc1e43bc.eot',
-    '4.rsm.js',
-    '4165c2688309cbfb1b877caf8f75afb5.woff2',
-    '5.rsm.js',
-    '55eb2a60e8181f0e68b558c991973bf0.woff2',
-    '57dcda6f368ea90179f75cbdae96c263.eot',
-    '5d0861781aeef6c82fda3a3076954a1b.svg',
-    '6.rsm.js',
-    '7.rsm.js',
-    '73cf49a2232c06c920b7a34e36bfb58c.woff',
-    '75f38a159982b6bd1704891332d95fa7.ttf',
-    '8.rsm.js',
-    '89e02bae13c9131c7468b1e729339ac1.eot',
-    '9.rsm.js',
-    '9d67fa1429375bd2a899a17eb77d0342.svg',
-    '9ec698d1a597bff5df337094b71ddaaf.ttf',
-    'a0e3ac82940c1998c5977fd4bc1f5ef6.ttf',
-    'b564da88bbf0c4aa446fa19653713cd1.woff',
-    'cdfec5cf5e9840889790bcf2c4042583.woff',
+    '0c6bfc668a72935760178f91327aed3a.eot',
+    '111.js',
+    '172.js',
+    '1a575a4138e5f366474f0e7c5bd614a5.woff',
+    '1d5619cd804367cefe6da2d79289218a.svg',
+    '234.js',
+    '243.js',
+    '272.js',
+    '289.js',
+    '289.js.LICENSE.txt',
+    '378.js',
+    '378.js.LICENSE.txt',
+    '37bc7099f6f1ba80236164f22e905837.svg',
+    '397.js',
+    '397.js.LICENSE.txt',
+    '422.js',
+    '513aa607d398efaccc559916c3431403.ttf',
+    '567.js',
+    '574.js',
+    '592643a83b8541edc52063d84c468700.eot',
+    '62.js',
+    '766913e6c0088ab8c9f73e18b4127bc4.ttf',
+    '773.js',
+    '776.js',
+    '867.js',
+    '979.js',
+    '979.js.LICENSE.txt',
+    'b0e2db3b634d1bc3928e127458d993d8.eot',
+    'b91d376b8d7646d671cd820950d5f7f1.woff2',
+    'b9625119ce4300f0ef890a8f3234c773.ttf',
+    'c5d109be8edd3de0f60eb472bd9ef691.svg',
+    'd1d7e3b4c219fde0f7376c6facfd7149.woff',
+    'd745348d289b149026921f197929a893.woff',
+    'd824df7eb2e268626a2dd9a6a741ac4e.woff2',
+    'ed311c7a0ade9a75bb3ebf5a7670f31d.woff2',
+    'favicon.ico',
     'index.html',
-    'rsm.js'
+    'main.js',
+    'pwaicon.png',
+    'workbox-b4c2a21b.js'
 ]
 
-self.addEventListener('install', function(e) {
+self.addEventListener('install', function (e) {
     console.log('[Service Worker] Install');
     e.waitUntil(
-        caches.open(cacheName).then(function(cache) {
+        caches.open(cacheName).then(function (cache) {
             console.log('[Service Worker] Caching all: app shell and content');
             return cache.addAll(contentToCache);
         });
     );
 });
 
-self.addEventListener('fetch', function(e) {
+self.addEventListener('fetch', function (e) {
     e.respondWith(
-        caches.match(e.request).then(function(r) {
-            console.log('[Service Worker] Fetching resource: '+e.request.url);
-            return r || fetch(e.request).then(function(response) {
-                return caches.open(cacheName).then(function(cache) {
-                    console.log('[Service Worker] Caching new resource: '+e.request.url);
+        caches.match(e.request).then(function (r) {
+            console.log('[Service Worker] Fetching resource: ' + e.request.url);
+            return r || fetch(e.request).then(function (response) {
+                return caches.open(cacheName).then(function (cache) {
+                    console.log('[Service Worker] Caching new resource: ' + e.request.url);
                     cache.put(e.request, response.clone());
                     return response;
                 });
