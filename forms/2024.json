@@ -5,7 +5,7 @@
     "name": "2024 Crescendo",
     "description": "Click here to open scouting form",
     "items": [
-       {
+        {
             "type": "header",
             "label": "Scouter/Match Info"
         },
@@ -26,43 +26,43 @@
         },
         {
             "type": "header",
-            "label": "Robot Position"
+            "label": "Robot Position (from scoring table)"
         },
         {
             "type": "checkbox",
-            "label": "R1",
+            "label": "Red Closest",
             "exportLabel": "Robot Position R1"
         },
         {
             "type": "checkbox",
-            "label": "R2",
+            "label": "Red Middle",
             "exportLabel": "Robot Position R2"
         },
         {
             "type": "checkbox",
-            "label": "R3",
+            "label": "Red Furthest",
             "exportLabel": "Robot Position R3"
         },
         {
             "type": "checkbox",
-            "label": "B1",
+            "label": "Blue Furthest",
             "exportLabel": "Robot Position B1"
         },
         {
             "type": "checkbox",
-            "label": "B2",
+            "label": "Blue Middle",
             "exportLabel": "Robot Position B2"
         },
         {
             "type": "checkbox",
-            "label": "B3",
+            "label": "Blue Closest",
             "exportLabel": "Robot Position B3"
         },
         {
             "type": "header",
             "label": "Autonomous Period"
         },
-{
+        {
             "type": "boolean",
             "label": "Robot moves during autonomous",
             "exportLabel": "Auto movement",
@@ -72,7 +72,9 @@
         {
             "type": "boolean",
             "label": "Robot picks up a Note from the ground",
-            "exportLabel": "Auto ground pickup"
+            "exportLabel": "Auto ground pickup",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
         },
         {
             "type": "boolean",
@@ -95,7 +97,7 @@
             "type": "header",
             "label": "Teleop Period"
         },
- 		{
+        {
             "type": "checkbox",
             "label": "Does the robot pick up Notes from the ground?",
             "exportLabel": "Ground pickup",
@@ -114,7 +116,7 @@
             "label": "How many Notes were scored into the Speaker",
             "exportLabel": "Speaker Notes during teleop"
         },
- 		{
+        {
             "type": "counter",
             "label": "How many Notes were scored into the Amp",
             "exportLabel": "Amp Notes during teleop"
@@ -126,7 +128,9 @@
         {
             "type": "boolean",
             "label": "Spotlight",
-            "exportLabel": "Spotlight"
+            "exportLabel": "Spotlight",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
         },
         {
             "type": "boolean",
@@ -135,11 +139,11 @@
             "trueValue": "TRUE",
             "falseValue": "FALSE"
         },
-		{
+        {
             "type": "header",
             "label": "Climb"
         },
-		{
+        {
             "type": "boolean",
             "label": "Parked",
             "exportLabel": "Parked",
@@ -162,9 +166,15 @@
         },
         {
             "type": "radio",
-            "label": "Driver rating",
+            "label": "Driver rating 1 being worst, 5 being the best",
             "exportLabel": "Driver rating",
-            "options": ["1", "2", "3", "4", "5"]
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ]
         },
         {
             "type": "text-area",

@@ -8,16 +8,26 @@ body {
   box-sizing: border-box;
   padding: 2em;
   padding-top: 0;
+  width: fit-content;
+  margin: 0 auto;
 }
+
 .container .container {
   padding: 0;
   left: -0.5em;
   top: -0.5em;
 }
+
 .containsRouter > div {
   padding-top: 56px;
 }
+
 .containsRouter > div > div {
   padding-top: 2em;
   padding-bottom: 6em;
+}
+
+span,
+p {
+  font-size: 1.2em !important;
 }
