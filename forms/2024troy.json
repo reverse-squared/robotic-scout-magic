@@ -1,0 +1,192 @@
+{
+    "$schema": "../form-schema.json",
+    "id": "2024troy",
+    "icon": "itunes-note",
+    "name": "2024 Crescendo",
+    "description": "Troy #1",
+    "items": [
+        {
+            "type": "header",
+            "label": "Scouter/Match Info"
+        },
+        {
+            "type": "text",
+            "label": "Student Name",
+            "exportLabel": "Student Name"
+        },
+        {
+            "type": "number",
+            "label": "The Team / Robot Number",
+            "exportLabel": "Team Number"
+        },
+        {
+            "type": "number",
+            "label": "Match Number",
+            "exportLabel": "Match Number"
+        },
+        {
+            "type": "header",
+            "label": "Robot Position (from scoring table)"
+        },
+        {
+            "type": "checkbox",
+            "label": "Red Closest",
+            "exportLabel": "Robot Position R1"
+        },
+        {
+            "type": "checkbox",
+            "label": "Red Middle",
+            "exportLabel": "Robot Position R2"
+        },
+        {
+            "type": "checkbox",
+            "label": "Red Furthest",
+            "exportLabel": "Robot Position R3"
+        },
+        {
+            "type": "checkbox",
+            "label": "Blue Furthest",
+            "exportLabel": "Robot Position B1"
+        },
+        {
+            "type": "checkbox",
+            "label": "Blue Middle",
+            "exportLabel": "Robot Position B2"
+        },
+        {
+            "type": "checkbox",
+            "label": "Blue Closest",
+            "exportLabel": "Robot Position B3"
+        },
+        {
+            "type": "header",
+            "label": "Autonomous Period"
+        },
+        {
+            "type": "boolean",
+            "label": "Robot moves during autonomous",
+            "exportLabel": "Auto movement",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "boolean",
+            "label": "Robot picks up a Note from the ground",
+            "exportLabel": "Auto ground pickup",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "boolean",
+            "label": "Robot picks up a Note from the center line",
+            "exportLabel": "Auto center line pickup",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "counter",
+            "label": "Notes scored into the Speaker during autonomous",
+            "exportLabel": "Speaker Notes during autonomous"
+        },
+        {
+            "type": "counter",
+            "label": "Notes scored into the Amp during autonomous",
+            "exportLabel": "Amp Notes during autonomous"
+        },
+        {
+            "type": "header",
+            "label": "Teleop Period"
+        },
+        {
+            "type": "checkbox",
+            "label": "Does the robot pick up Notes from the ground?",
+            "exportLabel": "Ground pickup",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "checkbox",
+            "label": "Does the robot pick up Notes from the Source?",
+            "exportLabel": "Source pickup",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "counter",
+            "label": "How many Notes were scored into the Speaker",
+            "exportLabel": "Speaker Notes during teleop"
+        },
+        {
+            "type": "counter",
+            "label": "How many Notes were scored into the Amp",
+            "exportLabel": "Amp Notes during teleop"
+        },
+        {
+            "type": "header",
+            "label": "End Game"
+        },
+        {
+            "type": "boolean",
+            "label": "Spotlight",
+            "exportLabel": "Spotlight",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "boolean",
+            "label": "Trap",
+            "exportLabel": "Trap",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "header",
+            "label": "Climb"
+        },
+        {
+            "type": "boolean",
+            "label": "Parked",
+            "exportLabel": "Parked",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "boolean",
+            "label": "On Stage",
+            "exportLabel": "On Stage",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "boolean",
+            "label": "Harmony",
+            "exportLabel": "Harmony",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "radio",
+            "label": "Driver rating 1 being worst, 5 being the best",
+            "exportLabel": "Driver rating",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ]
+        },
+        {
+            "type": "boolean",
+            "label": "Robot lost connection during the match",
+            "exportLabel": "Lost connection",
+            "trueValue": "TRUE",
+            "falseValue": "FALSE"
+        },
+        {
+            "type": "text-area",
+            "label": "Other notes.",
+            "exportLabel": "Notes"
+        }
+    ]
+}

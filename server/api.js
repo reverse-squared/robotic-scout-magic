@@ -12,31 +12,35 @@ api.use(require('body-parser').json());
 api.get('/all-forms', (req, res) => {
     res.send(form.getFormList());
 });
-api.get('/submission-data/:formID', async(req, res) => {
+api.get('/submission-data/:formID', async (req, res) => {
     res.send((await exporthandler.GetSubmissionList())[req.params.formID] || []);
 });
 
 api.post('/submit/:formID', (req, res) => {
-    exporthandler.HandleSubmit(req.params.formID, req.body).then(x => {
-        res.send({ success: true });
-        
-        exporthandler.GetSubmissionCounts().then(counts => {
-            sockets.forEach(socket => socket.emit('update:submitCounts', counts));
-        });
-    }).catch(x => {
-        res.send({ success: false });
-    });
-});
-api.delete('/delform/:formID', (req, res) => {
-    exporthandler.HandleDelete(req.params.formID).then(x => {
+    try {
+        exporthandler.HandleSubmit(req.params.formID, req.body);
         res.send({ success: true });
 
         exporthandler.GetSubmissionCounts().then(counts => {
             sockets.forEach(socket => socket.emit('update:submitCounts', counts));
         });
-    }).catch(x => {
+    } catch (e) {
         res.send({ success: false });
-    });
+        console.error(e);
+    }
+});
+api.delete('/delform/:formID', (req, res) => {
+    try {
+        exporthandler.HandleDelete(req.params.formID);
+        res.send({ success: true });
+
+        exporthandler.GetSubmissionCounts().then(counts => {
+            sockets.forEach(socket => socket.emit('update:submitCounts', counts));
+        });
+    } catch (e) {
+        res.send({ success: false });
+        console.error(e);
+    }
 });
 
 api.get('/export-handlers', (req, res) => {
@@ -44,10 +48,10 @@ api.get('/export-handlers', (req, res) => {
 });
 
 api.post('/run-export', (req, res) => {
-    
+
     const form = req.body.form;
     const type = req.body.type;
-    if(!(form && type)) {
+    if (!(form && type)) {
         return res.send({ success: false });
     }
 

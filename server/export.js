@@ -7,10 +7,35 @@ const forms = require('./form');
 const DATA_DIR = path.join(__dirname, '../.data');
 const SUBMISSION_FILE = path.join(__dirname, '../.data/.submissions.json');
 
+const formData = {};
+const formSubmissions = {};
+
 fs.ensureDirSync(DATA_DIR);
 if (!fs.existsSync(SUBMISSION_FILE)) {
     fs.writeFileSync(SUBMISSION_FILE, '{}');
 }
+
+fs.readJSON(SUBMISSION_FILE).then(data => {
+    Object.keys(data).forEach(form => {
+        formData[form] = data[form];
+    });
+});
+
+setInterval(async () => {
+    let update = false;
+    for (let key of Object.keys(formData)) {
+        if (!formSubmissions[key]) formSubmissions[key] = formData[key].length;
+        if (formData[key].length !== formSubmissions[key]) {
+            update = true;
+            formSubmissions[key] = formData[key].length
+        }
+    }
+
+    if (update) {
+        console.log('Updating submission file');
+        await fs.writeJSON(SUBMISSION_FILE, formData);
+    }
+}, 3e3);
 
 function deepcopy(obj) {return JSON.parse(JSON.stringify(obj));}
 
@@ -25,19 +50,14 @@ const ExportHandlers = fs.readdirSync(path.join(__dirname, 'exports')).map(name 
 });
 
 function HandleSubmit(id, submission) {
-    return fs.readJSON(SUBMISSION_FILE).then(data => {
-        if(!data[id]) data[id] = [];
-        
-        data[id].push(submission);
-
-        return fs.writeJSON(SUBMISSION_FILE, data);
-    });
+    if (!formData[id]) formData[id] = [];
+    formData[id].push(submission);
+    return;
 }
 function HandleDelete(id, submission) {
-    return fs.readJSON(SUBMISSION_FILE).then(data => {
-        delete data[id];
-        return fs.writeJSON(SUBMISSION_FILE, data);
-    });
+    if (!formData[id]) return;
+    formData[id] = [];
+    return;
 }
 async function BeginExport(form, type) {
     const allSubmissions = await GetSubmissionList();
