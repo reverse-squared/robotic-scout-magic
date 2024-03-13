@@ -18,12 +18,8 @@ api.get('/submission-data/:formID', async (req, res) => {
 
 api.post('/submit/:formID', (req, res) => {
     try {
-        exporthandler.HandleSubmit(req.params.formID, req.body);
+        exporthandler.HandleSubmit(req.params.formID, req.body, sockets);
         res.send({ success: true });
-
-        exporthandler.GetSubmissionCounts().then(counts => {
-            sockets.forEach(socket => socket.emit('update:submitCounts', counts));
-        });
     } catch (e) {
         res.send({ success: false });
         console.error(e);
@@ -31,12 +27,8 @@ api.post('/submit/:formID', (req, res) => {
 });
 api.delete('/delform/:formID', (req, res) => {
     try {
-        exporthandler.HandleDelete(req.params.formID);
+        exporthandler.HandleDelete(req.params.formID, sockets);
         res.send({ success: true });
-
-        exporthandler.GetSubmissionCounts().then(counts => {
-            sockets.forEach(socket => socket.emit('update:submitCounts', counts));
-        });
     } catch (e) {
         res.send({ success: false });
         console.error(e);

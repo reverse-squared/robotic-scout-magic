@@ -9,6 +9,7 @@ const SUBMISSION_FILE = path.join(__dirname, '../.data/.submissions.json');
 
 const formData = {};
 const formSubmissions = {};
+let sockets = [];
 
 fs.ensureDirSync(DATA_DIR);
 if (!fs.existsSync(SUBMISSION_FILE)) {
@@ -34,10 +35,17 @@ setInterval(async () => {
     if (update) {
         console.log('Updating submission file');
         await fs.writeJSON(SUBMISSION_FILE, formData);
+
+        GetSubmissionCounts().then(counts => {
+            sockets.forEach(socket => {
+                if (!socket) return;
+                try { socket.emit('update:submitCounts', counts) } catch (e) { }
+            });
+        });
     }
 }, 3e3);
 
-function deepcopy(obj) {return JSON.parse(JSON.stringify(obj));}
+function deepcopy(obj) { return JSON.parse(JSON.stringify(obj)); }
 
 const ExportHandlers = fs.readdirSync(path.join(__dirname, 'exports')).map(name => {
     const mod = require('./exports/' + name);
@@ -49,12 +57,14 @@ const ExportHandlers = fs.readdirSync(path.join(__dirname, 'exports')).map(name 
     return mod;
 });
 
-function HandleSubmit(id, submission) {
+function HandleSubmit(id, submission, newSockets) {
+    sockets = newSockets;
     if (!formData[id]) formData[id] = [];
     formData[id].push(submission);
     return;
 }
-function HandleDelete(id, submission) {
+function HandleDelete(id, newSockets) {
+    sockets = newSockets;
     if (!formData[id]) return;
     formData[id] = [];
     return;
@@ -71,7 +81,7 @@ async function BeginExport(form, type) {
 
     // handler may be async so lets await it (await is a no op when used on non promises)
     const outputContent = await GetExportHandler(type).handler(formData, submissions);
-    
+
     return outputContent
 }
 function GetExportTypeList() {
@@ -81,14 +91,14 @@ function GetExportHandler(type) {
     return ExportHandlers.find(x => x.type === type);
 }
 function GetSubmissionList() {
-    return fs.readJSON(SUBMISSION_FILE);    
+    return formData;
 }
 function GetSubmissionCounts() {
     return GetSubmissionList().then(json => {
         return Object.keys(json).reduce((obj, name) => {
             obj[name] = json[name] ? json[name].length : 0;
             return obj;
-        },{});
+        }, {});
     });
 }
 
