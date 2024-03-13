@@ -19,31 +19,32 @@ if (!fs.existsSync(SUBMISSION_FILE)) {
 fs.readJSON(SUBMISSION_FILE).then(data => {
     Object.keys(data).forEach(form => {
         formData[form] = data[form];
+        formSubmissions[form] = data[form].length;
     });
-});
 
-setInterval(async () => {
-    let update = false;
-    for (let key of Object.keys(formData)) {
-        if (!formSubmissions[key]) formSubmissions[key] = formData[key].length;
-        if (formData[key].length !== formSubmissions[key]) {
-            update = true;
-            formSubmissions[key] = formData[key].length
+    setInterval(async () => {
+        let update = false;
+        for (let key of Object.keys(formData)) {
+            if (!formSubmissions[key]) formSubmissions[key] = 0;
+            if (formData[key].length !== formSubmissions[key]) {
+                update = true;
+                formSubmissions[key] = formData[key].length
+            }
         }
-    }
 
-    if (update) {
-        console.log('Updating submission file');
-        await fs.writeJSON(SUBMISSION_FILE, formData);
+        if (update) {
+            console.log('Updating submission file');
+            await fs.writeJSON(SUBMISSION_FILE, formData);
 
-        GetSubmissionCounts().then(counts => {
-            sockets.forEach(socket => {
-                if (!socket) return;
-                try { socket.emit('update:submitCounts', counts) } catch (e) { }
+            GetSubmissionCounts().then(counts => {
+                sockets.forEach(socket => {
+                    if (!socket) return;
+                    try { socket.emit('update:submitCounts', counts) } catch (e) { }
+                });
             });
-        });
-    }
-}, 3e3);
+        }
+    }, 3e3);
+});
 
 function deepcopy(obj) { return JSON.parse(JSON.stringify(obj)); }
 
