@@ -91,7 +91,7 @@ function GetExportHandler(type) {
     return ExportHandlers.find(x => x.type === type);
 }
 function GetSubmissionList() {
-    return formData;
+    return new Promise((resolve, reject) => resolve(formData));
 }
 function GetSubmissionCounts() {
     return GetSubmissionList().then(json => {
