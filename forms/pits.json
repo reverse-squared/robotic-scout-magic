@@ -12,12 +12,15 @@
             "exportLabel": "Team Number"
         },
         {
-            "type": "header",
-            "label": "Robot Information"
+            "type": "link",
+            "link": "https://drive.google.com/drive/folders/1Lbi5TeLe1w2A8UoeiFunt2Pz8VWX7LA0?usp=sharing",
+            "linkText": "Google Drive",
+            "label": "Upload Picture Here",
+            "openInNewTab": true
         },
         {
-            "type": "label",
-            "label": "Upload Picture Here: https://drive.google.com/drive/folders/1Lbi5TeLe1w2A8UoeiFunt2Pz8VWX7LA0?usp=sharing"
+            "type": "header",
+            "label": "Robot Information"
         },
         {
             "type": "radio",

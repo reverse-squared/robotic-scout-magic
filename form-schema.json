@@ -30,7 +30,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "enum": ["label", "text", "number", "counter", "boolean","header","radio","checkbox","text-area","date","dropdown","time"],
+                        "enum": ["label", "text", "number", "counter", "boolean","header","radio","checkbox","text-area","date","dropdown","time","link"],
                         "description": "Sets the form component that this item uses. Required for all form elements."
                     },
                     "label": {
@@ -76,6 +76,34 @@
                                 "helperText": {
                                     "type": "string",
                                     "description": "Extra text below the input element to help the user type the right data in."
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "link"
+                                    ]
+                                }
+                            }
+                        },
+                        "then": {
+                            "required": ["link"],
+                            "properties": {
+                                "link": {
+                                    "type": "string",
+                                    "description": "Link to open when the link is clicked."
+                                },
+                                "linkText": {
+                                    "type": "string",
+                                    "description": "Text to display for link"
+                                },
+                                "openInNewTab": {
+                                    "type":"boolean",
+                                    "description": "If true, the link will open in a new tab."
                                 }
                             }
                         }
