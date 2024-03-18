@@ -16,6 +16,10 @@
             "label": "Robot Information"
         },
         {
+            "type": "label",
+            "label": "Upload Picture Here: https://drive.google.com/drive/folders/1Lbi5TeLe1w2A8UoeiFunt2Pz8VWX7LA0?usp=sharing"
+        },
+        {
             "type": "radio",
             "label": "Where can the robot score",
             "options": [
