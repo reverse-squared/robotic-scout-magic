@@ -26,7 +26,7 @@
         },
         {
             "type": "header",
-            "label": "Robot Position (from scoring table)"
+            "label": "Which Driver Station are they in (relative from the scoring table)"
         },
         {
             "type": "checkbox",
@@ -106,7 +106,7 @@
         },
         {
             "type": "checkbox",
-            "label": "Does the robot pick up Notes from the Source?",
+            "label": "Can Notes be dropped into the robot from the source?",
             "exportLabel": "Source pickup",
             "trueValue": "TRUE",
             "falseValue": "FALSE"
@@ -127,7 +127,7 @@
         },
         {
             "type": "boolean",
-            "label": "Spotlight",
+            "label": "Spotlight (High Notes scored on a Microphone)",
             "exportLabel": "Spotlight",
             "trueValue": "TRUE",
             "falseValue": "FALSE"
@@ -153,7 +153,7 @@
         {
             "type": "boolean",
             "label": "On Stage",
-            "exportLabel": "On Stage",
+            "exportLabel": "On Stage (hanging)",
             "trueValue": "TRUE",
             "falseValue": "FALSE"
         },
