@@ -3,6 +3,7 @@
     "icon": "arrow-up",
     "id": "2018",
     "name": "2018 FIRST Power Up",
+    "hidden": true,
     "description": "A scouting form for 2018's FIRST Power Up Game",
     "items": [
         {

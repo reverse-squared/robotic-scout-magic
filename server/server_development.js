@@ -9,8 +9,6 @@ const chalk = require('chalk');
 const path = require('path');
 const reload = require('require-reload');
 const npmRunScript = require('npm-run-script');
-const usb = require('./destination');
-usb.BeginUSBListening();
 
 const app = express();
 let api = reload(path.join(__dirname, 'api'));
@@ -19,15 +17,15 @@ chokidar.watch('./server/api.js').on('change', () => {
     api = reload(path.join(__dirname, 'api'));
 });
 const proxy = proxyMiddleware('/', {
-    target: url.parse('http://127.0.0.1:80'),
+    target: url.parse('http://127.0.0.1:9000'),
     ws: true
 });
-app.use((req,res,next) => {
-    api(req,res,next);
+app.use((req, res, next) => {
+    api(req, res, next);
 });
 app.use(proxy);
 
-const child = npmRunScript('webpack-dev-server --port 80', { stdio: 'pipe' });
+const child = npmRunScript('webpack-dev-server --port 9000', { stdio: 'pipe' });
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
@@ -37,7 +35,7 @@ io.on('connection', api.onSocket);
 child.stdin.pipe(process.stdin);
 child.stdout.on('data', (data) => {
     // Filter out the "Project is running at localhost:80" message
-    if(data.toString().indexOf('Project is running at') !== -1) {
+    if (data.toString().indexOf('Project is running at') !== -1) {
         http.listen(8000, function () {
             console.log(chalk.green('Started Server: http://localhost:8000/'));
         });

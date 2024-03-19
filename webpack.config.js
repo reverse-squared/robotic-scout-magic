@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = (prod = false) => ({
     entry: [
@@ -8,6 +9,17 @@ module.exports = (prod = false) => ({
     ],
     module: {
         rules: [
+            {
+                test: /\.(png|ico|webmanifest)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]'
+                        }
+                    }
+                ]
+            },
             {
                 test: /\.(ttf|svg|eot|woff2?|otf)$/,
                 use: 'file-loader',
@@ -26,10 +38,6 @@ module.exports = (prod = false) => ({
                     { loader: 'css-loader' },
                     {
                         loader: 'postcss-loader', options: {
-                            plugins: [
-                                require('cssnano')(),
-                                require('autoprefixer')(),
-                            ]
                         }
                     }
                 ]
@@ -44,20 +52,24 @@ module.exports = (prod = false) => ({
         new webpack.DefinePlugin({
             $production: prod
         }),
-        new (require('html-webpack-plugin'))({template:'./web/index.html'}),
+        new (require('html-webpack-plugin'))({ template: './web/index.html' }),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
+        }),
     ],
     resolve: {
         extensions: ['.jsx', '.js', '.json']
     },
     output: {
-        filename: 'rsm.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: ''
     },
     optimization: {
         splitChunks: {
             chunks: 'all'
         }
     },
-    devtool: prod ? 'none' : 'source-map',
     mode: prod ? 'production' : 'development'
 });

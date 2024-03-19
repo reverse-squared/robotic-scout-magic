@@ -1,0 +1,9 @@
+{
+    "name": "Robotics Scout Magic",
+    "short_name": "RSM",
+    "theme_color": "#b71c1c",
+    "background_color": "#e53935",
+    "display": "browser",
+    "scope": "/",
+    "start_url": "/"
+}

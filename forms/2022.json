@@ -1,0 +1,65 @@
+{
+    "$schema": "../form-schema.json",
+    "id": "2022",
+    "icon": "plug",
+    "name": "2022 Rapid React",
+    "hidden": true,
+    "description": "Click here to open scouting form",
+    "items": [
+        {
+            "type": "number",
+            "label": "The Team / Robot Number",
+            "exportLabel": "Team Number"
+        },
+        {
+            "type": "header",
+            "label": "Autonomus Period"
+        },
+        {
+            "type": "counter",
+            "label": "How many lower hub cargo were scored during the autonomous period",
+            "exportLabel": "Lower hub cargo during autonomous"
+        },
+        {
+            "type": "counter",
+            "label": "How many upper hub cargo were scored during the autonomous period",
+            "exportLabel": "Upped hub cargo during autonomous"
+        },
+        {
+            "type": "header",
+            "label": "Teleop Period"
+        },
+        {
+            "type": "counter",
+            "label": "How many lower hub cargo were scored",
+            "exportLabel": "Lower hub cargo during teleop"
+        },
+        {
+            "type": "counter",
+            "label": "How many upper hub cargo were scored",
+            "exportLabel": "Upper hub cargo during teleop"
+        },
+        {
+            "type": "number",
+            "label": "Driver rating",
+            "helperText": "How good are the drivers, 1 being the worst (jerky, slow to respond, always in the way), 10 being the best (smooth, aware of the field, can avoid defense)",
+            "exportLabel": "Driving"
+        },
+        {
+            "type": "header",
+            "label": "End Game"
+        },
+        {
+            "type": "radio",
+            "label": "How does the robot climb",
+            "options": ["First Bar", "Second Bar", "Third Bar", "Fourth Bar"],
+            "exportLabel": "Climb"
+        },
+        {
+            "type": "text-area",
+            "label": "Other notes.",
+            "helperText": "Anything else the robot did or has. How consistently do the cargo shot stay in the hub? Did it defend well? Was the transition from Autonomus to Teleop fast?",
+            "exportLabel": "Notes"
+        }
+    ]
+}

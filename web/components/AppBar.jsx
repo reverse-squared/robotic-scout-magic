@@ -6,9 +6,11 @@ import Loadable from 'react-loadable';
 import MUIAppBar from '@material-ui/core/AppBar';
 
 import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
+import SVGOffline from '@material-ui/icons/OfflineBolt';
 import SVGBack from '@material-ui/icons/ArrowBack';
 
 import Package from '../../package.json';
@@ -77,6 +79,13 @@ class AppBar extends Component {
                                     <SVGBack />
                                 </IconButton>
                             }
+                            <Icon
+                                color="inherit"
+                                id="offlineButton"
+                                style={{paddingRight: '6px', display: 'none'}}
+                            >
+                                <SVGOffline />
+                            </Icon>
                             <Typography variant='h6' color='inherit'>
                                 {Package.displayName}{$production ? '' : ' - Development Build'}
                             </Typography>

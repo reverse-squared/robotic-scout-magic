@@ -7,12 +7,46 @@ const forms = require('./form');
 const DATA_DIR = path.join(__dirname, '../.data');
 const SUBMISSION_FILE = path.join(__dirname, '../.data/.submissions.json');
 
+const formData = {};
+const formSubmissions = {};
+let sockets = [];
+
 fs.ensureDirSync(DATA_DIR);
 if (!fs.existsSync(SUBMISSION_FILE)) {
     fs.writeFileSync(SUBMISSION_FILE, '{}');
 }
 
-function deepcopy(obj) {return JSON.parse(JSON.stringify(obj));}
+fs.readJSON(SUBMISSION_FILE).then(data => {
+    Object.keys(data).forEach(form => {
+        formData[form] = data[form];
+        formSubmissions[form] = data[form].length;
+    });
+
+    setInterval(async () => {
+        let update = false;
+        for (let key of Object.keys(formData)) {
+            if (!formSubmissions[key]) formSubmissions[key] = 0;
+            if (formData[key].length !== formSubmissions[key]) {
+                update = true;
+                formSubmissions[key] = formData[key].length
+            }
+        }
+
+        if (update) {
+            console.log('Updating submission file');
+            await fs.writeJSON(SUBMISSION_FILE, formData);
+
+            GetSubmissionCounts().then(counts => {
+                sockets.forEach(socket => {
+                    if (!socket) return;
+                    try { socket.emit('update:submitCounts', counts) } catch (e) { }
+                });
+            });
+        }
+    }, 3e3);
+});
+
+function deepcopy(obj) { return JSON.parse(JSON.stringify(obj)); }
 
 const ExportHandlers = fs.readdirSync(path.join(__dirname, 'exports')).map(name => {
     const mod = require('./exports/' + name);
@@ -24,26 +58,23 @@ const ExportHandlers = fs.readdirSync(path.join(__dirname, 'exports')).map(name 
     return mod;
 });
 
-function HandleSubmit(id, submission) {
-    return fs.readJSON(SUBMISSION_FILE).then(data => {
-        if(!data[id]) data[id] = [];
-        
-        data[id].push(submission);
-
-        return fs.writeJSON(SUBMISSION_FILE, data);
-    });
+function HandleSubmit(id, submission, newSockets) {
+    sockets = newSockets;
+    if (!formData[id]) formData[id] = [];
+    formData[id].push(submission);
+    return;
 }
-function HandleDelete(id, submission) {
-    return fs.readJSON(SUBMISSION_FILE).then(data => {
-        delete data[id];
-        return fs.writeJSON(SUBMISSION_FILE, data);
-    });
+function HandleDelete(id, newSockets) {
+    sockets = newSockets;
+    if (!formData[id]) return;
+    formData[id] = [];
+    return;
 }
-async function BeginExport(form, type, output) {
+async function BeginExport(form, type) {
     const allSubmissions = await GetSubmissionList();
     const submissions = allSubmissions[form] || [];
     const formData = deepcopy(forms.getFormList().find(x => x.id === form));
-    
+
     formData.items = formData.items.filter(x => x.type !== 'header').map(item => {
         item.label = item.exportLabel || item.label;
         return item;
@@ -52,10 +83,7 @@ async function BeginExport(form, type, output) {
     // handler may be async so lets await it (await is a no op when used on non promises)
     const outputContent = await GetExportHandler(type).handler(formData, submissions);
 
-    await fs.ensureDir(path.dirname(output));
-    await fs.writeFile(output, outputContent);
-    
-    return;
+    return outputContent
 }
 function GetExportTypeList() {
     return ExportHandlers;
@@ -64,14 +92,14 @@ function GetExportHandler(type) {
     return ExportHandlers.find(x => x.type === type);
 }
 function GetSubmissionList() {
-    return fs.readJSON(SUBMISSION_FILE);    
+    return new Promise((resolve, reject) => resolve(formData));
 }
 function GetSubmissionCounts() {
     return GetSubmissionList().then(json => {
         return Object.keys(json).reduce((obj, name) => {
             obj[name] = json[name] ? json[name].length : 0;
             return obj;
-        },{});
+        }, {});
     });
 }
 

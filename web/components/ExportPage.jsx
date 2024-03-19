@@ -39,23 +39,14 @@ class ExportPage extends Component {
         super(props);
         this.state = {
             activeStep: 0,
-            usbDevice: null,
             form: null,
-            usbDeviceRemoved: null,
             
             formChooseEmptyOpen: false,
             exportFormats: [],
 
             selectedFormat: null,
-            exportFilename: '',
             hasDeletedForm: false,
-        };
-        this.handleSelectUSB = (item) => () => {
-            this.setState({
-                activeStep: this.state.activeStep + 1,
-                usbDevice: item,
-                usbDeviceRemoved: false
-            });
+            exported: null,
         };
         this.handleSelectForm = (item) => () => {
             if ((this.props.submitCounts[item.id] || 0) === 0) {
@@ -72,9 +63,8 @@ class ExportPage extends Component {
         };
         this.handleSelectType = (item) => () => {
             this.setState({ selectedFormat: item.type });
-        };
-        this.handleFilenameChange = (ev) => {
-            this.setState({ exportFilename: ev.target.value });
+            this.state.selectedFormat = item.type;
+            this.handleFinishStep3();
         };
         this.handleFormChooseEmptyDialogClose = () => {
             this.setState({
@@ -97,28 +87,38 @@ class ExportPage extends Component {
                 body: JSON.stringify({
                     form: this.state.form.id,
                     type: this.state.selectedFormat,
-                    output: this.state.usbDevice.path + 'RSM_Data/' + this.state.exportFilename + '.' + this.state.exportFormats.find(x => x.type === this.state.selectedFormat).extension
                 }),
                 headers: {'Content-Type': 'application/json'}
-            }).then(() => {
+            }).then((res) => {
                 // lmao ignore response if it failed
+                res.json().then((res) => { this.state.exported = res.output });
                 this.setState({
                     activeStep: this.state.activeStep + 1,
                 });
             });
         };
+        this.download = () => {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.state.exported));
+            element.setAttribute('download', 'scouting_data.'+this.state.selectedFormat);
+          
+            element.style.display = 'none';
+            document.body.appendChild(element);
+          
+            element.click();
+          
+            document.body.removeChild(element);
+        };
         this.handleReset = () => {
             this.setState({
                 activeStep: 0,
-                usbDevice: null,
                 form: null,
-                usbDeviceRemoved: null,
                 
                 formChooseEmptyOpen: false,
 
                 selectedFormat: null,
-                exportFilename: '',
                 hasDeletedForm: false,
+                exported: null,
             });
         };
         this.handleDelete = () => {
@@ -127,7 +127,6 @@ class ExportPage extends Component {
         };
     }
     componentDidMount() {
-        window.ExitWithoutSave = () => this.state.activeStep > 0 && this.state.activeStep < 4;
         fetch('/export-handlers').then(r => r.json()).then(exportFormats => {
             this.setState({ exportFormats });
         });
@@ -135,81 +134,18 @@ class ExportPage extends Component {
     componentWillUnmount() {
         window.ExitWithoutSave = null;        
     }
-    componentDidUpdate() {
-        if(this.state.usbDevice && this.state.activeStep < 4) {
-            if (this.props.usbData.find(dev => {
-                return this.state.usbDevice.name === dev.name
-                    && this.state.usbDevice.type === dev.type
-                    && this.state.usbDevice.path === dev.path;
-            }) === undefined) {
-                this.setState({
-                    usbDevice: null,
-                    form: null,
-                    activeStep: 0,
-                    formChooseEmptyOpen: false,                    
-                    usbDeviceRemoved: true,
-                });
-            }
-        }
-    }
 
     render() {
         const { activeStep } = this.state;
 
         return (
             <div>
-                <h1>Export Data to a USB Drive</h1>
                 <Stepper activeStep={activeStep} orientation="vertical">
-                    <Step>
-                        <StepLabel>Choose a Device to Export To{
-                            this.state.activeStep > 0 && <span>. <strong>Selected {this.state.usbDevice.path}</strong></span>
-                        }</StepLabel>
-                        <StepContent>
-                            <Typography>
-                                {this.state.usbDeviceRemoved?<span><strong>Uh Oh, your selected device was disconnected. </strong></span>:''}Choose a USB Drive to export to from this list. This list will refresh automatically within 10 seconds.
-                            </Typography>
-                            <List>
-                                {
-                                    this.props.usbData.map(item => {
-                                        let icon = 'question';
-                                        if (item.type === 'sdcard') icon = 'sd-card';
-                                        if (item.type === 'usb') icon = 'usb';
-                                        if (item.type === 'hdd') icon = 'hdd';
-
-                                        return <ListItem key={item.path} button onClick={this.handleSelectUSB(item)}>
-                                            <ListItemAvatar>
-                                                <Avatar>
-                                                    <FontAwesome icon={icon} />
-                                                </Avatar>
-                                            </ListItemAvatar>
-                                            <ListItemText
-                                                primary={item.name}
-                                                secondary={'Found on path ' + item.path}
-                                            />
-                                        </ListItem>;
-                                    })
-                                }
-                                {
-                                    this.props.usbData.length === 0 && <ListItem>
-                                        <ListItemAvatar>
-                                            <Avatar>
-                                                <FontAwesome icon={'exclamation'} />
-                                            </Avatar>
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                            primary={'No Storage Devices Detected'}
-                                            secondary={'Make sure it\'s plugged in, and try waiting up to 10 seconds.'}
-                                        />
-                                    </ListItem>
-                                }
-                            </List>
-                        </StepContent>
-                    </Step>
                     <Step>
                         <StepLabel>Choose a Form to Export the Data From</StepLabel>
                         <StepContent>
                             <Typography>
-                                Select a form in this list to export to the device on <strong>{this.state.usbDevice && this.state.usbDevice.path}</strong>.
+                                <strong>Select a form in this list to export</strong>.
                             </Typography>
                             <List>
                                 {
@@ -252,7 +188,7 @@ class ExportPage extends Component {
                         </StepContent>
                     </Step>
                     <Step>
-                        <StepLabel>Select an Export Format and File Name</StepLabel>
+                        <StepLabel>Select an Export Format</StepLabel>
                         <StepContent>
                             <Typography>
                                 Choose a format to use in the export.
@@ -279,36 +215,6 @@ class ExportPage extends Component {
                                     })
                                 }
                             </List>
-                            <br/>
-                            <TextField
-                                variant="outlined"
-                                label="Filename to export to."
-                                onChange={this.handleFilenameChange}
-                                value={this.state.exportFilename}
-                                disabled={!this.state.selectedFormat}
-                                InputProps={{
-                                    startAdornment: <InputAdornment position="start">
-                                        {this.state.activeStep > 0 &&
-                                            <span style={{opacity:'0.7'}}>
-                                                {this.state.usbDevice.path}RSM_Data\
-                                            </span>
-                                        }
-                                    </InputAdornment>,
-                                    endAdornment: this.state.selectedFormat && <InputAdornment position="end">
-                                        <span style={{opacity:'0.7'}}>
-                                            .{this.state.exportFormats.find(x => x.type === this.state.selectedFormat).extension}
-                                        </span>
-                                    </InputAdornment>,
-                                }}
-                            />
-                            <br/>
-                            <br/>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                disabled={!this.state.exportFilename}
-                                onClick={this.handleFinishStep3}
-                            >Continue</Button>
                         </StepContent>
                     </Step>
                     <Step>
@@ -322,36 +228,19 @@ class ExportPage extends Component {
                         </StepContent>
                     </Step>
                     <Step>
-                        <StepLabel>Extra Actions</StepLabel>
+                        <StepLabel>Done</StepLabel>
                         <StepContent>
                             <Typography>
-                                Your form has been exported to the selected device at
-                                {' '}
-                                <strong>
-                                    {this.state.usbDevice && this.state.usbDevice.path}
-                                    RSM_Data\
-                                    {this.state.exportFilename}
-                                    .
-                                    {this.state.selectedFormat &&
-                                        this.state.exportFormats
-                                            .find(x => x.type === this.state.selectedFormat)
-                                            .extension
-                                    }
-                                </strong>
+                                Your form has been exported
                             </Typography>
                             <br/>
-                            <RedButton
-                                variant="contained"
-                                onClick={this.handleDelete}
-                                disabled={this.state.hasDeletedForm}
-                            >Delete Data From Server</RedButton>
-                            <br/><br/>
                             <Button
                                 variant="contained"
                                 color="primary"
-                                onClick={this.handleReset}
-                            >Export another form</Button>
-                            <br/><br/>
+                                onClick={this.download}
+                            >Download</Button>
+                            <br/>
+                            <br/>
                             <Button
                                 variant="contained"
                                 color="primary"
@@ -361,27 +250,6 @@ class ExportPage extends Component {
                         </StepContent>
                     </Step>
                 </Stepper>
-                <Dialog
-                    open={this.state.formChooseEmptyOpen}
-                    onClose={this.handleFormChooseEmptyDialogClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">Export form without any submissions?</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            This may result in an invalid or empty file. Are you sure you want to export a form without any submissions?
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleFormChooseEmptyDialogClose} color="primary" autoFocus>
-                            Cancel
-                        </Button>
-                        <Button onClick={this.handleFormChooseEmptyDialogAccept} color="primary">
-                            Select This Form
-                        </Button>
-                    </DialogActions>
-                </Dialog>
             </div>
         );
     }

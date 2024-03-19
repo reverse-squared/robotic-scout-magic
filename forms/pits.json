@@ -1,0 +1,114 @@
+{
+    "$schema": "../form-schema.json",
+    "id": "pits",
+    "icon": "plug",
+    "name": "Pit Scouting",
+    "hidden": false,
+    "description": "Click here to open scouting form",
+    "items": [
+        {
+            "type": "number",
+            "label": "The Team / Robot Number",
+            "exportLabel": "Team Number"
+        },
+        {
+            "type": "link",
+            "link": "https://drive.google.com/drive/folders/1Lbi5TeLe1w2A8UoeiFunt2Pz8VWX7LA0?usp=sharing",
+            "linkText": "Google Drive",
+            "label": "Upload Picture Here",
+            "openInNewTab": true
+        },
+        {
+            "type": "header",
+            "label": "Robot Information"
+        },
+        {
+            "type": "radio",
+            "label": "Where can the robot score",
+            "options": [
+                "Speaker only",
+                "Amp only",
+                "Both"
+            ],
+            "exportLabel": "Shooter"
+        },
+        {
+            "type": "radio",
+            "label": "What kind of climber does the robot have",
+            "options": [
+                "Climber in a box (or similar)",
+                "Buddy climb",
+                "Other",
+                "None"
+            ],
+            "exportLabel": "Climb"
+        },
+        {
+            "type": "boolean",
+            "label": "Do you have a ground pick up?",
+            "exportLabel": "Ground Pick Up"
+        },
+        {
+            "type": "boolean",
+            "label": "Can you pick up from the source?",
+            "exportLabel": "Pick Up from Source"
+        },
+        {
+            "type": "number",
+            "label": "What is your average number of cycles?",
+            "exportLabel": "Average Cycles"
+        },
+        {
+            "type": "number",
+            "label": "What is your robot height?",
+            "exportLabel": "Robot Height"
+        },
+        {
+            "type": "number",
+            "label": "What is your robot weight?",
+            "exportLabel": "Robot Weight"
+        },
+        {
+            "type": "boolean",
+            "label": "Can you score in the amp?",
+            "exportLabel": "Score in Amp"
+        },
+        {
+            "type": "boolean",
+            "label": "Can you climb the chain?",
+            "exportLabel": "Climb Chain"
+        },
+        {
+            "type": "boolean",
+            "label": "Can you complete a harmony?",
+            "exportLabel": "Complete Harmony"
+        },
+        {
+            "type": "boolean",
+            "label": "Can you score in the trap?",
+            "exportLabel": "Score in Trap"
+        },
+        {
+            "type": "boolean",
+            "label": "Can you score in the speaker?",
+            "exportLabel": "Score in Speaker"
+        },
+        {
+            "type": "radio",
+            "label": "What is your drive train?",
+            "options": [
+                "Tank drive",
+                "Swerve drive",
+                "Mecanum drive",
+                "Other"
+            ],
+            "exportLabel": "Drive Train"
+        },
+        {
+            "type": "text-area",
+            "label": "Other notes.",
+            "helperText": "",
+            "exportLabel": "Notes"
+        }
+    ]
+}
